@@ -76,15 +76,11 @@ window.I18N = {
 
     "contact.title": "Kontakt",
     "contact.sub": "Masz pomysł na projekt w .NET i szukasz kogoś, kto weźmie go od strony technicznej? Napisz — najbardziej interesują mnie rzeczy z jasno określonym zakresem. Odpowiadam zwykle w ciągu 1–2 dni roboczych.",
-    "form.name": "Imię i nazwisko",
-    "form.email": "Email",
-    "form.message": "Wiadomość",
-    "form.send": "Wyślij",
-    "form.sending": "Wysyłanie…",
-    "form.ok": "Dziękuję — wiadomość została wysłana.",
-    "form.errRequired": "Uzupełnij wszystkie pola.",
-    "form.errEmail": "Podaj poprawny adres email.",
-    "form.errSend": "Nie udało się wysłać. Napisz bezpośrednio na kontakt@piotrsowiak.pl."
+    "contact.emailLabel": "Napisz na",
+    "contact.write": "Napisz wiadomość",
+    "contact.copy": "Kopiuj adres",
+    "contact.copied": "Skopiowano do schowka.",
+    "contact.copyErr": "Nie udało się skopiować — zaznacz adres ręcznie."
   },
 
   en: {
@@ -157,14 +153,10 @@ window.I18N = {
 
     "contact.title": "Contact",
     "contact.sub": "Got an idea for a .NET project and need someone to own the technical side? Get in touch — what interests me most is work with a clearly defined scope. I usually reply within 1–2 business days.",
-    "form.name": "Full name",
-    "form.email": "Email",
-    "form.message": "Message",
-    "form.send": "Send",
-    "form.sending": "Sending…",
-    "form.ok": "Thank you — your message has been sent.",
-    "form.errRequired": "Please fill in all fields.",
-    "form.errEmail": "Please enter a valid email address.",
-    "form.errSend": "Sending failed. Please email kontakt@piotrsowiak.pl directly."
+    "contact.emailLabel": "Write to",
+    "contact.write": "Write a message",
+    "contact.copy": "Copy address",
+    "contact.copied": "Copied to clipboard.",
+    "contact.copyErr": "Couldn't copy — please select the address manually."
   }
 };

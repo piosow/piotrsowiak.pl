@@ -132,91 +132,69 @@
   }
 
   /* ---------------------------------------------------------------------- */
-  /* Email — składany w JS, żeby nie leżał gotowy w źródle dla scraperów     */
+  /* Kontakt — email składany w JS, żeby nie leżał gotowy w źródle           */
   /* ---------------------------------------------------------------------- */
   var EMAIL = ["kontakt", "piotrsowiak.pl"].join("@");
+
   var emailLink = document.getElementById("email-link");
   if (emailLink) {
     emailLink.setAttribute("href", "mailto:" + EMAIL);
     emailLink.textContent = EMAIL;
   }
 
-  /* ---------------------------------------------------------------------- */
-  /* Formularz kontaktowy                                                    */
-  /* ---------------------------------------------------------------------- */
-  var form = document.getElementById("contact-form");
+  var writeBtn = document.getElementById("email-write");
+  if (writeBtn) {
+    writeBtn.setAttribute(
+      "href",
+      "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Projekt — piotrsowiak.pl")
+    );
+  }
 
-  if (form) {
-    var statusEl = document.getElementById("cf-status");
-    var submitBtn = document.getElementById("cf-submit");
+  var copyBtn = document.getElementById("email-copy");
+  var copyStatus = document.getElementById("copy-status");
 
-    /* Uwaga: NIE używamy form.name — na HTMLFormElement `name` to własna właściwość
-       (atrybut name formularza), więc przesłania pole o tej nazwie. Sięgamy przez
-       form.elements, gdzie named access działa przewidywalnie. */
-    var fName = form.elements.namedItem("name");
-    var fEmail = form.elements.namedItem("email");
-    var fMessage = form.elements.namedItem("message");
-    var fCompany = form.elements.namedItem("company");
+  if (copyBtn && copyStatus) {
+    var statusTimer;
 
-    var setStatus = function (msg, cls) {
-      statusEl.textContent = msg;
-      statusEl.className = "form-status" + (cls ? " " + cls : "");
+    var flash = function (key, cls) {
+      copyStatus.textContent = t(key);
+      copyStatus.className = "copy-status is-visible" + (cls ? " " + cls : "");
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(function () {
+        copyStatus.className = "copy-status";
+      }, 3000);
     };
 
-    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    /* Fallback dla przeglądarek bez Clipboard API (i dla http:// lokalnie —
+       navigator.clipboard wymaga secure context). */
+    var legacyCopy = function (text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.cssText = "position:absolute;left:-9999px;top:0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    };
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+    var reportLegacy = function () {
+      // uwaga: wywołujemy legacyCopy dokładnie raz i dopiero wynik mapujemy na komunikat
+      var ok = legacyCopy(EMAIL);
+      flash(ok ? "contact.copied" : "contact.copyErr", ok ? "ok" : "err");
+    };
 
-      var name = fName.value.trim();
-      var email = fEmail.value.trim();
-      var message = fMessage.value.trim();
-      var company = fCompany.value.trim(); // honeypot
-
-      // bot wypełnił honeypot — udajemy sukces, nic nie wysyłamy
-      if (company) { setStatus(t("form.ok"), "ok"); form.reset(); return; }
-
-      fName.removeAttribute("aria-invalid");
-      fEmail.removeAttribute("aria-invalid");
-      fMessage.removeAttribute("aria-invalid");
-
-      if (!name || !email || !message) {
-        if (!name) fName.setAttribute("aria-invalid", "true");
-        if (!email) fEmail.setAttribute("aria-invalid", "true");
-        if (!message) fMessage.setAttribute("aria-invalid", "true");
-        setStatus(t("form.errRequired"), "err");
-        return;
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(EMAIL).then(
+          function () { flash("contact.copied", "ok"); },
+          reportLegacy
+        );
+      } else {
+        reportLegacy();
       }
-      if (!EMAIL_RE.test(email)) {
-        fEmail.setAttribute("aria-invalid", "true");
-        setStatus(t("form.errEmail"), "err");
-        return;
-      }
-
-      submitBtn.disabled = true;
-      setStatus(t("form.sending"), "");
-
-      fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name, email: email, message: message, company: company })
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.json().catch(function () { return {}; });
-        })
-        .then(function () {
-          setStatus(t("form.ok"), "ok");
-          form.reset();
-        })
-        .catch(function () {
-          // Fallback: brak/awaria backendu → otwieramy klienta pocztowego.
-          setStatus(t("form.errSend"), "err");
-          var subject = encodeURIComponent("Kontakt ze strony piotrsowiak.pl — " + name);
-          var body = encodeURIComponent(message + "\n\n—\n" + name + "\n" + email);
-          window.location.href = "mailto:" + EMAIL + "?subject=" + subject + "&body=" + body;
-        })
-        .then(function () { submitBtn.disabled = false; });
     });
   }
 

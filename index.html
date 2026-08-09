@@ -307,50 +307,31 @@
 
   <!-- ── KONTAKT ────────────────────────────────────────── -->
   <section class="section section-alt" id="contact">
-    <div class="wrap contact-wrap">
-      <div class="contact-intro">
+    <div class="wrap">
+      <div class="section-head">
         <h2 data-i18n="contact.title">Kontakt</h2>
         <p class="section-sub" data-i18n="contact.sub">
           Masz pomysł na projekt w .NET i szukasz kogoś, kto weźmie go od strony
           technicznej? Napisz — najbardziej interesują mnie rzeczy z jasno określonym
           zakresem. Odpowiadam zwykle w ciągu 1–2 dni roboczych.
         </p>
-
-        <ul class="contact-list" role="list">
-          <li>
-            <span class="contact-k">Email</span>
-            <a class="contact-v" id="email-link" href="#">kontakt<span aria-hidden="true">&#64;</span>piotrsowiak.pl</a>
-          </li>
-          <li>
-            <span class="contact-k">LinkedIn</span>
-            <a class="contact-v" href="https://www.linkedin.com/in/piotr-sowiak-6a2955b6" target="_blank" rel="noopener noreferrer">piotr-sowiak</a>
-          </li>
-        </ul>
       </div>
 
-      <form class="card contact-form" id="contact-form" novalidate>
-        <div class="field">
-          <label for="cf-name" data-i18n="form.name">Imię i nazwisko</label>
-          <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="120">
-        </div>
-        <div class="field">
-          <label for="cf-email" data-i18n="form.email">Email</label>
-          <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="200">
-        </div>
-        <div class="field">
-          <label for="cf-message" data-i18n="form.message">Wiadomość</label>
-          <textarea id="cf-message" name="message" rows="5" required maxlength="4000"></textarea>
+      <div class="contact-panel">
+        <p class="contact-label" data-i18n="contact.emailLabel">Napisz na</p>
+
+        <p class="contact-email">
+          <a id="email-link" href="#">kontakt<span aria-hidden="true">&#64;</span>piotrsowiak.pl</a>
+        </p>
+
+        <div class="contact-actions">
+          <a class="btn btn-primary" id="email-write" href="#" data-i18n="contact.write">Napisz wiadomość</a>
+          <button class="btn" id="email-copy" type="button" data-i18n="contact.copy">Kopiuj adres</button>
+          <a class="btn" href="https://www.linkedin.com/in/piotr-sowiak-6a2955b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
 
-        <!-- honeypot: ukryte pole, boty je wypełniają, ludzie nie -->
-        <div class="hp" aria-hidden="true">
-          <label for="cf-company">Company</label>
-          <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off">
-        </div>
-
-        <button class="btn btn-primary btn-block" type="submit" id="cf-submit" data-i18n="form.send">Wyślij</button>
-        <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
-      </form>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      </div>
     </div>
   </section>
 

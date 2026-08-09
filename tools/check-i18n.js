@@ -14,8 +14,8 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const html = fs.readFileSync(path.join(root, "public/index.html"), "utf8");
-const i18nSrc = fs.readFileSync(path.join(root, "public/assets/i18n.js"), "utf8");
+const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const i18nSrc = fs.readFileSync(path.join(root, "assets/i18n.js"), "utf8");
 
 global.window = {};
 eval(i18nSrc);
@@ -35,7 +35,7 @@ report("klucze tylko w PL", Object.keys(D.pl).filter((k) => !(k in D.en)));
 report("klucze tylko w EN", Object.keys(D.en).filter((k) => !(k in D.pl)));
 report(
   "klucze w słowniku nieużywane w HTML",
-  Object.keys(D.pl).filter((k) => !used.includes(k) && !/^meta\.|^form\./.test(k))
+  Object.keys(D.pl).filter((k) => !used.includes(k) && !/^meta\.|^contact\.(copied|copyErr)$/.test(k))
 );
 
 // rozjazd między tekstem w HTML a słownikiem PL
