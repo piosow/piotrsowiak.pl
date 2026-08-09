@@ -185,6 +185,35 @@ img, svg { max-width: 100%; }
   color: var(--text-muted);
 }
 
+/* baner dostępności — sygnał "side projects, nie etat" */
+.availability {
+  display: flex; align-items: flex-start; gap: .75rem;
+  max-width: 62ch;
+  margin-top: 1.75rem;
+  padding: 1rem 1.15rem;
+  font-size: .9375rem;
+  color: var(--text-muted);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: 10px;
+}
+.availability strong { color: var(--text); font-weight: 620; }
+
+.dot {
+  flex: none;
+  width: 8px; height: 8px; margin-top: .55rem;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 22%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .dot { animation: pulse 2.6s ease-in-out infinite; }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 22%, transparent); }
+  50%      { box-shadow: 0 0 0 6px color-mix(in srgb, #16a34a 6%, transparent); }
+}
+
 .facts {
   display: flex; flex-wrap: wrap; gap: 2.5rem;
   margin-block: 2.5rem;
@@ -229,6 +258,7 @@ img, svg { max-width: 100%; }
 .grid { display: grid; gap: 1.25rem; }
 .grid-stack    { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .grid-projects { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.grid-how      { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
 .card {
   background: var(--surface);
@@ -275,25 +305,18 @@ img, svg { max-width: 100%; }
 .metrics strong { font-size: 1.35rem; letter-spacing: -.02em; }
 .metrics span { font-size: .78rem; color: var(--text-muted); }
 
-/* --- Timeline ------------------------------------------------------------ */
-.timeline { display: grid; gap: 0; }
-
-.tl-item {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 2rem;
-  padding-block: 1.75rem;
-  border-top: 1px solid var(--border-soft);
+/* --- Jak pracuję --------------------------------------------------------- */
+.card-how h3 {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: .75rem;
 }
-.tl-item:last-child { border-bottom: 1px solid var(--border-soft); }
-
-.tl-period {
-  font-family: var(--mono); font-size: .85rem;
-  color: var(--text-muted); padding-top: .2rem;
+.card-how h3::before {
+  content: ""; position: absolute; left: 0; top: .35em;
+  width: 3px; height: 1em;
+  background: var(--accent); border-radius: 2px;
 }
-.tl-body h3 { font-size: 1.0625rem; margin-bottom: .3rem; }
-.tl-meta { font-size: .85rem; color: var(--accent); margin-bottom: .6rem; font-weight: 560; }
-.tl-body > p:last-child { color: var(--text-muted); font-size: .9375rem; max-width: 60ch; }
+.card-how p { color: var(--text-muted); font-size: .9375rem; }
 
 /* --- Kontakt ------------------------------------------------------------- */
 .contact-wrap {
@@ -348,7 +371,6 @@ img, svg { max-width: 100%; }
 /* --- Responsywność ------------------------------------------------------- */
 @media (max-width: 860px) {
   .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-  .tl-item { grid-template-columns: 1fr; gap: .5rem; }
 }
 
 @media (max-width: 700px) {
@@ -373,7 +395,7 @@ img, svg { max-width: 100%; }
 
 /* --- Druk ---------------------------------------------------------------- */
 @media print {
-  .site-header, .hero-cta, .contact-form, .skip-link { display: none; }
+  .site-header, .hero-cta, .contact-form, .skip-link, .dot { display: none; }
   body { background: #fff; color: #000; }
   .section, .hero { padding-block: 1.5rem; }
   .card { break-inside: avoid; border-color: #ccc; }
