@@ -1,0 +1,18 @@
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+.dev.vars.*
+
+# Node (gdyby kiedyś doszedł tooling)
+node_modules/
+npm-debug.log*
+
+# System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Edytory
+.vscode/
+.idea/
+*.swp

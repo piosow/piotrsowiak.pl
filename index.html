@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piotr Sowiak — Senior .NET Developer</title>
+<meta name="description" content="Senior .NET Developer z Łodzi. Projektowanie, budowa i utrzymanie systemów biznesowych: .NET, Blazor WASM, MSSQL, DDD/CQRS, Kubernetes.">
+<meta name="author" content="Piotr Sowiak">
+<link rel="canonical" href="https://piotrsowiak.pl/">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d10" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://piotrsowiak.pl/">
+<meta property="og:title" content="Piotr Sowiak — Senior .NET Developer">
+<meta property="og:description" content="Projektowanie, budowa i utrzymanie systemów biznesowych: .NET, Blazor WASM, MSSQL, DDD/CQRS, Kubernetes.">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://piotrsowiak.pl/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css">
+
+<script>
+/* Zapobiega mignięciu złego motywu (FOUC) — musi być inline, przed CSS-em renderującym. */
+(function () {
+  try {
+    var t = localStorage.getItem('theme') || 'auto';
+    document.documentElement.setAttribute('data-theme', t);
+    var l = localStorage.getItem('lang');
+    if (l === 'en') document.documentElement.setAttribute('lang', 'en');
+  } catch (e) {}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Piotr Sowiak",
+  "jobTitle": "Senior .NET Developer",
+  "email": "kontakt@piotrsowiak.pl",
+  "url": "https://piotrsowiak.pl/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Łódź", "addressCountry": "PL" },
+  "sameAs": ["https://www.linkedin.com/in/piotr-sowiak-6a2955b6"],
+  "knowsAbout": [".NET", "ASP.NET Core", "Blazor WebAssembly", "Microsoft SQL Server", "Domain-Driven Design", "CQRS", "Kubernetes", "RabbitMQ"]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="skip">Przejdź do treści</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">PS</a>
+
+    <nav class="nav" aria-label="Główna nawigacja">
+      <a href="#stack" data-i18n="nav.stack">Stack</a>
+      <a href="#projects" data-i18n="nav.projects">Projekty</a>
+      <a href="#experience" data-i18n="nav.experience">Doświadczenie</a>
+      <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+
+    <div class="controls">
+      <button id="lang-toggle" class="ctrl" type="button" aria-label="Change language" title="PL / EN">
+        <span id="lang-label">EN</span>
+      </button>
+      <button id="theme-toggle" class="ctrl" type="button" aria-label="Przełącz motyw" title="Motyw">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button id="menu-toggle" class="ctrl menu-only" type="button" aria-label="Menu" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Senior .NET Developer</p>
+      <h1 class="hero-name">Piotr Sowiak</h1>
+      <p class="hero-lead" data-i18n="hero.lead">
+        Projektuję, buduję, wdrażam i utrzymuję systemy biznesowe dla klienta wewnętrznego
+        w dużej organizacji. Potrafię wyjść ponad zgłoszoną potrzebę — spojrzeć na proces
+        z dystansu, dostrzec zależności, których wcześniej nie widziano, i zaproponować
+        rozwiązanie, które rozwiązuje problem u źródła.
+      </p>
+
+      <ul class="facts" role="list">
+        <li><span class="fact-k" data-i18n="hero.factExp">Doświadczenie</span><span class="fact-v" data-i18n="hero.factExpV">od 2015 · 11 lat</span></li>
+        <li><span class="fact-k" data-i18n="hero.factLoc">Lokalizacja</span><span class="fact-v" data-i18n="hero.factLocV">Łódź / remote</span></li>
+        <li><span class="fact-k" data-i18n="hero.factRole">Rola</span><span class="fact-v" data-i18n="hero.factRoleV">Development · Team leading</span></li>
+      </ul>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact" data-i18n="hero.ctaContact">Napisz do mnie</a>
+        <a class="btn" href="https://www.linkedin.com/in/piotr-sowiak-6a2955b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STACK ──────────────────────────────────────────── -->
+  <section class="section" id="stack">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="stack.title">Stack</h2>
+        <p class="section-sub" data-i18n="stack.sub">Technologie, w których pracuję na co dzień.</p>
+      </div>
+
+      <div class="grid grid-stack">
+        <article class="card">
+          <h3 data-i18n="stack.backend">Backend</h3>
+          <ul class="tags" role="list">
+            <li>.NET Framework</li><li>.NET 7+</li><li>ASP.NET Core</li><li>Web API</li>
+            <li>EF Core</li><li>Dapper</li><li>MediatR</li><li>SignalR</li><li>Hangfire</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="stack.frontend">Frontend</h3>
+          <ul class="tags" role="list">
+            <li>Blazor WebAssembly</li><li>MudBlazor</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="stack.data">Bazy danych</h3>
+          <ul class="tags" role="list">
+            <li>MS SQL Server</li><li>Redis</li><li>KeyDB</li><li>SQLite</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="stack.arch">Architektura</h3>
+          <ul class="tags" role="list">
+            <li>DDD</li><li>CQRS</li><li>Clean Architecture</li>
+            <li data-i18n="t.micro">Mikroserwisy</li>
+            <li data-i18n="t.mono">Monolit</li>
+            <li>RabbitMQ</li><li>Duende IdentityServer</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="stack.devops">DevOps</h3>
+          <ul class="tags" role="list">
+            <li>Kubernetes</li><li>Docker</li><li>GitLab CI/CD</li><li>IIS</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="stack.tools">Narzędzia</h3>
+          <ul class="tags" role="list">
+            <li>Git</li><li>Visual Studio</li><li>VS Code</li><li>SSMS</li><li>Power BI</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJEKTY ───────────────────────────────────────── -->
+  <section class="section section-alt" id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="projects.title">Projekty</h2>
+        <p class="section-sub" data-i18n="projects.sub">Wybrane systemy, które zaprojektowałem i zbudowałem.</p>
+      </div>
+
+      <div class="grid grid-projects">
+
+        <article class="card card-project">
+          <header class="project-head">
+            <h3 data-i18n="p1.title">System rozliczania czasu pracy i dodatków płacowych</h3>
+            <p class="project-role" data-i18n="p1.role">Projekt · Implementacja</p>
+          </header>
+          <p data-i18n="p1.desc">
+            Rozliczanie składników wynagrodzenia zgodnie z Kodeksem pracy: ponadwymiar, nadgodziny,
+            przesunięcia i odbiory, dni ustawowo wolne, zwolnienia chorobowe, praca w weekendy i święta.
+            Reguły wyliczeń wymagały odwzorowania realnych, złożonych przypadków brzegowych
+            i pełnej audytowalności wyniku.
+          </p>
+          <ul class="metrics" role="list">
+            <li><strong>1000+</strong><span data-i18n="p1.m1">sklepów</span></li>
+            <li><strong>1000+</strong><span data-i18n="p1.m2">pracowników centrali</span></li>
+          </ul>
+          <ul class="tags tags-sm" role="list">
+            <li>.NET</li><li>Blazor WASM</li><li>MS SQL</li><li>EF Core</li>
+          </ul>
+        </article>
+
+        <article class="card card-project">
+          <header class="project-head">
+            <h3 data-i18n="p2.title">Platforma obiegu i rozliczania kosztów</h3>
+            <p class="project-role" data-i18n="p2.role">Projekt · Team lead (3 os.) · Implementacja</p>
+          </header>
+          <p data-i18n="p2.desc">
+            Pełna ścieżka dokumentu kosztowego: od wpływu do systemu, przez digitalizację z OCR,
+            po zlecenie płatności. Sercem systemu jest silnik agregujący koszty powstałe w organizacji
+            i wiążący je z dokumentami od kontrahentów — wraz z walidacją, wykrywaniem duplikatów
+            i generowaniem plików bankowych do importu przez księgowość.
+          </p>
+          <ul class="metrics" role="list">
+            <li><strong>700+</strong><span data-i18n="p2.m1">dokumentów dziennie</span></li>
+            <li><strong>3</strong><span data-i18n="p2.m2">osobowy zespół</span></li>
+          </ul>
+          <ul class="tags tags-sm" role="list">
+            <li>.NET</li><li>CQRS</li><li>RabbitMQ</li><li>OCR</li><li>MS SQL</li>
+          </ul>
+        </article>
+
+        <article class="card card-project">
+          <header class="project-head">
+            <h3 data-i18n="p3.title">Obieg akceptacji dokumentów KSeF</h3>
+            <p class="project-role" data-i18n="p3.role">Projekt · Implementacja</p>
+          </header>
+          <p data-i18n="p3.desc">
+            System wewnętrznej akceptacji dokumentów pobieranych z KSeF przez osoby upoważnione.
+            W ramach projektu powstał model hierarchii pracowników — stanowiska, kompetencje
+            i wynikające z nich ścieżki akceptacji — sterujący tym, kto i na jakim etapie
+            może zatwierdzić lub odrzucić dokument.
+          </p>
+          <ul class="tags tags-sm" role="list">
+            <li>.NET</li><li>Blazor WASM</li><li>DDD</li><li>MS SQL</li>
+          </ul>
+        </article>
+
+        <article class="card card-project">
+          <header class="project-head">
+            <h3 data-i18n="p4.title">System zleceń przelewów z integracją bankową</h3>
+            <p class="project-role" data-i18n="p4.role">Projekt · Implementacja</p>
+          </header>
+          <p data-i18n="p4.desc">
+            Wewnętrzne narzędzie do zlecania przelewów, zintegrowane bezpośrednio z API banku
+            (SOAP oraz HTTP). Obsługa uwierzytelniania, podpisu zleceń i zwrotnych statusów
+            transakcji, z naciskiem na niezawodność i pełny ślad audytowy operacji finansowych.
+          </p>
+          <ul class="tags tags-sm" role="list">
+            <li>.NET</li><li>SOAP</li><li>REST</li><li>MS SQL</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOŚWIADCZENIE ──────────────────────────────────── -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="exp.title">Doświadczenie</h2>
+        <p class="section-sub" data-i18n="exp.sub">11 lat komercyjnie, w tym prowadzenie zespołu.</p>
+      </div>
+
+      <ol class="timeline" role="list">
+        <li class="tl-item">
+          <div class="tl-period">2022 — <span data-i18n="exp.now">obecnie</span></div>
+          <div class="tl-body">
+            <h3 data-i18n="exp.r2">.NET Developer → Senior .NET Developer</h3>
+            <p class="tl-meta" data-i18n="exp.c2">Firma 2 · 4 lata</p>
+            <p data-i18n="exp.d2">
+              Rozwój systemów biznesowych end-to-end oraz prowadzenie zespołu developerskiego:
+              decyzje architektoniczne, code review, mentoring i planowanie prac.
+            </p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <div class="tl-period">2015 — 2022</div>
+          <div class="tl-body">
+            <h3 data-i18n="exp.r1">Programista → Team Leader</h3>
+            <p class="tl-meta" data-i18n="exp.c1">Firma 1 · 7 lat</p>
+            <p data-i18n="exp.d1">
+              Od implementacji po odpowiedzialność za zespół programistów i dostarczanie
+              projektów w uzgodnionym zakresie i terminie.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── KONTAKT ────────────────────────────────────────── -->
+  <section class="section section-alt" id="contact">
+    <div class="wrap contact-wrap">
+      <div class="contact-intro">
+        <h2 data-i18n="contact.title">Kontakt</h2>
+        <p class="section-sub" data-i18n="contact.sub">
+          Napisz, jeśli szukasz kogoś do zaprojektowania lub rozwoju systemu w .NET.
+          Odpowiadam zwykle w ciągu 1–2 dni roboczych.
+        </p>
+
+        <ul class="contact-list" role="list">
+          <li>
+            <span class="contact-k">Email</span>
+            <a class="contact-v" id="email-link" href="#">kontakt<span aria-hidden="true">&#64;</span>piotrsowiak.pl</a>
+          </li>
+          <li>
+            <span class="contact-k">LinkedIn</span>
+            <a class="contact-v" href="https://www.linkedin.com/in/piotr-sowiak-6a2955b6" target="_blank" rel="noopener noreferrer">piotr-sowiak</a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="card contact-form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name" data-i18n="form.name">Imię i nazwisko</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="cf-email" data-i18n="form.email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="200">
+        </div>
+        <div class="field">
+          <label for="cf-message" data-i18n="form.message">Wiadomość</label>
+          <textarea id="cf-message" name="message" rows="5" required maxlength="4000"></textarea>
+        </div>
+
+        <!-- honeypot: ukryte pole, boty je wypełniają, ludzie nie -->
+        <div class="hp" aria-hidden="true">
+          <label for="cf-company">Company</label>
+          <input id="cf-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" id="cf-submit" data-i18n="form.send">Wyślij</button>
+        <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; <span id="year">2026</span> Piotr Sowiak</p>
+    <p><a href="mailto:kontakt&#64;piotrsowiak.pl">kontakt&#64;piotrsowiak.pl</a></p>
+  </div>
+</footer>
+
+<script src="/assets/i18n.js"></script>
+<script src="/assets/app.js"></script>
+</body>
+</html>
