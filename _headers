@@ -5,12 +5,14 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cache-Control: public, max-age=0, must-revalidate
 
-/assets/*
-  Cache-Control: public, max-age=604800, must-revalidate
+# Uwaga: świadomie BEZ długiego max-age na assets.
+# Wcześniej stało tu 604800 (7 dni) — przeglądarki wracających użytkowników trzymały
+# stary app.js mimo poprawnego deploya, przez co przestawał działać przycisk kontaktu.
+# max-age=0 + must-revalidate = przeglądarka pyta o ETag i dostaje 304, jeśli nic się
+# nie zmieniło. Przy plikach rzędu 10 kB koszt jest pomijalny, a strona nigdy nie jest
+# nieaktualna. Dodatkowo linki w index.html mają ?v=N jako drugi bezpiecznik.
 
 /favicon.svg
-  Cache-Control: public, max-age=604800
-
-/
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=86400

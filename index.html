@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=2">
 
 <script>
 /* Zapobiega mignięciu złego motywu (FOUC) — musi być inline, przed CSS-em renderującym. */
@@ -321,11 +321,11 @@
         <p class="contact-label" data-i18n="contact.emailLabel">Napisz na</p>
 
         <p class="contact-email">
-          <a id="email-link" href="#">kontakt<span aria-hidden="true">&#64;</span>piotrsowiak.pl</a>
+          <a id="email-link" href="mailto:kontakt&#64;piotrsowiak.pl">kontakt&#64;piotrsowiak.pl</a>
         </p>
 
         <div class="contact-actions">
-          <a class="btn btn-primary" id="email-write" href="#" data-i18n="contact.write">Napisz wiadomość</a>
+          <a class="btn btn-primary" id="email-write" href="mailto:kontakt&#64;piotrsowiak.pl?subject=Projekt%20-%20piotrsowiak.pl" data-i18n="contact.write">Napisz wiadomość</a>
           <button class="btn" id="email-copy" type="button" data-i18n="contact.copy">Kopiuj adres</button>
           <a class="btn" href="https://www.linkedin.com/in/piotr-sowiak-6a2955b6" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
@@ -344,7 +344,9 @@
   </div>
 </footer>
 
-<script src="/assets/i18n.js"></script>
-<script src="/assets/app.js"></script>
+<!-- ?v=N — cache busting. Po każdej zmianie w assets/ podbij numer w OBU linijkach
+     (i w <link> ze stylem powyżej), inaczej wracający użytkownicy dostaną starą wersję. -->
+<script src="/assets/i18n.js?v=2"></script>
+<script src="/assets/app.js?v=2"></script>
 </body>
 </html>

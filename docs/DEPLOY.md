@@ -54,9 +54,11 @@ bo to ostatnie wymaga secure context (`https://` albo `localhost`).
 - **Nowy projekt** — skopiuj `<article class="card card-project">` i dodaj klucze `p5.*`
   w obu językach.
 - **Kolory** — zmienne na górze `style.css` (`:root` = jasny, `[data-theme="dark"]` = ciemny).
-- **Adres email** — składany w JS w `assets/app.js` (stała `EMAIL`), żeby nie leżał gotowy
-  w źródle HTML dla scraperów. Zmiana adresu = zmiana w dwóch miejscach: `EMAIL` w `app.js`
-  oraz widoczny tekst w `index.html`.
+- **Adres email** występuje w czterech miejscach i wszystkie trzeba zmienić razem:
+  `href` + tekst linku `#email-link`, `href` przycisku `#email-write`, stopka,
+  oraz stała `EMAIL` w `assets/app.js` (używana już tylko przez „Kopiuj adres").
+- **Po każdej zmianie w `assets/` podbij `?v=N`** przy obu `<script>` i przy `<link>`
+  ze stylem w `index.html`. Bez tego wracający użytkownicy dostaną starą wersję z cache.
 
 Po każdej edycji tekstów:
 
@@ -66,6 +68,21 @@ node tools/check-i18n.js
 
 Skrypt łapie najczęstszy błąd w tej architekturze — poprawisz PL w `index.html`, zapomnisz
 w `i18n.js`, a JS nadpisze zmianę przy pierwszym renderze.
+
+## Cache — na co uważać
+
+`_headers` celowo nie ustawia długiego `max-age` na `/assets/*`. Pierwotnie było tam
+7 dni i skończyło się tak, że po deployu nowej wersji przeglądarki wracających
+użytkowników nadal wykonywały stary `app.js` — przycisk kontaktu przestawał działać,
+mimo że produkcja serwowała poprawny plik.
+
+Kluczowa pułapka: **zmiana nagłówka nie unieważnia tego, co już leży w cache przeglądarki.**
+Plik pobrany z `max-age=604800` zostanie tam przez 7 dni niezależnie od tego, co teraz
+wysyła serwer. Dlatego oprócz nagłówków linki do assetów mają `?v=N` — podbicie numeru
+to jedyny sposób, żeby wymusić pobranie u kogoś, kto już był na stronie.
+
+Diagnostyka: jeśli coś działa po `Ctrl+Shift+R`, a nie działa po zwykłym odświeżeniu,
+to zawsze cache.
 
 ## Dlaczego nie ma formularza kontaktowego
 

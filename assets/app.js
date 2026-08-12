@@ -132,23 +132,16 @@
   }
 
   /* ---------------------------------------------------------------------- */
-  /* Kontakt — email składany w JS, żeby nie leżał gotowy w źródle           */
+  /* Kontakt                                                                 */
+  /*                                                                         */
+  /* Linki mailto siedzą wprost w HTML, nie są doklejane przez JS. Wcześniej */
+  /* adres był składany tutaj (drobna ochrona przed scraperami), ale to      */
+  /* uzależniało działanie kontaktu od tego, czy przeglądarka ma aktualny    */
+  /* app.js. Kontakt to najważniejszy element strony — musi działać nawet    */
+  /* przy zablokowanym lub przeterminowanym JS. Adres i tak jest widoczny    */
+  /* jako tekst, więc obfuskacja niewiele dawała.                            */
   /* ---------------------------------------------------------------------- */
   var EMAIL = ["kontakt", "piotrsowiak.pl"].join("@");
-
-  var emailLink = document.getElementById("email-link");
-  if (emailLink) {
-    emailLink.setAttribute("href", "mailto:" + EMAIL);
-    emailLink.textContent = EMAIL;
-  }
-
-  var writeBtn = document.getElementById("email-write");
-  if (writeBtn) {
-    writeBtn.setAttribute(
-      "href",
-      "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Projekt — piotrsowiak.pl")
-    );
-  }
 
   var copyBtn = document.getElementById("email-copy");
   var copyStatus = document.getElementById("copy-status");
