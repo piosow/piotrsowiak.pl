@@ -13,7 +13,7 @@ site/                      pełna wizytówka — odłożona, NIE publikowana
   assets/style.css         style + motyw jasny/ciemny (zmienne CSS)
   assets/i18n.js           słownik tłumaczeń PL/EN
   assets/app.js            motyw, język, menu, kopiowanie adresu
-wrangler.toml              konfiguracja Pages (katalog wyjściowy = public/)
+wrangler.toml              konfiguracja Workera (statyczne pliki = public/)
 tools/check-i18n.js        walidacja spójności tłumaczeń (sprawdza site/)
 docs/, README.md, CLAUDE.md
 ```
@@ -39,17 +39,23 @@ Kontakt działa przez `mailto:`, więc nie ma backendu, który mógłby paść.
 
 ## Deploy
 
-Podpięte pod Cloudflare Pages przez Git — każdy `git push` na `main` to deploy.
+Strona to **Cloudflare Worker ze statycznymi plikami** (`piotrsowiak-pl`), nie projekt Pages.
+Repo jest podpięte przez Workers Builds — każdy `git push` na `main` uruchamia `wrangler deploy`
+(deploy pojawia się ok. 30 s po pushu).
 
-Katalog wyjściowy ustawia `wrangler.toml` (`pages_build_output_dir = "./public"`) —
-przy buildzie z Gita ma pierwszeństwo przed polem *Build output directory* w dashboardzie.
-Build command zostaje pusty, root directory `/`.
+`wrangler.toml` ustawia nazwę Workera i `[assets] directory = "./public"`. Bez tego pliku
+Wrangler publikował cały root repo, łącznie z `README.md` i `docs/`. Nazwa w `wrangler.toml`
+musi się zgadzać z nazwą Workera w dashboardzie, inaczej build się wywali.
 
-Deploy ręczny, z pominięciem Gita (katalog bierze z `wrangler.toml`):
+Status i deploy ręczny (z pominięciem Gita):
 
 ```bash
-npx wrangler pages deploy
+npx wrangler deployments list     # historia deployów
+npx wrangler deploy --dry-run     # sprawdza, co pójdzie na stronę
+npx wrangler deploy               # deploy ręczny
 ```
+
+W PowerShellu z zablokowanymi skryptami używaj `npx.cmd` zamiast `npx`.
 
 ## Podgląd lokalny
 
@@ -106,17 +112,17 @@ to zawsze cache.
 
 Rozważane i odrzucone:
 
-- **Cloudflare Pages Function + Resend / ZeptoMail** — Workers runtime nie potrafi SMTP
+- **Kod Workera + Resend / ZeptoMail** — Workers runtime nie potrafi SMTP
   (brak Node'owego `net`/`tls`, port 25 zablokowany), więc każdy formularz wymaga
   zewnętrznego API po HTTP: dodatkowe konto, klucz w sekretach, rekordy DKIM/SPF w DNS
   obok istniejącej konfiguracji Zoho. Nieproporcjonalne do kilku wiadomości miesięcznie.
 - **Web3Forms / Formspree** — zero konfiguracji, ale treść wiadomości przechodzi przez
   serwer zewnętrznego dostawcy.
 
-Gdyby kiedyś wróciła potrzeba formularza: `functions/` **musi** leżeć w roocie projektu,
-poza katalogiem wskazanym jako build output directory. Inaczej Pages nie zbuduje Workera
-i `/api/*` zwróci 404 (objaw poboczny: dashboard nie pozwala dodać zmiennych środowiskowych,
-bo widzi projekt jako „Worker that only has static assets").
+Gdyby kiedyś wróciła potrzeba formularza: to Worker, nie Pages, więc katalog `functions/`
+nic nie da (stąd wcześniej 404 na `/api/*` i komunikat „Worker that only has static assets").
+Trzeba dodać w `wrangler.toml` `main = "src/worker.js"` z obsługą `/api/*`, a resztę
+przekazywać do `env.ASSETS` (binding `[assets] binding = "ASSETS"`).
 
 ## Do uzupełnienia
 

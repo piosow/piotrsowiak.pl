@@ -1,5 +1,7 @@
-# Konfiguracja Cloudflare Pages. Przy buildzie z Gita ten plik ma pierwszeństwo
-# przed ustawieniami w dashboardzie — publikowany jest wyłącznie katalog public/.
-name = "piotrsowiak"
-pages_build_output_dir = "./public"
+# Worker ze statycznymi plikami (Cloudflare Workers Builds, deploy przy każdym push na main).
+# Publikowany jest wyłącznie katalog public/ — reszta repo nie trafia na stronę.
+name = "piotrsowiak-pl"
 compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./public"
