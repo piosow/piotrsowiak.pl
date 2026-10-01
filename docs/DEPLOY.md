@@ -4,18 +4,35 @@
 
 ```
 public/                    jedyny publikowany katalog
+  index.html               ZAŚLEPKA „strona w budowie” (styl terminala)
+  placeholder.css          style zaślepki
+  _headers                 nagłówki bezpieczeństwa i cache
+  favicon.svg, robots.txt, sitemap.xml
+site/                      pełna wizytówka — odłożona, NIE publikowana
   index.html               cała treść (PL w HTML, EN podmieniane przez JS)
   assets/style.css         style + motyw jasny/ciemny (zmienne CSS)
   assets/i18n.js           słownik tłumaczeń PL/EN
   assets/app.js            motyw, język, menu, kopiowanie adresu
-  _headers                 nagłówki bezpieczeństwa i cache
-  favicon.svg, robots.txt, sitemap.xml
 wrangler.toml              konfiguracja Pages (katalog wyjściowy = public/)
-tools/check-i18n.js        walidacja spójności tłumaczeń
+tools/check-i18n.js        walidacja spójności tłumaczeń (sprawdza site/)
 docs/, README.md, CLAUDE.md
 ```
 
-Wszystko poza `public/` (dokumentacja, narzędzia, instrukcje) nie jest publikowane.
+Wszystko poza `public/` (pełna strona w `site/`, dokumentacja, narzędzia) nie jest publikowane.
+
+## Zaślepka
+
+Na razie produkcja serwuje zaślepkę z `public/index.html`. Pełna wizytówka czeka w `site/`.
+Przywrócenie:
+
+```bash
+git rm public/index.html public/placeholder.css
+git mv site/index.html public/index.html
+git mv site/assets public/assets
+```
+
+Potem w `tools/check-i18n.js` zmień `"site"` z powrotem na `"public"`. Podgląd pełnej strony
+lokalnie, bez przywracania: `npx serve site` (favicon w tym trybie się nie załaduje).
 
 Strona jest w 100% statyczna — **żadnych Workers, Functions ani zmiennych środowiskowych.**
 Kontakt działa przez `mailto:`, więc nie ma backendu, który mógłby paść.

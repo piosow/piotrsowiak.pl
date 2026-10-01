@@ -1,6 +1,7 @@
 # piotrsowiak.pl — instrukcje dla Claude Code
 
 Statyczna wizytówka (HTML/CSS/JS, bez build stepu) na Cloudflare Pages.
+Obecnie produkcja serwuje zaślepkę (`public/index.html`); pełna strona leży w `site/` — przywracanie w `docs/DEPLOY.md`.
 Szczegóły: `docs/DEPLOY.md`.
 
 ## Publikacja
@@ -16,9 +17,9 @@ Szczegóły: `docs/DEPLOY.md`.
 
 ## Checklista przed commitem
 
-1. Zmiana tekstu PL → popraw `public/index.html` **i** sekcję `pl` w `public/assets/i18n.js`; EN tylko w `i18n.js`.
+1. Zmiana tekstu PL → popraw `site/index.html` **i** sekcję `pl` w `site/assets/i18n.js`; EN tylko w `i18n.js`.
 2. `node tools/check-i18n.js` musi przejść.
-3. Zmiana czegokolwiek w `public/assets/` → podbij `?v=N` przy obu `<script>` i `<link>` w `public/index.html`.
+3. Zmiana czegokolwiek w `site/assets/` → podbij `?v=N` przy obu `<script>` i `<link>` w `site/index.html` (zaślepka: `?v=N` przy `placeholder.css`).
 4. Zmiana adresu email → wszystkie 4 miejsca (patrz `docs/DEPLOY.md`).
 
 ## Zasady

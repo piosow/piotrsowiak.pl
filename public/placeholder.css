@@ -1,0 +1,90 @@
+/* Zaślepka „strona w budowie” — stylizacja na terminal Claude Code. */
+:root {
+  --bg: #1a1a1a;
+  --fg: #e8e6e3;
+  --dim: #8a8784;
+  --accent: #d97757;
+  --border: #d97757;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body { min-height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.term {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.welcome {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+}
+.welcome .dim { padding-left: 2ch; }
+
+.accent { color: var(--accent); }
+.dim { color: var(--dim); }
+strong { font-weight: 700; }
+
+.prompt::before { content: "> "; color: var(--dim); }
+.prompt { color: var(--dim); }
+
+.reply { position: relative; padding-left: 2ch; }
+.reply::before { content: "●"; position: absolute; left: 0; color: var(--fg); }
+
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+a:hover, a:focus-visible { color: var(--fg); }
+a:focus-visible { outline: 1px dashed var(--accent); outline-offset: 2px; }
+
+.status { color: var(--accent); margin-top: 6px; }
+.spinner::before { content: "✻"; animation: spin 1.2s steps(1) infinite; }
+@keyframes spin {
+  0%    { content: "·"; }
+  16.6% { content: "✢"; }
+  33.3% { content: "✳"; }
+  50%   { content: "✶"; }
+  66.6% { content: "✻"; }
+  83.3% { content: "✽"; }
+}
+
+.input {
+  border-top: 1px solid #3a3836;
+  border-bottom: 1px solid #3a3836;
+  padding: 6px 0;
+}
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--fg);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.en { font-size: 13px; margin-top: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner::before, .cursor { animation: none; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 14px; align-items: flex-start; }
+}

@@ -13,7 +13,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const root = path.resolve(__dirname, "..", "public");
+const root = path.resolve(__dirname, "..", "site");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const i18nSrc = fs.readFileSync(path.join(root, "assets/i18n.js"), "utf8");
 
