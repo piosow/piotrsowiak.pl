@@ -3,14 +3,19 @@
 ## Struktura
 
 ```
-index.html                 cała treść (PL w HTML, EN podmieniane przez JS)
-assets/style.css           style + motyw jasny/ciemny (zmienne CSS)
-assets/i18n.js             słownik tłumaczeń PL/EN
-assets/app.js              motyw, język, menu, kopiowanie adresu
-_headers                   nagłówki bezpieczeństwa i cache
+public/                    jedyny publikowany katalog
+  index.html               cała treść (PL w HTML, EN podmieniane przez JS)
+  assets/style.css         style + motyw jasny/ciemny (zmienne CSS)
+  assets/i18n.js           słownik tłumaczeń PL/EN
+  assets/app.js            motyw, język, menu, kopiowanie adresu
+  _headers                 nagłówki bezpieczeństwa i cache
+  favicon.svg, robots.txt, sitemap.xml
+wrangler.toml              konfiguracja Pages (katalog wyjściowy = public/)
 tools/check-i18n.js        walidacja spójności tłumaczeń
-favicon.svg, robots.txt, sitemap.xml
+docs/, README.md, CLAUDE.md
 ```
+
+Wszystko poza `public/` (dokumentacja, narzędzia, instrukcje) nie jest publikowane.
 
 Strona jest w 100% statyczna — **żadnych Workers, Functions ani zmiennych środowiskowych.**
 Kontakt działa przez `mailto:`, więc nie ma backendu, który mógłby paść.
@@ -19,24 +24,20 @@ Kontakt działa przez `mailto:`, więc nie ma backendu, który mógłby paść.
 
 Podpięte pod Cloudflare Pages przez Git — każdy `git push` na `main` to deploy.
 
-Ustawienia projektu w Pages (Settings → Builds & deployments):
+Katalog wyjściowy ustawia `wrangler.toml` (`pages_build_output_dir = "./public"`) —
+przy buildzie z Gita ma pierwszeństwo przed polem *Build output directory* w dashboardzie.
+Build command zostaje pusty, root directory `/`.
 
-| Pole | Wartość |
-|---|---|
-| Build command | *(puste)* |
-| Build output directory | `/` |
-| Root directory | `/` |
-
-Deploy ręczny, z pominięciem Gita:
+Deploy ręczny, z pominięciem Gita (katalog bierze z `wrangler.toml`):
 
 ```bash
-npx wrangler pages deploy . --project-name=piotrsowiak
+npx wrangler pages deploy
 ```
 
 ## Podgląd lokalny
 
 ```bash
-npx serve .            # albo: python -m http.server 8000
+npx serve public       # albo: python -m http.server 8000 -d public
 ```
 
 Otwarcie `index.html` bezpośrednio z dysku (`file://`) też działa, z jednym wyjątkiem:
