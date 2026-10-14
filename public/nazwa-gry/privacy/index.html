@@ -49,7 +49,6 @@
       <ul>
         <li>No ads and no advertising trackers.</li>
         <li>No account and no sign-in.</li>
-        <!-- {DO_POTWIERDZENIA_ZAPIS}: postęp i ustawienia tylko lokalnie, bez chmury (cloud save, Play Games Services). -->
         <li>Your progress and settings stay on your device.</li>
         <li>The one-time unlock is paid through Google Play; I never see your payment details.</li>
       </ul>
@@ -67,29 +66,23 @@
          i wymień je tutaj (np. numer zamówienia, produkt, data, kraj). -->
     <ul>
       <li>Legal basis: performance of the purchase contract (Art. 6(1)(b) GDPR) and legal obligations such as tax and accounting rules (Art. 6(1)(c) GDPR).</li>
-      <li>Retention: {OKRES_ZAKUPY}.</li>
+      <li>Retention: until tax liabilities expire under Polish law, usually five years from the end of the year in which the tax was due.</li>
     </ul>
 
     <h2 id="reviews">Ratings and reviews</h2>
     <p>The game may ask you to rate it using Google Play's in-app review window. Google handles that window and your rating; I only see public reviews, the same way everyone else does on Google Play.</p>
 
     <h2 id="permissions">Android permissions</h2>
-    <p>The app uses the following permissions: {UPRAWNIENIA_ANDROID}.</p>
-    <!-- Lista z AndroidManifest.xml po zbudowaniu (Capacitor domyślnie dodaje INTERNET). Przy każdym uprawnieniu: po co. -->
+    <p>The app uses only one permission: internet access (INTERNET), a standard permission of the app framework. The game doesn't use it to send your data anywhere.</p>
 
     <h2 id="analytics">Analytics and crash reports</h2>
-    <p>{ANALITYKA}</p>
-    <!-- Wariant A (bez analityki): „The game doesn't use analytics or crash reporting tools.”
-         Wariant B: nazwa narzędzia (np. Firebase Crashlytics), jakie dane zbiera, podstawa prawna, okres przechowywania,
-         link do polityki dostawcy, transfer poza EOG. Dopisz dostawcę też w „Who else receives data”.
-         Zbiorcze statystyki z Google Play Console (instalacje, crash/ANR z Android vitals) zbiera Google na podstawie
-         ustawień urządzenia, nie gra — zostaw je w sekcji „Who else receives data”. -->
+    <p>The game doesn't use analytics or crash reporting tools.</p>
 
     <h2 id="web">Browser version</h2>
-    <p>The browser version is published on itch.io. When you play it there, itch.io's own <a href="{LINK_ITCH_PRIVACY}">privacy policy</a> applies to their website. The game itself works the same way as on Android: your progress stays in your browser.</p>
+    <p>The browser version is published on itch.io. When you play it there, itch.io's own <a href="https://itch.io/docs/legal/privacy-policy">privacy policy</a> applies to their website. The game itself works the same way as on Android: your progress stays in your browser.</p>
 
     <h2 id="children">Children</h2>
-    <p>The game isn't directed at children under {WIEK_MIN}. I don't knowingly collect personal data from children.</p>
+    <p>The game isn't directed at children under 13. I don't knowingly collect personal data from children.</p>
     <!-- Musi się zgadzać z „Grupą docelową i treściami” w Play Console. Jeśli grupa docelowa obejmuje dzieci,
          obowiązują zasady programu Families — wtedy ta sekcja wymaga przeróbki. -->
 

@@ -17,9 +17,9 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 | `OPIS_EN` (3–4 zdania) | TODO |
 | `OPIS_PL` (3–4 zdania) | TODO |
 | `MECHANIKA_1..3` | TODO: trzy rzeczy, które wyróżniają grę (np. proceduralne plansze, power-upy, tryb dzienny) |
-| `DLUGOSC_SESJI` | TODO, np. 1–3 min |
-| `STEROWANIE` | TODO: web (klawiatura i mysz, dotyk), Android (dotyk) |
-| `JEZYKI` | TODO, np. EN, PL |
+| `DLUGOSC_SESJI` | 30 s – 1 min (EN: „30 seconds to a minute”) |
+| `STEROWANIE` | ruch o jedno pole w 4 kierunkach: przesunięcie palcem (dotyk, Android i przeglądarka mobilna), strzałki albo WASD (klawiatura). Mysz: brak |
+| `JEZYKI` | EN, PL |
 
 ## Model i daty
 
@@ -27,11 +27,11 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 |---|---|
 | `MODEL` | darmowa, jednorazowe odblokowanie pełnej wersji, **bez reklam** |
 | `CENA` | 3,99 USD (ceny lokalne wg Google Play) |
-| `CO_ODBLOKOWUJE` | TODO: co jest w darmowej części, a co w pełnej wersji |
+| `CO_ODBLOKOWUJE` | darmowe: pierwsze światy/poziomy; pełna wersja: pozostałe. TODO: ile światów za darmo, ile w pełnej |
 | `DATA_WEB` | sobota 28.11.2026 |
 | `DATA_PREREJESTRACJA` | poniedziałek 16.11.2026 |
 | `DATA_PLAY` | sobota 12.12.2026 |
-| `NAGRODA_PREREJESTRACJA` | TODO: brak albo kosmetyczna (nie da się jej później edytować) |
+| `NAGRODA_PREREJESTRACJA` | brak |
 
 ## Linki (uzupełniane w miarę powstawania)
 
@@ -44,7 +44,7 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 | `LINK_TRAILER` | TODO (YouTube, monetyzacja wyłączona) |
 | `LINK_ZAPIS` | `https://piotrsowiak.pl/<slug>/#zapis` |
 | `KONTAKT` | kontakt@piotrsowiak.pl |
-| `BUTTONDOWN_USER` | TODO: nazwa konta Buttondown (formularz zapisu na landingu) |
+| `BUTTONDOWN_USER` | TODO do 2.11: nazwa konta Buttondown (formularz zapisu na landingu). W ustawieniach wyłączyć śledzenie otwarć i kliknięć (polityka to obiecuje) |
 
 ## Materiały
 
@@ -62,7 +62,7 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 |---|---|
 | `STACK` | TypeScript, HTML5 Canvas, Capacitor (jedna baza kodu: web + Android) |
 | `CZAS_PRODUKCJI` | budowa od 19.10.2026, po godzinach (10–15 h tygodniowo) |
-| `GENAI_W_GRZE` | TODO: **tak/nie, do czego** (wymagane przez itch.io, r/IndieGaming, r/indiegames, r/playmygame) |
+| `GENAI_W_GRZE` | **tak**: kod (asystent AI), grafika, dźwięk/muzyka/teksty. TODO: doprecyzować zakres (które grafiki, czy muzyka, czy efekty, czy teksty) do ujawnienia na itch.io i Reddicie |
 | `ZESPOL` | 1 osoba: Piotr Sowiak (Łódź), programista .NET/JS |
 
 ## Prywatność (polityki w `public/privacy/` i `public/<slug>/privacy/`)
@@ -72,12 +72,12 @@ w Play Console. Komentarze `{DO_POTWIERDZENIA_...}` w HTML-u polityk to założe
 
 | Pole | Wartość |
 |---|---|
-| `PRIVACY_DATA` | TODO: data ostatniej aktualizacji polityk, np. 10 November 2026 / 10 listopada 2026 |
-| `ANALITYKA` | TODO: brak albo narzędzie (np. Firebase Crashlytics) i co zbiera; warianty w komentarzu w HTML |
-| `UPRAWNIENIA_ANDROID` | TODO: lista z `AndroidManifest.xml` (Capacitor domyślnie: INTERNET) i po co |
-| `WIEK_MIN` | TODO: zgodnie z grupą docelową w Play Console (np. 13) |
-| `OKRES_ZAKUPY` | TODO: jak długo trzymasz dane zamówień (przepisy podatkowe) |
-| `LINK_ITCH_PRIVACY` | TODO: adres polityki prywatności itch.io |
-| `BUTTONDOWN_TRANSFER` | TODO: podstawa transferu do USA (EU-US Data Privacy Framework albo standardowe klauzule umowne, wg DPA Buttondown) |
-| `ZOHO_REGION` | TODO: centrum danych konta Zoho (np. EU) |
-| `OKRES_EMAIL` | TODO: jak długo trzymasz korespondencję |
+| `PRIVACY_DATA` | dzień publikacji polityk (wstawić przy zdejmowaniu `noindex`), format: 10 November 2026 / 10 listopada 2026 |
+| `ANALITYKA` | brak (bez analityki i raportów błędów; Data safety: brak zbieranych danych). Zapis postępu tylko lokalnie |
+| `UPRAWNIENIA_ANDROID` | tylko `INTERNET` (domyślne w Capacitor). Sprawdzić w `AndroidManifest.xml` po pierwszym buildzie |
+| `WIEK_MIN` | 13 (grupa docelowa w Play Console: 13+) |
+| `OKRES_ZAKUPY` | do przedawnienia zobowiązań podatkowych (zwykle 5 lat od końca roku, w którym upłynął termin płatności podatku) |
+| `LINK_ITCH_PRIVACY` | `https://itch.io/docs/legal/privacy-policy` |
+| `BUTTONDOWN_TRANSFER` | EN: „the European Commission's Standard Contractual Clauses, included in Buttondown's data processing agreement” · PL: „standardowe klauzule umowne Komisji Europejskiej zawarte w umowie powierzenia Buttondown”. Źródło: https://buttondown.com/legal/data-processing-agreement (stan z marca 2026) |
+| `ZOHO_REGION` | EU (zoho.eu) |
+| `OKRES_EMAIL` | 2 lata od ostatniej wiadomości w korespondencji |
