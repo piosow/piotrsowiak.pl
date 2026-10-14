@@ -11,7 +11,7 @@ public/                    jedyny publikowany katalog
   media/pixel/             pikselowe tło i ikony strony studia (generowane, patrz tools/)
   _headers                 nagłówki bezpieczeństwa i cache
   favicon.svg, robots.txt, sitemap.xml
-  nazwa-gry/               strona pierwszej gry (slug roboczy, patrz „Strona gry”)
+  tilefall/                strona pierwszej gry, Tilefall (patrz „Strona gry”)
     index.html, pl/        landing EN (domyślny) i PL
     press/                 press kit w układzie presskit() + ZIP z materiałami
     privacy/, privacy/pl/  polityka prywatności gry (URL do Google Play Console)
@@ -125,8 +125,11 @@ to zawsze cache.
 
 ## Strona gry
 
-Landing pierwszej gry leży w `public/nazwa-gry/`: EN pod `/nazwa-gry/`, PL pod `/nazwa-gry/pl/`,
-press kit pod `/nazwa-gry/press/`. Strony są bez JS i bez `noindex`, z wpisami w `sitemap.xml`.
+Landing pierwszej gry (Tilefall) leży w `public/tilefall/`: EN pod `/tilefall/`, PL pod `/tilefall/pl/`,
+press kit pod `/tilefall/press/`, polityka gry pod `/tilefall/privacy/`. Strony są bez JS. Do premiery
+to szkic (`noindex`, patrz „Szkice”).
+Nazwa w treści i nagłówkach: „Tilefall”; pełny tytuł „Tilefall: Roguelike Puzzle” w `<title>`,
+`og:title`, JSON-LD (`name`, z `alternateName: Tilefall`) i w nagłówku press kitu.
 Fakty pochodzą z `docs/promocja/karta-gry.md`, a brakujące pola stoją w HTML jako `{NAZWA_POLA}`.
 
 **Przed mergem na `main`** (merge = publikacja) musi przejść:
@@ -135,17 +138,20 @@ Fakty pochodzą z `docs/promocja/karta-gry.md`, a brakujące pola stoją w HTML 
 node tools/check-placeholders.js
 ```
 
-Gdy znane będą nazwa i slug:
+Zmiana nazwy albo sluga (tak powstało `tilefall/` z roboczego `nazwa-gry/`):
 
-1. `git mv public/nazwa-gry public/<slug>`, potem zamiana `nazwa-gry` na `<slug>` w plikach
+1. `git mv public/<stary> public/<slug>`, potem zamiana `<stary>` na `<slug>` w plikach
    `public/<slug>/` (ścieżki, canonical, hreflang, og:url, JSON-LD, nazwa ZIP-a) i w `data/games.json`
    (`slug`, `name`, `pitch`), na koniec `node tools/build-games.js` (lista gier i sitemap).
 2. Placeholdery z karty gry. Hero: zamiast `media/hero-placeholder.svg` GIF albo wideo (`GIF_1`).
    Logo: `media/logo.svg`. Zrzuty i ikona: pliki w `media/` i wpisy w galerii press kitu.
-3. Nowy og:image: `powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Nazwa" -Slug <slug>`.
+3. Nowy og:image: `powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Nazwa" -Slug <slug> -Genre "GATUNEK"`.
    Skrypt musi zostać w UTF-8 z BOM, inaczej PowerShell 5.1 przeczyta go jako ANSI.
+   (Obecny `tilefall/media/og.png` wyrenderowano w tym samym układzie przez Playwright; po uruchomieniu
+   skryptu na Windowsie dostaniesz wersję z fontami Segoe UI/Consolas.)
 4. Nowy ZIP press kitu (wszystko, co ma trafić do prasy):
-   `Compress-Archive -Path public/<slug>/media/* -DestinationPath public/<slug>/press/<slug>-presskit.zip -Force`
+   `Compress-Archive -Path public/<slug>/media/og.png, public/<slug>/media/logo.svg -DestinationPath public/<slug>/press/<slug>-presskit.zip -Force`
+   (bez `hero-placeholder.svg`; docelowo dołóż zrzuty, ikonę i GIF-y)
 5. Po zmianie `game.css` podbij `?v=N` we wszystkich trzech HTML-ach gry.
 
 **Lista mailingowa: Buttondown.** Formularz to zwykły `POST` na
@@ -164,7 +170,7 @@ Jest na serwerze pod swoim URL-em, ale nie trafia do wyszukiwarek, nie ma go w `
 i **żadna opublikowana strona nie może do niego linkować**. `check-placeholders.js` pomija szkice
 (razem z podkatalogami) i wypisuje je na końcu, więc placeholdery w szkicu nie blokują deployu.
 
-Dziś szkicami są `nazwa-gry/` (landing, press kit, polityka gry) i `privacy/` (polityka studia).
+Dziś szkicami są `tilefall/` (landing, press kit, polityka gry) i `privacy/` (polityka studia).
 
 **Publikacja gry** (po uzupełnieniu karty gry):
 
@@ -182,7 +188,7 @@ w `index.html`, `pl/index.html`, `games/index.html`, `games/pl/index.html`.
 Kontrola, czy nic opublikowanego nie linkuje do szkicu:
 
 ```bash
-grep -L 'content="noindex"' $(find public -name '*.html') | xargs grep -nE 'href="/(nazwa-gry|privacy)/'
+grep -L 'content="noindex"' $(find public -name '*.html') | xargs grep -nE 'href="/(tilefall|privacy)/'
 ```
 
 ## Polityki prywatności

@@ -1,12 +1,13 @@
 ﻿# Generuje og:image 1200x630 dla strony gry (Windows PowerShell 5.1, System.Drawing).
 # Użycie (z katalogu repo):
-#   powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Nazwa gry" -Slug nazwa-gry
+#   powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Tilefall" -Slug tilefall -Genre "ROGUELIKE PUZZLE"
 # Plik musi zostać w UTF-8 z BOM, inaczej PowerShell 5.1 przeczyta go jako ANSI.
 param(
-  [string]$Name = "{NAZWA_GRY}",
+  [string]$Name = "Tilefall",
+  [string]$Genre = "ROGUELIKE PUZZLE",
   [string]$Tagline = "The floor falls away behind you.",
   [string]$Dates = "Web 28.11.2026  $([char]0xB7)  Google Play 12.12.2026  $([char]0xB7)  No ads",
-  [string]$Slug = "nazwa-gry"
+  [string]$Slug = "tilefall"
 )
 
 Add-Type -AssemblyName System.Drawing
@@ -61,7 +62,7 @@ $font = "Segoe UI"
 $accent = New-Object System.Drawing.SolidBrush (Color "#ffb547")
 $white  = New-Object System.Drawing.SolidBrush (Color "#f2f2f4")
 $muted  = New-Object System.Drawing.SolidBrush (Color "#9a9aa5")
-$g.DrawString("ARCADE ROGUELITE", (New-Object System.Drawing.Font "Consolas", 20, ([System.Drawing.FontStyle]::Bold)), $accent, 70, 120)
+$g.DrawString($Genre, (New-Object System.Drawing.Font "Consolas", 20, ([System.Drawing.FontStyle]::Bold)), $accent, 70, 120)
 
 # Nazwa: zmniejszaj font, aż zmieści się w 640 px.
 $size = 84

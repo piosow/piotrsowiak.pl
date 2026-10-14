@@ -2,7 +2,7 @@
    Strona studia (strona główna + lista gier) — wspólne style.
    Zawsze ciemny motyw, bez JS. CSP ma style-src 'self', więc żadnych
    atrybutów style="" w HTML — tylko klasy.
-   Strony gier mają własne style (np. /nazwa-gry/game.css) i własny akcent.
+   Strony gier mają własne style (np. /tilefall/game.css) i własny akcent.
    ========================================================================== */
 
 :root {
