@@ -159,3 +159,16 @@ p  { margin: 0 0 1em; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* --- Polityka prywatności i inne strony z długim tekstem ------------------ */
+.legal { padding: 48px 0 var(--step); }
+.legal .wrap > * { max-width: 760px; }
+.legal h2 { font-size: 1.45rem; margin-top: 2em; }
+.legal h3 { margin-top: 1.4em; }
+.legal ul { padding-left: 22px; margin: 0 0 1em; }
+.legal li { margin-bottom: .4em; }
+.legal .updated { font-size: .9rem; color: var(--text-muted); }
+.legal .summary {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 22px 6px; margin: 1.5em 0;
+}

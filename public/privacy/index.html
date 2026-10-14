@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  SZKIELET polityki prywatności studia (strona, newsletter, kontakt mailowy).
+  Gry mają własne polityki w /<slug>/privacy/. Wersja PL: /privacy/pl/ — zmieniaj obie razem.
+  Placeholdery {...} (także w komentarzach) blokują publikację: node tools/check-placeholders.js.
+  Komentarz „{DO_POTWIERDZENIA_...}” = zdanie pod nim opiera się na założeniu; sprawdź i usuń komentarz.
+  To nie jest porada prawna — przed publikacją warto, żeby przeczytał to ktoś znający RODO.
+-->
+<title>Privacy policy | piotrsowiak.pl</title>
+<meta name="description" content="How piotrsowiak.pl handles personal data: website, newsletter and email contact.">
+<meta name="author" content="Piotr Sowiak">
+<link rel="canonical" href="https://piotrsowiak.pl/privacy/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/privacy/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/privacy/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/privacy/">
+<meta name="theme-color" content="#0d0d10">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/studio.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">piotrsowiak.pl</a>
+    <nav class="topnav" aria-label="Main menu">
+      <a href="/games/">Android games</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <a href="/privacy/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated: {PRIVACY_DATA}</p>
+
+    <p>This policy covers the website piotrsowiak.pl, the newsletter and email contact. Each game has its own privacy policy, linked from the game's page, which describes the data processed by the game itself.</p>
+
+    <div class="summary">
+      <ul>
+        <li>The website has no analytics, no advertising and no tracking scripts.</li>
+        <li>The newsletter is opt-in: your email address is used only to send it, and you can unsubscribe at any time.</li>
+        <li>I don't sell personal data.</li>
+      </ul>
+    </div>
+
+    <h2 id="controller">Who is responsible for your data</h2>
+    <p>The data controller is Piotr Sowiak, Łódź, Poland. For anything related to privacy, write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</p>
+
+    <h2 id="website">Visiting the website</h2>
+    <p>The website is hosted by Cloudflare. To deliver pages and protect the site from attacks, Cloudflare processes technical data such as your IP address, browser type and the address of the requested page. Legal basis: my legitimate interest in running a secure website (Art. 6(1)(f) GDPR). See the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>.</p>
+    <!-- {DO_POTWIERDZENIA_CLOUDFLARE_COOKIES}: kod strony nie ustawia ciasteczek, ale Cloudflare może dodać
+         ciasteczko bezpieczeństwa (np. __cf_bm przy Bot Management). Sprawdź w DevTools → Application → Cookies na produkcji. -->
+    <p>The website itself doesn't set cookies and doesn't use analytics.</p>
+
+    <h2 id="newsletter">Newsletter</h2>
+    <p>If you sign up on a game page, your email address and the language you signed up in are stored by Buttondown, the service that sends the newsletter. You'll first get an email asking you to confirm your address. I use the list only for news about my games and the studio.</p>
+    <ul>
+      <li>Legal basis: your consent (Art. 6(1)(a) GDPR). You can withdraw it at any time with the unsubscribe link in every email.</li>
+      <li>Retention: until you unsubscribe.</li>
+      <li>Buttondown is based in the United States. The transfer is based on {BUTTONDOWN_TRANSFER}. See the <a href="https://buttondown.com/legal/privacy">Buttondown privacy policy</a>.</li>
+    </ul>
+    <!-- {DO_POTWIERDZENIA_BUTTONDOWN}: sprawdź w Buttondown (1) czy śledzenie otwarć/kliknięć jest wyłączone — jeśli włączone,
+         dopisz to tutaj; (2) adres polityki prywatności Buttondown i podstawę transferu (DPF albo SCC) w ich DPA. -->
+
+    <h2 id="email">Emailing me</h2>
+    <p>If you write to me, I process your email address and the content of your message to reply. Legal basis: my legitimate interest in answering messages (Art. 6(1)(f) GDPR). Email is hosted by Zoho ({ZOHO_REGION}). I keep messages for {OKRES_EMAIL}.</p>
+
+    <h2 id="recipients">Who else receives data</h2>
+    <ul>
+      <li>Cloudflare — website hosting and security.</li>
+      <li>Buttondown — newsletter.</li>
+      <li>Zoho — email.</li>
+    </ul>
+    <p>They process data on my behalf and only for the purposes above. Data from games may also go to Google; see the privacy policy of the game.</p>
+
+    <h2 id="rights">Your rights</h2>
+    <p>Under the GDPR you have the right to access your data, correct it, have it deleted, restrict its processing, receive it in a portable format and object to processing based on legitimate interest. Where processing is based on consent, you can withdraw it at any time; this doesn't affect processing done before. Write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a> and I'll respond within one month.</p>
+    <p>You can also lodge a complaint with the Polish data protection authority: Prezes Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl/">uodo.gov.pl</a>.</p>
+    <p>I don't make decisions about you based solely on automated processing.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>If this policy changes, I'll update it on this page and change the date at the top.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></span>
+  </div>
+</footer>
+</body>
+</html>

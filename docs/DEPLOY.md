@@ -6,12 +6,14 @@
 public/                    jedyny publikowany katalog
   index.html, pl/          strona główna studia: EN (domyślna) i PL
   games/, games/pl/        lista gier na Androida EN i PL (karty generowane, patrz „Lista gier”)
-  studio.css               style strony głównej i listy gier
+  privacy/, privacy/pl/    polityka prywatności studia (strona, newsletter, email)
+  studio.css               style strony studia, listy gier i polityk prywatności
   _headers                 nagłówki bezpieczeństwa i cache
   favicon.svg, robots.txt, sitemap.xml
   nazwa-gry/               strona pierwszej gry (slug roboczy, patrz „Strona gry”)
     index.html, pl/        landing EN (domyślny) i PL
     press/                 press kit w układzie presskit() + ZIP z materiałami
+    privacy/, privacy/pl/  polityka prywatności gry (URL do Google Play Console)
     media/, game.css       og.png, logo, placeholder hero, wspólne style
 site/                      pełna wizytówka — odłożona, NIE publikowana
   index.html               cała treść (PL w HTML, EN podmieniane przez JS)
@@ -153,6 +155,23 @@ W Buttondown zostaw włączone **double opt-in**, bo strona obiecuje mail z potw
 Gdyby wybór padł na MailerLite: jego standardowy embed opiera się na JS (endpoint odpowiada JSON-em),
 więc oprócz `form-action` trzeba by sprawdzić i pewnie otworzyć `script-src` i `connect-src`.
 
+## Polityki prywatności
+
+Dwie warstwy, żeby kolejne gry nie powielały tego samego tekstu:
+
+- `/privacy/` (PL `/privacy/pl/`) — studio: strona (Cloudflare), newsletter (Buttondown),
+  korespondencja (Zoho), prawa z RODO. Link w stopkach strony studia i w notce pod formularzem zapisu.
+- `/<slug>/privacy/` (PL `/<slug>/privacy/pl/`) — gra: dane na urządzeniu, zakupy przez Google Play,
+  oceny w aplikacji, uprawnienia, analityka, wersja webowa, dzieci. Ten URL podajesz w Play Console
+  (Zasady aplikacji → Polityka prywatności). Prawa i administratora skrótowo, z linkiem do `/privacy/#rights`.
+
+Obie strony używają `studio.css` i są szkieletami: brakujące fakty stoją jako `{NAZWA_POLA}`
+(lista w `docs/promocja/karta-gry.md`, sekcja „Prywatność”), a założenia do sprawdzenia
+jako komentarze `<!-- {DO_POTWIERDZENIA_...} -->`. `check-placeholders.js` czyta też komentarze,
+więc nic nie trafi na `main`, dopóki ich nie usuniesz. Treść polityki gry musi się zgadzać
+z formularzem „Bezpieczeństwo danych” w Play Console — zmiana w grze (np. nowa analityka)
+to zmiana w obu miejscach. Szkielet nie jest poradą prawną.
+
 ## Lista gier
 
 Karty na `/games/` i `/games/pl/` oraz wpisy stron gier w `sitemap.xml` generuje
@@ -172,6 +191,8 @@ node tools/build-games.js --check   # exit 1, jeśli pliki są nieaktualne albo 
    „Strona gry” (treść, media, og:image, ZIP press kitu). Wymagany jest `public/<slug>/index.html`
    i okładka (domyślnie `public/<slug>/media/og.png`, 1200×630). `pl/` i `press/` są opcjonalne —
    skrypt sam wykrywa, czy istnieją, i dobiera linki oraz wpisy w sitemap.
+   Polityka prywatności: skopiuj `privacy/` z istniejącej gry i dostosuj sekcje do nowej gry
+   (sekcja „Polityki prywatności”).
 2. Wpis w `data/games.json` — na początku tablicy `games` (kolejność = kolejność na stronie):
 
    ```json
@@ -220,7 +241,7 @@ przekazywać do `env.ASSETS` (binding `[assets] binding = "ASSETS"`).
 ## Do uzupełnienia
 
 - [ ] og:image strony studia (1200×630) dla `/` i `/games/` — dziś `twitter:card` = `summary`, bez obrazka.
-- [ ] Polityka prywatności (URL wymagany przez Google Play dla każdej aplikacji, także przy
-      pre-rejestracji) — np. `/<slug>/privacy/` albo wspólna `/privacy/`.
+- [ ] Polityki prywatności: uzupełnić placeholdery (sekcja „Prywatność” w `docs/promocja/karta-gry.md`)
+      i sprawdzić założenia z komentarzy `{DO_POTWIERDZENIA_...}`.
 - [ ] (wizytówka `site/`) `assets/og.png` (1200×630) — meta tag już czeka w `site/index.html`.
 - [ ] Stack per projekt — tagi pod projektami warto zweryfikować przed publikacją.

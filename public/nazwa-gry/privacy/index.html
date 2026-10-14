@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  SZKIELET polityki prywatności gry. Ten URL podajesz w Google Play Console (Zasady aplikacji → Polityka prywatności).
+  Wersja PL: /nazwa-gry/privacy/pl/ — zmieniaj obie razem. Strona, newsletter i kontakt mailowy są w /privacy/.
+  Placeholdery {...} (także w komentarzach) blokują publikację: node tools/check-placeholders.js.
+  Komentarz „{DO_POTWIERDZENIA_...}” = zdanie pod nim opiera się na założeniu; sprawdź i usuń komentarz.
+  Treść musi się zgadzać z formularzem „Bezpieczeństwo danych” (Data safety) w Play Console.
+  To nie jest porada prawna — przed publikacją warto, żeby przeczytał to ktoś znający RODO.
+-->
+<title>{NAZWA_GRY} — privacy policy | piotrsowiak.pl</title>
+<meta name="description" content="What data the game {NAZWA_GRY} processes on Android and in the browser, and your rights.">
+<meta name="author" content="Piotr Sowiak">
+<link rel="canonical" href="https://piotrsowiak.pl/nazwa-gry/privacy/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/nazwa-gry/privacy/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/nazwa-gry/privacy/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/nazwa-gry/privacy/">
+<meta name="theme-color" content="#0d0d10">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/studio.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">piotrsowiak.pl</a>
+    <nav class="topnav" aria-label="Game pages">
+      <a href="/nazwa-gry/">{NAZWA_GRY}</a>
+      <a href="/games/">Android games</a>
+      <a href="/nazwa-gry/privacy/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>{NAZWA_GRY} — privacy policy</h1>
+    <p class="updated">Last updated: {PRIVACY_DATA}</p>
+
+    <p>This policy describes what data the game {NAZWA_GRY} processes: the Android app on Google Play and the version you play in a browser. The website, newsletter and email contact are covered by the <a href="/privacy/">piotrsowiak.pl privacy policy</a>.</p>
+
+    <div class="summary">
+      <ul>
+        <li>No ads and no advertising trackers.</li>
+        <li>No account and no sign-in.</li>
+        <!-- {DO_POTWIERDZENIA_ZAPIS}: postęp i ustawienia tylko lokalnie, bez chmury (cloud save, Play Games Services). -->
+        <li>Your progress and settings stay on your device.</li>
+        <li>The one-time unlock is paid through Google Play; I never see your payment details.</li>
+      </ul>
+    </div>
+
+    <h2 id="controller">Who is responsible for your data</h2>
+    <p>The data controller is Piotr Sowiak, Łódź, Poland, the developer of {NAZWA_GRY}. For anything related to privacy, write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</p>
+
+    <h2 id="device">Data stored on your device</h2>
+    <p>The game stores your progress, settings and whether you've unlocked the full game in the app's local storage (in the browser version: the browser's local storage). This data isn't sent to me. It's deleted when you uninstall the app, clear the app's data or clear the site data in your browser.</p>
+
+    <h2 id="purchases">Purchases</h2>
+    <p>The full game is unlocked with a one-time in-app purchase processed by Google Play under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. I don't receive your card or payment details. Google gives me order information needed to deliver the purchase, handle refunds and meet tax obligations.</p>
+    <!-- {DO_POTWIERDZENIA_ZAKUPY}: sprawdź w Play Console → Zarządzanie zamówieniami, jakie dane kupującego widzisz,
+         i wymień je tutaj (np. numer zamówienia, produkt, data, kraj). -->
+    <ul>
+      <li>Legal basis: performance of the purchase contract (Art. 6(1)(b) GDPR) and legal obligations such as tax and accounting rules (Art. 6(1)(c) GDPR).</li>
+      <li>Retention: {OKRES_ZAKUPY}.</li>
+    </ul>
+
+    <h2 id="reviews">Ratings and reviews</h2>
+    <p>The game may ask you to rate it using Google Play's in-app review window. Google handles that window and your rating; I only see public reviews, the same way everyone else does on Google Play.</p>
+
+    <h2 id="permissions">Android permissions</h2>
+    <p>The app uses the following permissions: {UPRAWNIENIA_ANDROID}.</p>
+    <!-- Lista z AndroidManifest.xml po zbudowaniu (Capacitor domyślnie dodaje INTERNET). Przy każdym uprawnieniu: po co. -->
+
+    <h2 id="analytics">Analytics and crash reports</h2>
+    <p>{ANALITYKA}</p>
+    <!-- Wariant A (bez analityki): „The game doesn't use analytics or crash reporting tools.”
+         Wariant B: nazwa narzędzia (np. Firebase Crashlytics), jakie dane zbiera, podstawa prawna, okres przechowywania,
+         link do polityki dostawcy, transfer poza EOG. Dopisz dostawcę też w „Who else receives data”.
+         Zbiorcze statystyki z Google Play Console (instalacje, crash/ANR z Android vitals) zbiera Google na podstawie
+         ustawień urządzenia, nie gra — zostaw je w sekcji „Who else receives data”. -->
+
+    <h2 id="web">Browser version</h2>
+    <p>The browser version is published on itch.io. When you play it there, itch.io's own <a href="{LINK_ITCH_PRIVACY}">privacy policy</a> applies to their website. The game itself works the same way as on Android: your progress stays in your browser.</p>
+
+    <h2 id="children">Children</h2>
+    <p>The game isn't directed at children under {WIEK_MIN}. I don't knowingly collect personal data from children.</p>
+    <!-- Musi się zgadzać z „Grupą docelową i treściami” w Play Console. Jeśli grupa docelowa obejmuje dzieci,
+         obowiązują zasady programu Families — wtedy ta sekcja wymaga przeróbki. -->
+
+    <h2 id="recipients">Who else receives data</h2>
+    <ul>
+      <li>Google — distribution through Google Play, payments, in-app reviews and app statistics that Google collects on its own (for example installs and crash statistics shared by your device).</li>
+      <li>itch.io — if you play the browser version there.</li>
+    </ul>
+    <p>I don't sell personal data and don't share it for advertising.</p>
+
+    <h2 id="deletion">Deleting your data</h2>
+    <p>The game has no accounts, so there's no account to delete. Data on your device is removed when you uninstall the app or clear its data. To ask about any other data, write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</p>
+
+    <h2 id="security">Security</h2>
+    <p>The game collects as little data as possible. Data handled by me is accessed only by me, and the website and downloads are served over HTTPS.</p>
+
+    <h2 id="rights">Your rights</h2>
+    <p>You have the right to access your data, correct it, have it deleted, restrict its processing, receive it in a portable format and object to its processing, and to lodge a complaint with the Polish data protection authority (Prezes Urzędu Ochrony Danych Osobowych, <a href="https://uodo.gov.pl/">uodo.gov.pl</a>). Details are in the <a href="/privacy/#rights">piotrsowiak.pl privacy policy</a>.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>If this policy changes, for example when the game gets a new feature that processes data, I'll update this page and change the date at the top.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="/nazwa-gry/">{NAZWA_GRY}</a> · <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></span>
+  </div>
+</footer>
+</body>
+</html>

@@ -64,3 +64,20 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 | `CZAS_PRODUKCJI` | budowa od 19.10.2026, po godzinach (10–15 h tygodniowo) |
 | `GENAI_W_GRZE` | TODO: **tak/nie, do czego** (wymagane przez itch.io, r/IndieGaming, r/indiegames, r/playmygame) |
 | `ZESPOL` | 1 osoba: Piotr Sowiak (Łódź), programista .NET/JS |
+
+## Prywatność (polityki w `public/privacy/` i `public/<slug>/privacy/`)
+
+Pola potrzebne do polityk prywatności. Muszą się zgadzać z formularzem „Bezpieczeństwo danych”
+w Play Console. Komentarze `{DO_POTWIERDZENIA_...}` w HTML-u polityk to założenia do sprawdzenia.
+
+| Pole | Wartość |
+|---|---|
+| `PRIVACY_DATA` | TODO: data ostatniej aktualizacji polityk, np. 10 November 2026 / 10 listopada 2026 |
+| `ANALITYKA` | TODO: brak albo narzędzie (np. Firebase Crashlytics) i co zbiera; warianty w komentarzu w HTML |
+| `UPRAWNIENIA_ANDROID` | TODO: lista z `AndroidManifest.xml` (Capacitor domyślnie: INTERNET) i po co |
+| `WIEK_MIN` | TODO: zgodnie z grupą docelową w Play Console (np. 13) |
+| `OKRES_ZAKUPY` | TODO: jak długo trzymasz dane zamówień (przepisy podatkowe) |
+| `LINK_ITCH_PRIVACY` | TODO: adres polityki prywatności itch.io |
+| `BUTTONDOWN_TRANSFER` | TODO: podstawa transferu do USA (EU-US Data Privacy Framework albo standardowe klauzule umowne, wg DPA Buttondown) |
+| `ZOHO_REGION` | TODO: centrum danych konta Zoho (np. EU) |
+| `OKRES_EMAIL` | TODO: jak długo trzymasz korespondencję |
