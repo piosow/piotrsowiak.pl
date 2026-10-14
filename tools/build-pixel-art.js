@@ -116,14 +116,6 @@ const SPRITES = {
     ".#.#.#.",
     "#######",
   ],
-  diamond: [
-    ".#####.",
-    "##.#.##",
-    "#######",
-    ".#####.",
-    "..###..",
-    "...#...",
-  ],
 };
 
 const C = {
@@ -191,7 +183,7 @@ function iconSvg(name, fill) {
 
 const ICONS = {
   "icon-brand.svg": ["invader", C.blue],
-  "icon-polish.svg": ["diamond", C.blue],
+  "icon-polish.svg": ["star", C.blue],
   "icon-time.svg": ["hourglass", C.gold],
   "icon-platforms.svg": ["gamepad", C.green],
 };
