@@ -1,6 +1,6 @@
 # piotrsowiak.pl
 
-Źródło strony mojego jednoosobowego studia gier: [piotrsowiak.pl](https://piotrsowiak.pl)
+Źródło strony niezależnego studia gier z Łodzi: [piotrsowiak.pl](https://piotrsowiak.pl)
 
 Statyczny HTML/CSS/JS bez frameworka, bez build stepu i bez backendu, hostowany
 na Cloudflare Workers (statyczne pliki). Wersja angielska i polska, lista gier generowana

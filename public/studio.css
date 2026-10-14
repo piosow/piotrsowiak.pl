@@ -15,7 +15,9 @@
   --accent:      #8ab4ff;
   --accent-ink:  #0b1530;
   --accent-soft: #18233a;
-  --radius: 12px;
+  --accent-deep: #3d5a99;
+  --section-alt: rgba(19, 19, 23, .82);  /* półprzezroczyste, żeby pikselowe tło lekko prześwitywało */
+  --radius: 8px;
   --wrap:   1100px;
   --step:   clamp(3.5rem, 8vw, 6rem);
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
@@ -37,6 +39,19 @@ body {
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Pikselowe tło: kafel z tools/build-pixel-art.js, dwie warstwy w różnej skali,
+   żeby powtórzenie kafla było mniej widoczne. Warstwa fixed pod treścią (z-index -1). */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: url("/media/pixel/bg.svg"), url("/media/pixel/bg.svg");
+  background-size: 320px 320px, 480px 480px;
+  background-position: 0 0, 170px 230px;
+  opacity: .07;
+  /* Mocniej u góry ekranu, słabiej w dół — tło nie konkuruje z dłuższym tekstem. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.45) 70%, rgba(0,0,0,.3) 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.45) 70%, rgba(0,0,0,.3) 100%);
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -66,7 +81,14 @@ p  { margin: 0 0 1em; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 8px 20px; min-height: 60px; padding-top: 10px; padding-bottom: 10px;
 }
-.brand { color: var(--text); font-weight: 700; text-decoration: none; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--text); font-family: var(--mono); font-weight: 700; text-decoration: none;
+}
+.brand::before {
+  content: ""; width: 22px; height: 22px; flex: none;
+  background: url("/media/pixel/icon-brand.svg") center / contain no-repeat;
+}
 .brand:hover { color: var(--accent); }
 .topnav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: .95rem; }
 .topnav a { color: var(--text-muted); text-decoration: none; }
@@ -81,23 +103,39 @@ p  { margin: 0 0 1em; }
   font-family: var(--mono); font-size: .85rem; color: var(--accent);
   letter-spacing: .04em; text-transform: uppercase;
 }
+/* Znak zachęty terminala; druga deklaracja ukrywa go przed czytnikami ekranu (tam, gdzie jest wspierana). */
+.eyebrow::before { content: "> "; content: "> " / ""; color: var(--text-muted); }
+
+/* Migający kursor po nagłówku hero. */
+.hero h1::after {
+  content: ""; display: inline-block;
+  width: .45em; height: .82em; margin-left: .12em; vertical-align: -.04em;
+  background: var(--accent);
+  animation: caret 1.1s steps(1) infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
 .lead { font-size: 1.2rem; color: var(--text-muted); max-width: 60ch; }
 
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 0; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 48px; padding: 0 22px; border-radius: 10px;
+  min-height: 48px; padding: 0 22px; border-radius: 4px;
   font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
   border: 1px solid transparent;
+  transition: transform .08s, box-shadow .08s;
 }
-.btn-primary { background: var(--accent); color: var(--accent-ink); }
-.btn-primary:hover { background: #a9c8ff; color: var(--accent-ink); }
-.btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+/* Twardy cień jak w grach 8-bit; po najechaniu przycisk „wciska się”. */
+.btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 4px 4px 0 var(--accent-deep); }
+.btn-primary:hover { background: #a9c8ff; color: var(--accent-ink); transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--accent-deep); }
+.btn-primary:active { transform: translate(4px, 4px); box-shadow: none; }
+.btn-secondary { background: var(--bg); color: var(--text); border-color: var(--border); }
 .btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
 
 /* --- Sekcje --------------------------------------------------------------- */
 .section { padding: var(--step) 0; border-top: 1px solid var(--border); }
-.section-alt { background: var(--bg-alt); }
+.section-alt { background: var(--section-alt); }
+/* Komentarz w stylu kodu przed nagłówkami sekcji. */
+.section h2::before { content: "//"; content: "//" / ""; margin-right: .3em; font-family: var(--mono); font-weight: 400; color: var(--accent); }
 .prose > * { max-width: 720px; }
 
 .pillars { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 8px; }
@@ -106,6 +144,13 @@ p  { margin: 0 0 1em; }
   border-radius: var(--radius); padding: 24px;
 }
 .pillar p { color: var(--text-muted); margin: 0; }
+.pillar::before {
+  content: ""; display: block; width: 36px; height: 36px; margin-bottom: 16px;
+  background: center / contain no-repeat;
+}
+.pillar-polish::before    { background-image: url("/media/pixel/icon-polish.svg"); }
+.pillar-time::before      { background-image: url("/media/pixel/icon-time.svg"); }
+.pillar-platforms::before { background-image: url("/media/pixel/icon-platforms.svg"); }
 
 /* --- Lista gier ----------------------------------------------------------- */
 .page-head { padding: 48px 0 8px; }
@@ -159,6 +204,8 @@ p  { margin: 0 0 1em; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero h1::after { animation: none; }
+  .btn { transition: none; }
 }
 
 /* --- Polityka prywatności i inne strony z długim tekstem ------------------ */

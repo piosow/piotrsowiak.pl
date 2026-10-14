@@ -8,6 +8,7 @@ public/                    jedyny publikowany katalog
   games/, games/pl/        lista gier na Androida EN i PL (karty generowane, patrz „Lista gier”)
   privacy/, privacy/pl/    polityka prywatności studia (strona, newsletter, email)
   studio.css               style strony studia, listy gier i polityk prywatności
+  media/pixel/             pikselowe tło i ikony strony studia (generowane, patrz tools/)
   _headers                 nagłówki bezpieczeństwa i cache
   favicon.svg, robots.txt, sitemap.xml
   nazwa-gry/               strona pierwszej gry (slug roboczy, patrz „Strona gry”)
@@ -26,6 +27,7 @@ tools/build-games.js       generator listy gier z data/games.json (--check = tyl
 tools/check-i18n.js        walidacja spójności tłumaczeń (sprawdza site/)
 tools/check-placeholders.js  placeholdery z karty gry i poprawność JSON-LD w public/
 tools/og-image.ps1         generator og:image 1200×630 strony gry
+tools/build-pixel-art.js   generator public/media/pixel/ (sprite'y w kodzie; po zmianie podbij ?v=N przy studio.css)
 docs/, README.md, CLAUDE.md
 ```
 
