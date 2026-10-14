@@ -1,40 +1,113 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>piotrsowiak.pl — strona w budowie</title>
-<meta name="description" content="Strona w budowie. Kontakt: kontakt@piotrsowiak.pl">
+<title>piotrsowiak.pl — small, polished games with no ads</title>
+<meta name="description" content="piotrsowiak.pl is a one-person indie game studio from Łódź, Poland, making short-session games for Android and the browser. Free to play or pay once, never ads.">
 <meta name="author" content="Piotr Sowiak">
-<meta name="robots" content="noindex">
-<meta name="theme-color" content="#1a1a1a">
 <link rel="canonical" href="https://piotrsowiak.pl/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/">
+<meta name="theme-color" content="#0d0d10">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="piotrsowiak.pl">
+<meta property="og:url" content="https://piotrsowiak.pl/">
+<meta property="og:title" content="piotrsowiak.pl — small, polished games with no ads">
+<meta property="og:description" content="A one-person indie game studio making short-session games for Android and the browser.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pl_PL">
+<meta name="twitter:card" content="summary">
+
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/placeholder.css?v=1">
+<link rel="stylesheet" href="/studio.css?v=1">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "piotrsowiak.pl",
+  "url": "https://piotrsowiak.pl/",
+  "email": "kontakt@piotrsowiak.pl",
+  "address": { "@type": "PostalAddress", "addressLocality": "Łódź", "addressCountry": "PL" },
+  "founder": { "@type": "Person", "name": "Piotr Sowiak", "url": "https://piotrsowiak.pl/" }
+}
+</script>
 </head>
 <body>
-<main class="term" aria-label="Strona w budowie">
+<a class="skip" href="#main">Skip to content</a>
 
-  <section class="welcome">
-    <p><span class="accent">✻</span> Witaj na <strong>piotrsowiak.pl</strong></p>
-    <p class="dim">/status: strona w budowie</p>
-    <p class="dim">cwd: ~/piotrsowiak.pl</p>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-current="page">piotrsowiak.pl</a>
+    <nav class="topnav" aria-label="Main menu">
+      <a href="/games/">Android games</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Indie game studio · Łódź, Poland</span>
+      <h1>Small, polished games. No&nbsp;ads.</h1>
+      <p class="lead">piotrsowiak.pl is a one-person studio making short-session games for Android and the browser. Play for free or pay once, never through ads.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/games/">Browse Android games</a>
+        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
   </section>
 
-  <p class="prompt">co tu się dzieje?</p>
-  <p class="reply">Strona jest w budowie — przepraszamy za utrudnienia.<br>
-    Nowa wersja pojawi się wkrótce.</p>
+  <section class="section section-alt" aria-labelledby="pillars-title">
+    <div class="wrap">
+      <h2 id="pillars-title">What you can expect</h2>
+      <div class="pillars">
+        <article class="pillar">
+          <h3>No ads</h3>
+          <p>Free to play, with a one-time unlock instead of ads.</p>
+        </article>
+        <article class="pillar">
+          <h3>Short sessions</h3>
+          <p>Built for a few minutes at a time and "just one more try".</p>
+        </article>
+        <article class="pillar">
+          <h3>Browser and Android</h3>
+          <p>One codebase: play in your browser or install from Google Play.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <p class="prompt">a jeśli muszę się skontaktować?</p>
-  <p class="reply">Napisz: <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></p>
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap prose">
+      <h2 id="about-title">Who's behind it</h2>
+      <p>I'm Piotr Sowiak, a .NET and JavaScript developer from Łódź, Poland. I make games after hours, on my own.</p>
+      <p class="muted">The games are written in TypeScript on HTML5 Canvas and wrapped for Android with Capacitor, so the browser and Android versions share one codebase.</p>
+    </div>
+  </section>
 
-  <p class="status" aria-hidden="true"><span class="spinner accent"></span> Budowanie… <span class="dim">(esc to interrupt)</span></p>
-
-  <p class="prompt input" aria-hidden="true"><span class="cursor"></span></p>
-
-  <p class="dim en" lang="en"># EN: site under construction — sorry for the inconvenience.
-    Contact: <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></p>
+  <section class="section section-alt" id="contact" aria-labelledby="contact-title">
+    <div class="wrap prose">
+      <h2 id="contact-title">Contact</h2>
+      <p>Questions, feedback, press: <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></p>
+      <p class="muted">Each game has its own press kit with facts, screenshots and logos. You'll find it on the <a href="/games/">games page</a>.</p>
+    </div>
+  </section>
 
 </main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 Piotr Sowiak · piotrsowiak.pl</span>
+    <span><a href="/games/">Android games</a> · <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></span>
+  </div>
+</footer>
 </body>
 </html>

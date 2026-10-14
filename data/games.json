@@ -1,0 +1,23 @@
+{
+  "_opis": "Lista gier na /games/ i /games/pl/ oraz ich wpisy w sitemap.xml. Kolejność = kolejność na stronie (najnowsza na górze). Po zmianie: node tools/build-games.js. Pola opisane w docs/DEPLOY.md, sekcja „Lista gier”.",
+  "games": [
+    {
+      "slug": "nazwa-gry",
+      "name": "{NAZWA_GRY}",
+      "status": "upcoming",
+      "releaseDate": "2026-12-12",
+      "platforms": ["Android", "Web"],
+      "updated": "2026-10-15",
+      "en": {
+        "genre": "Arcade roguelite",
+        "pitch": "{PITCH_EN}",
+        "coverAlt": "{NAZWA_GRY}: floor tiles falling away behind the player"
+      },
+      "pl": {
+        "genre": "Zręcznościowy roguelite",
+        "pitch": "{PITCH_PL}",
+        "coverAlt": "{NAZWA_GRY}: płytki podłogi zapadające się za graczem"
+      }
+    }
+  ]
+}

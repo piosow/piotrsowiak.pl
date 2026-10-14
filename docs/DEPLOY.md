@@ -4,8 +4,9 @@
 
 ```
 public/                    jedyny publikowany katalog
-  index.html               ZAŚLEPKA „strona w budowie” (styl terminala)
-  placeholder.css          style zaślepki
+  index.html, pl/          strona główna studia: EN (domyślna) i PL
+  games/, games/pl/        lista gier na Androida EN i PL (karty generowane, patrz „Lista gier”)
+  studio.css               style strony głównej i listy gier
   _headers                 nagłówki bezpieczeństwa i cache
   favicon.svg, robots.txt, sitemap.xml
   nazwa-gry/               strona pierwszej gry (slug roboczy, patrz „Strona gry”)
@@ -18,6 +19,8 @@ site/                      pełna wizytówka — odłożona, NIE publikowana
   assets/i18n.js           słownik tłumaczeń PL/EN
   assets/app.js            motyw, język, menu, kopiowanie adresu
 wrangler.toml              konfiguracja Workera (statyczne pliki = public/)
+data/games.json            źródło listy gier (karty na /games/ + wpisy w sitemap.xml)
+tools/build-games.js       generator listy gier z data/games.json (--check = tylko sprawdzenie)
 tools/check-i18n.js        walidacja spójności tłumaczeń (sprawdza site/)
 tools/check-placeholders.js  placeholdery z karty gry i poprawność JSON-LD w public/
 tools/og-image.ps1         generator og:image 1200×630 strony gry
@@ -26,19 +29,21 @@ docs/, README.md, CLAUDE.md
 
 Wszystko poza `public/` (pełna strona w `site/`, dokumentacja, narzędzia) nie jest publikowane.
 
-## Zaślepka
+## Strona studia
 
-Na razie produkcja serwuje zaślepkę z `public/index.html`. Pełna wizytówka czeka w `site/`.
-Przywrócenie:
+`/` to strona główna studia (EN, PL pod `/pl/`): krótko o studiu, o autorze i kontakt.
+Menu prowadzi do listy gier na Androida (`/games/`, PL `/games/pl/`), a dopiero stamtąd
+do stron poszczególnych gier (`/<slug>/`). Strona główna celowo nie linkuje do konkretnych gier,
+więc dodanie tytułu nie wymaga jej edycji.
 
-```bash
-git rm public/index.html public/placeholder.css
-git mv site/index.html public/index.html
-git mv site/assets public/assets
-```
+Strony studia są bez JS, zawsze w ciemnym motywie. Wersje EN i PL to osobne pliki HTML
+(bez słownika i18n), więc tekst zmieniasz w obu plikach. Po zmianie `studio.css` podbij `?v=N`
+we wszystkich czterech HTML-ach (`index.html`, `pl/`, `games/`, `games/pl/`).
 
-Potem w `tools/check-i18n.js` zmień `"site"` z powrotem na `"public"`. Podgląd pełnej strony
-lokalnie, bez przywracania: `npx serve site` (favicon w tym trybie się nie załaduje).
+Dawna wizytówka programisty czeka w `site/` (nieopublikowana, PL z EN przez JS). Jej przywrócenie
+pod `/` kolidowałoby ze stroną studia, więc gdyby wracała, to pod osobną ścieżką
+(np. `/cv/`, razem z poprawką ścieżek do `assets/` i `canonical`).
+Podgląd lokalny: `npx serve site` (favicon w tym trybie się nie załaduje).
 
 Strona jest w 100% statyczna — **żadnych Workers, Functions ani zmiennych środowiskowych.**
 Kontakt działa przez `mailto:`, więc nie ma backendu, który mógłby paść.
@@ -73,7 +78,7 @@ Otwarcie `index.html` bezpośrednio z dysku (`file://`) też działa, z jednym w
 przycisk „Kopiuj adres" użyje starszego `document.execCommand` zamiast Clipboard API,
 bo to ostatnie wymaga secure context (`https://` albo `localhost`).
 
-## Edycja treści
+## Edycja treści wizytówki (`site/`, nieopublikowana)
 
 - **Teksty PL** — bezpośrednio w `index.html` **oraz** w `assets/i18n.js` (sekcja `pl`).
   Muszą być zgodne, bo JS nadpisuje HTML przy pierwszym renderze.
@@ -129,7 +134,8 @@ node tools/check-placeholders.js
 Gdy znane będą nazwa i slug:
 
 1. `git mv public/nazwa-gry public/<slug>`, potem zamiana `nazwa-gry` na `<slug>` w plikach
-   `public/<slug>/` i w `public/sitemap.xml` (ścieżki, canonical, hreflang, og:url, JSON-LD, nazwa ZIP-a).
+   `public/<slug>/` (ścieżki, canonical, hreflang, og:url, JSON-LD, nazwa ZIP-a) i w `data/games.json`
+   (`slug`, `name`, `pitch`), na koniec `node tools/build-games.js` (lista gier i sitemap).
 2. Placeholdery z karty gry. Hero: zamiast `media/hero-placeholder.svg` GIF albo wideo (`GIF_1`).
    Logo: `media/logo.svg`. Zrzuty i ikona: pliki w `media/` i wpisy w galerii press kitu.
 3. Nowy og:image: `powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Nazwa" -Slug <slug>`.
@@ -146,6 +152,54 @@ dla różnych ścieżek dałyby dwie polityki CSP, a przeglądarka stosuje obie 
 W Buttondown zostaw włączone **double opt-in**, bo strona obiecuje mail z potwierdzeniem.
 Gdyby wybór padł na MailerLite: jego standardowy embed opiera się na JS (endpoint odpowiada JSON-em),
 więc oprócz `form-action` trzeba by sprawdzić i pewnie otworzyć `script-src` i `connect-src`.
+
+## Lista gier
+
+Karty na `/games/` i `/games/pl/` oraz wpisy stron gier w `sitemap.xml` generuje
+`tools/build-games.js` z `data/games.json`. Skrypt podmienia tylko treść między
+`<!-- games:start -->` i `<!-- games:end -->`, resztę tych plików edytujesz ręcznie.
+Wynik jest commitowany — na produkcji nic się nie buduje, strona zostaje statyczna.
+Skrypt zachowuje końce linii pliku (CRLF z `autocrlf` na Windowsie nie daje fałszywych różnic).
+
+```bash
+node tools/build-games.js           # zapisuje pliki
+node tools/build-games.js --check   # exit 1, jeśli pliki są nieaktualne albo JSON ma błędy
+```
+
+### Nowy tytuł
+
+1. Strona gry w `public/<slug>/`: skopiuj katalog istniejącej gry i przejdź kroki z sekcji
+   „Strona gry” (treść, media, og:image, ZIP press kitu). Wymagany jest `public/<slug>/index.html`
+   i okładka (domyślnie `public/<slug>/media/og.png`, 1200×630). `pl/` i `press/` są opcjonalne —
+   skrypt sam wykrywa, czy istnieją, i dobiera linki oraz wpisy w sitemap.
+2. Wpis w `data/games.json` — na początku tablicy `games` (kolejność = kolejność na stronie):
+
+   ```json
+   {
+     "slug": "druga-gra",
+     "name": "Druga Gra",
+     "status": "upcoming",
+     "releaseDate": "2027-05-01",
+     "platforms": ["Android"],
+     "updated": "2027-03-10",
+     "playUrl": "https://play.google.com/store/apps/details?id=pl.piotrsowiak.drugagra",
+     "en": { "genre": "Puzzle", "pitch": "One sentence.", "coverAlt": "Opis okładki EN" },
+     "pl": { "genre": "Logiczna", "pitch": "Jedno zdanie.", "coverAlt": "Opis okładki PL" }
+   }
+   ```
+
+   | Pole | Znaczenie |
+   |---|---|
+   | `status` | `upcoming` (plakietka „Coming 1 May 2027” / „Premiera 01.05.2027”, bez daty: „Coming soon” / „Wkrótce”) albo `released` („Out now” / „Dostępna”) |
+   | `releaseDate` | opcjonalne, `RRRR-MM-DD`; premiera w Google Play |
+   | `updated` | `lastmod` stron gry w sitemap; podbij przy większej zmianie strony gry |
+   | `playUrl` | opcjonalne; dodaje link „Google Play” na karcie |
+   | `cover` | opcjonalne; ścieżka okładki, domyślnie `/<slug>/media/og.png` |
+
+3. `node tools/build-games.js`, potem `node tools/build-games.js --check` i
+   `node tools/check-placeholders.js` — oba muszą przejść przed mergem na `main`.
+
+Strona główna i menu się nie zmieniają. Po premierze zmień `status` na `released` i dopisz `playUrl`.
 
 ## Dlaczego nie ma formularza kontaktowego
 
@@ -165,6 +219,8 @@ przekazywać do `env.ASSETS` (binding `[assets] binding = "ASSETS"`).
 
 ## Do uzupełnienia
 
-- [ ] `assets/og.png` (1200×630) — podgląd przy udostępnianiu na LinkedIn/Slack.
-      Meta tag już czeka w `index.html`.
+- [ ] og:image strony studia (1200×630) dla `/` i `/games/` — dziś `twitter:card` = `summary`, bez obrazka.
+- [ ] Polityka prywatności (URL wymagany przez Google Play dla każdej aplikacji, także przy
+      pre-rejestracji) — np. `/<slug>/privacy/` albo wspólna `/privacy/`.
+- [ ] (wizytówka `site/`) `assets/og.png` (1200×630) — meta tag już czeka w `site/index.html`.
 - [ ] Stack per projekt — tagi pod projektami warto zweryfikować przed publikacją.

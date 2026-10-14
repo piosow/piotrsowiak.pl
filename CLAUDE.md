@@ -1,7 +1,7 @@
 # piotrsowiak.pl — instrukcje dla Claude Code
 
-Statyczna wizytówka (HTML/CSS/JS, bez build stepu) — Cloudflare Worker ze statycznymi plikami (`piotrsowiak-pl`), nie Pages.
-Obecnie produkcja serwuje zaślepkę (`public/index.html`); pełna strona leży w `site/` — przywracanie w `docs/DEPLOY.md`.
+Statyczna strona studia gier (HTML/CSS, bez build stepu) — Cloudflare Worker ze statycznymi plikami (`piotrsowiak-pl`), nie Pages.
+`/` strona studia → menu → `/games/` lista gier na Androida → `/<slug>/` strona gry. Dawna wizytówka programisty leży nieopublikowana w `site/`.
 Szczegóły: `docs/DEPLOY.md`.
 
 ## Publikacja
@@ -18,9 +18,11 @@ Szczegóły: `docs/DEPLOY.md`.
 
 1. Zmiana tekstu PL → popraw `site/index.html` **i** sekcję `pl` w `site/assets/i18n.js`; EN tylko w `i18n.js`.
 2. `node tools/check-i18n.js` musi przejść.
-3. Zmiana czegokolwiek w `site/assets/` → podbij `?v=N` przy obu `<script>` i `<link>` w `site/index.html` (zaślepka: `?v=N` przy `placeholder.css`).
-4. Zmiana adresu email → wszystkie 4 miejsca (patrz `docs/DEPLOY.md`) plus strony gry w `public/nazwa-gry/`.
+3. Zmiana czegokolwiek w `site/assets/` → podbij `?v=N` przy obu `<script>` i `<link>` w `site/index.html`.
+4. Zmiana adresu email → wszystkie wystąpienia w `public/` (`grep -rn kontakt@ public/`) plus 4 miejsca w `site/` (patrz `docs/DEPLOY.md`).
 5. Strona gry (`public/nazwa-gry/`): zmiana `game.css` → podbij `?v=N` w trzech HTML-ach; przed mergem na `main` musi przejść `node tools/check-placeholders.js`.
+6. Strona studia: tekst zmieniasz w wersji EN i PL (osobne pliki); zmiana `studio.css` → podbij `?v=N` w czterech HTML-ach (`index.html`, `pl/`, `games/`, `games/pl/`).
+7. Lista gier: edytuj tylko `data/games.json`, potem `node tools/build-games.js`; `node tools/build-games.js --check` musi przejść. Nowy tytuł: `docs/DEPLOY.md`, sekcja „Lista gier”.
 
 ## Zasady
 
