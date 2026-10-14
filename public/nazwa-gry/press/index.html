@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Press kit w układzie presskit() (dopresskit.com), ręcznie jako statyczny HTML, bo presskit() to PHP.
+     Placeholdery w klamrach pochodzą z docs/promocja/karta-gry.md. Przed publikacją: node tools/check-placeholders.js -->
+<title>{NAZWA_GRY} — press kit | piotrsowiak.pl</title>
+<meta name="description" content="Press kit for {NAZWA_GRY}, an arcade roguelite by Piotr Sowiak: factsheet, description, screenshots, logos and contact.">
+<meta name="author" content="Piotr Sowiak">
+<link rel="canonical" href="https://piotrsowiak.pl/nazwa-gry/press/">
+<meta name="theme-color" content="#0d0d10">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="piotrsowiak.pl">
+<meta property="og:url" content="https://piotrsowiak.pl/nazwa-gry/press/">
+<meta property="og:title" content="{NAZWA_GRY} — press kit">
+<meta property="og:description" content="Factsheet, screenshots, logos and contact for {NAZWA_GRY}. Web: 28 Nov 2026 · Google Play: 12 Dec 2026.">
+<meta property="og:image" content="https://piotrsowiak.pl/nazwa-gry/media/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/nazwa-gry/game.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/nazwa-gry/">← {NAZWA_GRY}</a>
+    <nav class="topnav" aria-label="Game pages">
+      <a href="/nazwa-gry/">Game page</a>
+      <a href="/nazwa-gry/press/" aria-current="page">Press kit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="press">
+  <div class="wrap">
+
+    <aside class="factsheet" aria-labelledby="factsheet-title">
+      <h2 id="factsheet-title">Factsheet</h2>
+      <dl>
+        <dt>Developer</dt>
+        <dd>Piotr Sowiak (piotrsowiak.pl)<br>Based in Łódź, Poland</dd>
+        <dt>Release date</dt>
+        <dd>Web: 28 November 2026<br>Google Play: 12 December 2026<br>Pre-registration: from 16 November 2026</dd>
+        <dt>Platforms</dt>
+        <dd><ul><li>Web browser (<a href="{LINK_ITCH}">itch.io</a>)</li><li>Android (<a href="{LINK_PLAY}">Google Play</a>)</li></ul></dd>
+        <dt>Website</dt>
+        <dd><a href="/nazwa-gry/">piotrsowiak.pl/nazwa-gry</a></dd>
+        <dt>Regular price</dt>
+        <dd>Free, no ads. One-time unlock of the full game: $3.99 (local prices on Google Play).</dd>
+        <dt>Genre</dt>
+        <dd>Arcade roguelite (falling floor)</dd>
+        <dt>Languages</dt>
+        <dd>{JEZYKI}</dd>
+        <dt>Press contact</dt>
+        <dd><a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></dd>
+        <dt>Download</dt>
+        <dd><a href="/nazwa-gry/press/nazwa-gry-presskit.zip">All materials (ZIP)</a></dd>
+      </dl>
+    </aside>
+
+    <div class="press-body">
+      <h1>{NAZWA_GRY}</h1>
+      <p class="pitch">{PITCH_EN}</p>
+      <ul class="press-toc" aria-label="Sections">
+        <li><a href="#description">Description</a></li>
+        <li><a href="#history">History</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#logo">Logo &amp; icon</a></li>
+        <li><a href="#awards">Awards &amp; recognition</a></li>
+        <li><a href="#articles">Selected articles</a></li>
+        <li><a href="#about">About the developer</a></li>
+        <li><a href="#credits">Credits</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <section id="description">
+        <h2>Description</h2>
+        <p>{OPIS_EN}</p>
+      </section>
+
+      <section id="history">
+        <h2>History</h2>
+        <p>{NAZWA_GRY} is the first game from piotrsowiak.pl, a one-person studio run by Piotr Sowiak, a .NET/JS developer from Łódź, Poland. Development started on 19 October 2026 and happens after hours, 10–15 hours a week.</p>
+        <p>The game is written in TypeScript on HTML5 Canvas and wrapped for Android with Capacitor, so the browser and Android versions share one codebase. The browser version launches first, on 28 November 2026, followed by Google Play on 12 December 2026.</p>
+      </section>
+
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li>The floor falls away behind you: every tile you leave drops into the void.</li>
+          <li>{MECHANIKA_1}</li>
+          <li>{MECHANIKA_2}</li>
+          <li>{MECHANIKA_3}</li>
+          <li>Short runs: {DLUGOSC_SESJI}.</li>
+          <li>Free with no ads; a one-time $3.99 purchase unlocks the full game. {CO_ODBLOKOWUJE}</li>
+          <li>Plays in the browser and on Android. Controls: {STEROWANIE}</li>
+        </ul>
+      </section>
+
+      <section id="videos">
+        <h2>Videos</h2>
+        <p>Trailer: <a href="{LINK_TRAILER}">{LINK_TRAILER}</a></p>
+        <p class="muted">Monetization is turned off on the trailer, so feel free to embed it.</p>
+      </section>
+
+      <section id="images">
+        <h2>Images</h2>
+        <p class="muted">Screenshots are 1920×1080 or 1080×1920 PNGs. Click for full size, or grab everything from the <a href="/nazwa-gry/press/nazwa-gry-presskit.zip">ZIP</a>.</p>
+        <!-- {ZRZUTY}: min. 3 zrzuty w media/; każdy jako <figure><a href="..."><img ...></a><figcaption>...</figcaption></figure> -->
+        <div class="gallery">
+          <figure>
+            <a href="/nazwa-gry/media/og.png"><img src="/nazwa-gry/media/og.png" width="1200" height="630" alt="{NAZWA_GRY} key art" loading="lazy"></a>
+            <figcaption>Key art, 1200×630</figcaption>
+          </figure>
+          <figure><div class="placeholder-box">{ZRZUTY} #1</div></figure>
+          <figure><div class="placeholder-box">{ZRZUTY} #2</div></figure>
+          <figure><div class="placeholder-box">{ZRZUTY} #3</div></figure>
+        </div>
+        <p class="muted">Animated GIFs: {GIF_1}, {GIF_2}, {GIF_3}</p>
+      </section>
+
+      <section id="logo">
+        <h2>Logo &amp; icon</h2>
+        <div class="gallery">
+          <figure>
+            <a href="/nazwa-gry/media/logo.svg"><img src="/nazwa-gry/media/logo.svg" width="600" height="200" alt="{NAZWA_GRY} logo" loading="lazy"></a>
+            <figcaption>Logo, SVG</figcaption>
+          </figure>
+          <figure><div class="placeholder-box">{IKONA} (512×512)</div></figure>
+        </div>
+      </section>
+
+      <section id="awards">
+        <h2>Awards &amp; recognition</h2>
+        <p class="muted">None yet. The game launches on 28 November 2026.</p>
+      </section>
+
+      <section id="articles">
+        <h2>Selected articles</h2>
+        <p class="muted">None yet. If you cover the game, let me know and I'll link it here.</p>
+      </section>
+
+      <section id="about">
+        <h2>About piotrsowiak.pl</h2>
+        <p>piotrsowiak.pl is a one-person studio making small, polished games without ads: you pay once or play for free. Behind it is Piotr Sowiak, a .NET/JS developer from Łódź, Poland, who builds games after hours.</p>
+        <p>More: <a href="https://piotrsowiak.pl/">piotrsowiak.pl</a></p>
+      </section>
+
+      <section id="credits">
+        <h2>Credits</h2>
+        <p><strong>Piotr Sowiak</strong><br><span class="muted">Design, code, everything else</span></p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Press and questions: <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></p>
+        <p class="muted">Generative AI: {GENAI_W_GRZE}</p>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span>Layout based on <a href="https://dopresskit.com/">presskit()</a> by Rami Ismail</span>
+  </div>
+</footer>
+</body>
+</html>

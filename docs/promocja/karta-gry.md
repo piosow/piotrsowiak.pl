@@ -44,6 +44,7 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 | `LINK_TRAILER` | TODO (YouTube, monetyzacja wyłączona) |
 | `LINK_ZAPIS` | `https://piotrsowiak.pl/<slug>/#zapis` |
 | `KONTAKT` | kontakt@piotrsowiak.pl |
+| `BUTTONDOWN_USER` | TODO: nazwa konta Buttondown (formularz zapisu na landingu) |
 
 ## Materiały
 

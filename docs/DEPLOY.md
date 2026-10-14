@@ -8,6 +8,10 @@ public/                    jedyny publikowany katalog
   placeholder.css          style zaślepki
   _headers                 nagłówki bezpieczeństwa i cache
   favicon.svg, robots.txt, sitemap.xml
+  nazwa-gry/               strona pierwszej gry (slug roboczy, patrz „Strona gry”)
+    index.html, pl/        landing EN (domyślny) i PL
+    press/                 press kit w układzie presskit() + ZIP z materiałami
+    media/, game.css       og.png, logo, placeholder hero, wspólne style
 site/                      pełna wizytówka — odłożona, NIE publikowana
   index.html               cała treść (PL w HTML, EN podmieniane przez JS)
   assets/style.css         style + motyw jasny/ciemny (zmienne CSS)
@@ -15,6 +19,8 @@ site/                      pełna wizytówka — odłożona, NIE publikowana
   assets/app.js            motyw, język, menu, kopiowanie adresu
 wrangler.toml              konfiguracja Workera (statyczne pliki = public/)
 tools/check-i18n.js        walidacja spójności tłumaczeń (sprawdza site/)
+tools/check-placeholders.js  placeholdery z karty gry i poprawność JSON-LD w public/
+tools/og-image.ps1         generator og:image 1200×630 strony gry
 docs/, README.md, CLAUDE.md
 ```
 
@@ -107,6 +113,39 @@ to jedyny sposób, żeby wymusić pobranie u kogoś, kto już był na stronie.
 
 Diagnostyka: jeśli coś działa po `Ctrl+Shift+R`, a nie działa po zwykłym odświeżeniu,
 to zawsze cache.
+
+## Strona gry
+
+Landing pierwszej gry leży w `public/nazwa-gry/`: EN pod `/nazwa-gry/`, PL pod `/nazwa-gry/pl/`,
+press kit pod `/nazwa-gry/press/`. Strony są bez JS i bez `noindex`, z wpisami w `sitemap.xml`.
+Fakty pochodzą z `docs/promocja/karta-gry.md`, a brakujące pola stoją w HTML jako `{NAZWA_POLA}`.
+
+**Przed mergem na `main`** (merge = publikacja) musi przejść:
+
+```bash
+node tools/check-placeholders.js
+```
+
+Gdy znane będą nazwa i slug:
+
+1. `git mv public/nazwa-gry public/<slug>`, potem zamiana `nazwa-gry` na `<slug>` w plikach
+   `public/<slug>/` i w `public/sitemap.xml` (ścieżki, canonical, hreflang, og:url, JSON-LD, nazwa ZIP-a).
+2. Placeholdery z karty gry. Hero: zamiast `media/hero-placeholder.svg` GIF albo wideo (`GIF_1`).
+   Logo: `media/logo.svg`. Zrzuty i ikona: pliki w `media/` i wpisy w galerii press kitu.
+3. Nowy og:image: `powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Nazwa" -Slug <slug>`.
+   Skrypt musi zostać w UTF-8 z BOM, inaczej PowerShell 5.1 przeczyta go jako ANSI.
+4. Nowy ZIP press kitu (wszystko, co ma trafić do prasy):
+   `Compress-Archive -Path public/<slug>/media/* -DestinationPath public/<slug>/press/<slug>-presskit.zip -Force`
+5. Po zmianie `game.css` podbij `?v=N` we wszystkich trzech HTML-ach gry.
+
+**Lista mailingowa: Buttondown.** Formularz to zwykły `POST` na
+`https://buttondown.com/api/emails/embed-subscribe/<konto>` (pole `email`, ukryte `embed=1`
+i `tag=en|pl`). Po wysłaniu przeglądarka przechodzi na stronę Buttondown (potwierdzenie, czasem CAPTCHA).
+Dlatego CSP w `_headers` ma `form-action https://buttondown.com` w regule globalnej: dwie reguły
+dla różnych ścieżek dałyby dwie polityki CSP, a przeglądarka stosuje obie (wygrywa ostrzejsza).
+W Buttondown zostaw włączone **double opt-in**, bo strona obiecuje mail z potwierdzeniem.
+Gdyby wybór padł na MailerLite: jego standardowy embed opiera się na JS (endpoint odpowiada JSON-em),
+więc oprócz `form-action` trzeba by sprawdzić i pewnie otworzyć `script-src` i `connect-src`.
 
 ## Dlaczego nie ma formularza kontaktowego
 

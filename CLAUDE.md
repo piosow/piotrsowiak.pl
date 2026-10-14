@@ -19,7 +19,8 @@ Szczegóły: `docs/DEPLOY.md`.
 1. Zmiana tekstu PL → popraw `site/index.html` **i** sekcję `pl` w `site/assets/i18n.js`; EN tylko w `i18n.js`.
 2. `node tools/check-i18n.js` musi przejść.
 3. Zmiana czegokolwiek w `site/assets/` → podbij `?v=N` przy obu `<script>` i `<link>` w `site/index.html` (zaślepka: `?v=N` przy `placeholder.css`).
-4. Zmiana adresu email → wszystkie 4 miejsca (patrz `docs/DEPLOY.md`).
+4. Zmiana adresu email → wszystkie 4 miejsca (patrz `docs/DEPLOY.md`) plus strony gry w `public/nazwa-gry/`.
+5. Strona gry (`public/nazwa-gry/`): zmiana `game.css` → podbij `?v=N` w trzech HTML-ach; przed mergem na `main` musi przejść `node tools/check-placeholders.js`.
 
 ## Zasady
 
