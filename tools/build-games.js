@@ -7,6 +7,8 @@
  * reszta plików jest edytowana ręcznie. Wynik jest commitowany — na produkcji nic się
  * nie buduje, strona zostaje w 100% statyczna.
  *
+ * Gra z "published": false to szkic: jest walidowana, ale nie trafia na listę ani do sitemap.
+ *
  * Uruchomienie:
  *   node tools/build-games.js           zapisuje pliki
  *   node tools/build-games.js --check   tylko sprawdza, czy pliki są aktualne (exit 1, jeśli nie)
@@ -26,12 +28,14 @@ const T = {
     upcoming: (d) => (d ? `Coming ${d}` : "Coming soon"),
     released: "Out now",
     press: "Press kit",
+    empty: "The first game is on its way. Check back soon.",
     date: (y, m, d) => `${d} ${MONTHS_EN[m - 1]} ${y}`,
   },
   pl: {
     upcoming: (d) => (d ? `Premiera ${d}` : "Wkrótce"),
     released: "Dostępna",
     press: "Press kit",
+    empty: "Pierwsza gra jest w drodze. Zajrzyj tu wkrótce.",
     date: (y, m, d) => `${String(d).padStart(2, "0")}.${String(m).padStart(2, "0")}.${y}`,
   },
 };
@@ -51,6 +55,7 @@ for (const g of games) {
   if (seen.has(g.slug)) errors.push(`${id}: zduplikowany slug`);
   seen.add(g.slug);
   if (!g.name) errors.push(`${id}: brak name`);
+  if (g.published != null && typeof g.published !== "boolean") errors.push(`${id}: published musi być true albo false`);
   if (!["upcoming", "released"].includes(g.status)) errors.push(`${id}: status musi być "upcoming" albo "released"`);
   if (g.releaseDate != null && !isDate(g.releaseDate)) errors.push(`${id}: releaseDate w formacie RRRR-MM-DD`);
   if (!isDate(g.updated)) errors.push(`${id}: updated (lastmod w sitemap) w formacie RRRR-MM-DD`);
@@ -153,20 +158,26 @@ function inject(rel, lines) {
 
   const lineStart = src.lastIndexOf("\n", s) + 1;
   const indent = src.slice(lineStart, s);
-  const body = lines.map((l) => (l ? indent + l : l)).join("\n");
-  const next = (src.slice(0, s + START.length) + "\n" + body + "\n" + indent + src.slice(e)).replace(/\n/g, eol);
+  const body = lines.map((l) => (l ? indent + l + "\n" : "\n")).join("");
+  const next = (src.slice(0, s + START.length) + "\n" + body + indent + src.slice(e)).replace(/\n/g, eol);
 
   if (next === original) return false;
   if (!checkOnly) fs.writeFileSync(file, next);
   return true;
 }
 
+const visible = games.filter((g) => g.published !== false);
+const drafts = games.filter((g) => g.published === false).map((g) => g.slug);
+
 const changed = [];
 for (const [rel, lang] of [["games/index.html", "en"], ["games/pl/index.html", "pl"]]) {
-  const lines = games.flatMap((g, i) => card(g, lang, i));
+  const lines = visible.length
+    ? visible.flatMap((g, i) => card(g, lang, i))
+    : [`<p class="games-empty">${T[lang].empty}</p>`];
   if (inject(rel, lines)) changed.push(rel);
 }
-if (inject("sitemap.xml", games.flatMap(sitemapEntries))) changed.push("sitemap.xml");
+if (inject("sitemap.xml", visible.flatMap(sitemapEntries))) changed.push("sitemap.xml");
+if (drafts.length) console.log(`  szkice (published: false): ${drafts.join(", ")}`);
 
 if (checkOnly) {
   if (changed.length) {
@@ -174,7 +185,7 @@ if (checkOnly) {
     for (const c of changed) console.log("  public/" + c);
     process.exit(1);
   }
-  console.log(`✓ Lista gier aktualna (${games.length})`);
+  console.log(`✓ Lista gier aktualna (${visible.length} na liście)`);
 } else {
   console.log(changed.length ? `✓ Zaktualizowano: ${changed.map((c) => "public/" + c).join(", ")}` : "✓ Bez zmian");
 }

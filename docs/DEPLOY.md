@@ -40,7 +40,7 @@ więc dodanie tytułu nie wymaga jej edycji.
 
 Strony studia są bez JS, zawsze w ciemnym motywie. Wersje EN i PL to osobne pliki HTML
 (bez słownika i18n), więc tekst zmieniasz w obu plikach. Po zmianie `studio.css` podbij `?v=N`
-we wszystkich czterech HTML-ach (`index.html`, `pl/`, `games/`, `games/pl/`).
+we wszystkich HTML-ach, które go ładują (`grep -rl studio.css public`).
 
 Dawna wizytówka programisty czeka w `site/` (nieopublikowana, PL z EN przez JS). Jej przywrócenie
 pod `/` kolidowałoby ze stroną studia, więc gdyby wracała, to pod osobną ścieżką
@@ -155,6 +155,34 @@ W Buttondown zostaw włączone **double opt-in**, bo strona obiecuje mail z potw
 Gdyby wybór padł na MailerLite: jego standardowy embed opiera się na JS (endpoint odpowiada JSON-em),
 więc oprócz `form-action` trzeba by sprawdzić i pewnie otworzyć `script-src` i `connect-src`.
 
+## Szkice (strony gotowe w repo, ale jeszcze nie ogłoszone)
+
+Szkic to katalog w `public/`, którego `index.html` ma `<meta name="robots" content="noindex">`.
+Jest na serwerze pod swoim URL-em, ale nie trafia do wyszukiwarek, nie ma go w `sitemap.xml`
+i **żadna opublikowana strona nie może do niego linkować**. `check-placeholders.js` pomija szkice
+(razem z podkatalogami) i wypisuje je na końcu, więc placeholdery w szkicu nie blokują deployu.
+
+Dziś szkicami są `nazwa-gry/` (landing, press kit, polityka gry) i `privacy/` (polityka studia).
+
+**Publikacja gry** (po uzupełnieniu karty gry):
+
+1. Usuń z każdego HTML-a gry (`index.html`, `pl/`, `press/`, `privacy/`, `privacy/pl/`) dwie linijki:
+   komentarz `<!-- SZKIC: ... -->` i `<meta name="robots" content="noindex">`.
+2. W `data/games.json` ustaw `"published": true` (albo usuń pole) i uruchom `node tools/build-games.js`
+   (karta na `/games/`, wpisy w sitemap).
+3. `node tools/check-placeholders.js` musi przejść — teraz sprawdza już stronę gry.
+
+**Publikacja `/privacy/`** (najpóźniej razem z grą, bo formularz zapisu i polityka gry do niej linkują):
+usuń te same dwie linijki z `privacy/index.html` i `privacy/pl/index.html` oraz przywróć link w stopkach
+strony studia: `<a href="/privacy/">Privacy</a> · ` (PL: `<a href="/privacy/pl/">Prywatność</a> · `)
+w `index.html`, `pl/index.html`, `games/index.html`, `games/pl/index.html`.
+
+Kontrola, czy nic opublikowanego nie linkuje do szkicu:
+
+```bash
+grep -L 'content="noindex"' $(find public -name '*.html') | xargs grep -nE 'href="/(nazwa-gry|privacy)/'
+```
+
 ## Polityki prywatności
 
 Dwie warstwy, żeby kolejne gry nie powielały tego samego tekstu:
@@ -216,6 +244,7 @@ node tools/build-games.js --check   # exit 1, jeśli pliki są nieaktualne albo 
    | `updated` | `lastmod` stron gry w sitemap; podbij przy większej zmianie strony gry |
    | `playUrl` | opcjonalne; dodaje link „Google Play” na karcie |
    | `cover` | opcjonalne; ścieżka okładki, domyślnie `/<slug>/media/og.png` |
+   | `published` | opcjonalne; `false` = szkic: walidowany, ale poza listą i sitemap (patrz „Szkice”) |
 
 3. `node tools/build-games.js`, potem `node tools/build-games.js --check` i
    `node tools/check-placeholders.js` — oba muszą przejść przed mergem na `main`.

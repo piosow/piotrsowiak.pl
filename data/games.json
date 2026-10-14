@@ -1,8 +1,9 @@
 {
-  "_opis": "Lista gier na /games/ i /games/pl/ oraz ich wpisy w sitemap.xml. Kolejność = kolejność na stronie (najnowsza na górze). Po zmianie: node tools/build-games.js. Pola opisane w docs/DEPLOY.md, sekcja „Lista gier”.",
+  "_opis": "Lista gier na /games/ i /games/pl/ oraz ich wpisy w sitemap.xml. Kolejność = kolejność na stronie (najnowsza na górze). Po zmianie: node tools/build-games.js. published: false = szkic (poza listą i sitemap). Pola opisane w docs/DEPLOY.md, sekcja „Lista gier”.",
   "games": [
     {
       "slug": "nazwa-gry",
+      "published": false,
       "name": "{NAZWA_GRY}",
       "status": "upcoming",
       "releaseDate": "2026-12-12",
