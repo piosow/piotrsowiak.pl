@@ -30,4 +30,5 @@ Szczegóły: `docs/DEPLOY.md`.
 - Bez frameworków, bundlerów i backendu — strona ma zostać w 100% statyczna.
 - Nie dodawaj długiego `max-age` dla `/assets/*` w `public/_headers` (powód w `docs/DEPLOY.md`).
 - Podgląd lokalny: `npx serve public`
+- `public/tilefall/play/` to build gry z repo `TilefallRoguelikePuzzle` (`npm run strona` tam) — nie edytuj go tutaj (`docs/DEPLOY.md`, „Gra w przeglądarce”).
 - Commity po polsku, krótko.

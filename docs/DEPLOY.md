@@ -16,6 +16,7 @@ public/                    jedyny publikowany katalog
     press/                 press kit w układzie presskit() + ZIP z materiałami
     privacy/, privacy/pl/  polityka prywatności gry (URL do Google Play Console)
     media/, game.css       og.png, logo, placeholder hero, wspólne style
+    play/                  gra w przeglądarce — build z repo gry, NIE edytować ręcznie
 site/                      pełna wizytówka — odłożona, NIE publikowana
   index.html               cała treść (PL w HTML, EN podmieniane przez JS)
   assets/style.css         style + motyw jasny/ciemny (zmienne CSS)
@@ -162,6 +163,28 @@ dla różnych ścieżek dałyby dwie polityki CSP, a przeglądarka stosuje obie 
 W Buttondown zostaw włączone **double opt-in**, bo strona obiecuje mail z potwierdzeniem.
 Gdyby wybór padł na MailerLite: jego standardowy embed opiera się na JS (endpoint odpowiada JSON-em),
 więc oprócz `form-action` trzeba by sprawdzić i pewnie otworzyć `script-src` i `connect-src`.
+
+## Gra w przeglądarce (`/tilefall/play/`)
+
+`public/tilefall/play/` to gotowy build gry z repo `TilefallRoguelikePuzzle`, wgrywany poleceniem
+`npm run strona` w tamtym repo (czyści tylko `play/` i kopiuje `dist/`; landing, press kit i polityka
+zostają). Ręczne poprawki zniknęłyby przy następnym buildzie — zmiany robi się w repo gry.
+Do premiery webowej to wersja testowa: nagłówek `X-Robots-Tag: noindex`, bez wpisu w `sitemap.xml`
+i bez linku z landingu. Przycisk „Play in your browser” (`{LINK_ITCH}`) wskaże itch.io albo ten adres.
+
+Gra potrzebuje innych nagłówków niż reszta strony, więc `_headers` ma dla `/tilefall/play/*` osobny blok:
+
+- `! Content-Security-Policy` i `! X-Frame-Options` zdejmują wartości z `/*`. Bez `!` Cloudflare
+  dokleja drugą wartość po przecinku i obowiązują obie polityki naraz, więc blokowałyby grę.
+- Własna CSP: `style-src 'unsafe-inline'` (style gry są w `<style>` w `index.html`),
+  `worker-src 'self'` (piętra liczą się w Web Workerze), `frame-ancestors 'self'`
+  (grę można osadzić w `<iframe>` na tej domenie, obcym stronom nie).
+- `/tilefall/play/assets/*` ma `max-age` na rok z `immutable`: Vite daje tym plikom hash w nazwie,
+  więc nowa wersja to nowa nazwa i ostrzeżenie z sekcji o cache ich nie dotyczy. `index.html`
+  i sprite'y zostają przy `max-age=0`.
+
+Podgląd z nagłówkami jak na produkcji: `npx wrangler dev`, potem http://localhost:8787/tilefall/play/
+(`npx serve public` pokazuje grę, ale bez `_headers`).
 
 ## Szkice (strony gotowe w repo, ale jeszcze nie ogłoszone)
 

@@ -16,3 +16,18 @@
 
 /favicon.svg
   Cache-Control: public, max-age=86400
+
+# Gra Tilefall w przeglądarce (build z repo TilefallRoguelikePuzzle, npm run strona; patrz docs/DEPLOY.md,
+# „Gra w przeglądarce”). Własna CSP, bo gra ma style w <style> w index.html i liczy piętra w Web Workerze.
+# Bez indeksowania do premiery webowej. frame-ancestors 'self' pozwala osadzić grę w <iframe> na tej domenie.
+/tilefall/play/*
+  ! Content-Security-Policy
+  ! X-Frame-Options
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; worker-src 'self'; connect-src 'self'; form-action 'none'; frame-ancestors 'self'; base-uri 'self'
+  X-Frame-Options: SAMEORIGIN
+  X-Robots-Tag: noindex
+
+# Pliki z hashem w nazwie (Vite) nigdy się nie zmieniają, więc mogą leżeć w cache bez końca.
+/tilefall/play/assets/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
