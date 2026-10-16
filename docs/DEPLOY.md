@@ -15,7 +15,7 @@ public/                    jedyny publikowany katalog
     index.html, pl/        landing EN (domyślny) i PL
     press/                 press kit w układzie presskit() + ZIP z materiałami
     privacy/, privacy/pl/  polityka prywatności gry (URL do Google Play Console)
-    media/, game.css       og.png, logo, placeholder hero, wspólne style
+    media/, game.css       og.png, board.png (zrzut planszy do og.png), logo, placeholder hero, wspólne style
     play/                  gra w przeglądarce — build z repo gry, NIE edytować ręcznie
 site/                      pełna wizytówka — odłożona, NIE publikowana
   index.html               cała treść (PL w HTML, EN podmieniane przez JS)
@@ -148,10 +148,13 @@ Zmiana nazwy albo sluga (tak powstało `tilefall/` z roboczego `nazwa-gry/`):
    Logo: `media/logo.svg`. Zrzuty i ikona: pliki w `media/` i wpisy w galerii press kitu.
 3. Nowy og:image: `powershell -ExecutionPolicy Bypass -File tools/og-image.ps1 -Name "Nazwa" -Slug <slug> -Genre "GATUNEK"`.
    Skrypt musi zostać w UTF-8 z BOM, inaczej PowerShell 5.1 przeczyta go jako ANSI.
-   (Obecny `tilefall/media/og.png` wyrenderowano w tym samym układzie przez Playwright; po uruchomieniu
-   skryptu na Windowsie dostaniesz wersję z fontami Segoe UI/Consolas.)
+   Po prawej wkleja prawdziwy zrzut planszy `media/board.png` (kwadrat, inny plik: `-Board <ścieżka>`),
+   więc miniaturka wygląda jak gra. Zrzut: w grze (`/<slug>/play/` albo `npm run dev` w repo gry) prawy klik
+   na planszy → „Zapisz obraz jako” zapisuje płótno w pełnej rozdzielczości. Wybierz piętro z kilkoma
+   typami wrogów, zapowiedziami ataków i dziurami, bez dymka samouczka. Po zmianie grafiki gry zrób zrzut od nowa.
+   Obecny `tilefall/media/board.png` to 6. piętro z 16.10.2026 (build `846c24d`).
 4. Nowy ZIP press kitu (wszystko, co ma trafić do prasy):
-   `Compress-Archive -Path public/<slug>/media/og.png, public/<slug>/media/logo.svg -DestinationPath public/<slug>/press/<slug>-presskit.zip -Force`
+   `Compress-Archive -Path public/<slug>/media/og.png, public/<slug>/media/board.png, public/<slug>/media/logo.svg -DestinationPath public/<slug>/press/<slug>-presskit.zip -Force`
    (bez `hero-placeholder.svg`; docelowo dołóż zrzuty, ikonę i GIF-y)
 5. Po zmianie `game.css` podbij `?v=N` we wszystkich trzech HTML-ach gry.
 
