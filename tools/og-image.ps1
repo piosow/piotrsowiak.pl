@@ -6,7 +6,7 @@ param(
   [string]$Name = "Tilefall",
   [string]$Genre = "ROGUELIKE PUZZLE",
   [string]$Tagline = "The floor falls away behind you.",
-  [string]$Dates = "Web 28.11.2026  $([char]0xB7)  Google Play 12.12.2026  $([char]0xB7)  No ads",
+  [string]$Dates = "Web 28.11.2026  $([char]0xB7)  Google Play soon  $([char]0xB7)  No ads",
   [string]$Slug = "tilefall"
 )
 

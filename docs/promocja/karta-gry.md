@@ -29,8 +29,8 @@ Uzupełnij pola oznaczone `TODO` do **25.10.2026**.
 | `CENA` | 3,99 USD (ceny lokalne wg Google Play) |
 | `CO_ODBLOKOWUJE` | za darmo 2 pierwsze światy; zakup odblokowuje wszystkie (10+) |
 | `DATA_WEB` | sobota 28.11.2026 |
-| `DATA_PREREJESTRACJA` | poniedziałek 16.11.2026 |
-| `DATA_PLAY` | sobota 12.12.2026 |
+| `DATA_PREREJESTRACJA` | bez daty na stronie (decyzja 16.10.2026) |
+| `DATA_PLAY` | bez daty na stronie (decyzja 16.10.2026): „Google Play: coming soon / wkrótce” |
 | `NAGRODA_PREREJESTRACJA` | brak |
 
 ## Linki (uzupełniane w miarę powstawania)
