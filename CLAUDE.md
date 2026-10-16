@@ -23,7 +23,7 @@ Szczegóły: `docs/DEPLOY.md`.
 5. Strona gry (`public/tilefall/`): zmiana `game.css` → podbij `?v=N` w trzech HTML-ach; przed mergem na `main` musi przejść `node tools/check-placeholders.js` (pomija szkice z `noindex`).
 6. Strona studia: tekst zmieniasz w wersji EN i PL (osobne pliki); zmiana `studio.css` → podbij `?v=N` we wszystkich HTML-ach, które go ładują (`grep -rl studio.css public`).
 7. Lista gier: edytuj tylko `data/games.json`, potem `node tools/build-games.js`; `node tools/build-games.js --check` musi przejść. Nowy tytuł: `docs/DEPLOY.md`, sekcja „Lista gier”.
-8. Szkice (`noindex`: dziś `tilefall/` i `privacy/`) nie mogą być linkowane z opublikowanych stron; publikacja szkicu: `docs/DEPLOY.md`, sekcja „Szkice”.
+8. Szkice (`noindex`: dziś `tilefall/` i `privacy/`) nie mogą być linkowane z opublikowanych stron (`tilefall/play/` to nie szkic, karta na `/games/` do niej prowadzi); publikacja szkicu: `docs/DEPLOY.md`, sekcja „Szkice”.
 
 ## Zasady
 

@@ -169,8 +169,9 @@ więc oprócz `form-action` trzeba by sprawdzić i pewnie otworzyć `script-src`
 `public/tilefall/play/` to gotowy build gry z repo `TilefallRoguelikePuzzle`, wgrywany poleceniem
 `npm run strona` w tamtym repo (czyści tylko `play/` i kopiuje `dist/`; landing, press kit i polityka
 zostają). Ręczne poprawki zniknęłyby przy następnym buildzie — zmiany robi się w repo gry.
-Do premiery webowej to wersja testowa: nagłówek `X-Robots-Tag: noindex`, bez wpisu w `sitemap.xml`
-i bez linku z landingu. Przycisk „Play in your browser” (`{LINK_ITCH}`) wskaże itch.io albo ten adres.
+Do premiery webowej to wersja testowa: nagłówek `X-Robots-Tag: noindex` i bez wpisu w `sitemap.xml`.
+Linkuje do niej karta gry na `/games/` (`webUrl` w `data/games.json`), landing jeszcze nie: przycisk
+„Play in your browser” (`{LINK_ITCH}`) wskaże itch.io albo ten adres.
 
 Gra potrzebuje innych nagłówków niż reszta strony, więc `_headers` ma dla `/tilefall/play/*` osobny blok:
 
@@ -194,13 +195,15 @@ i **żadna opublikowana strona nie może do niego linkować**. `check-placeholde
 (razem z podkatalogami) i wypisuje je na końcu, więc placeholdery w szkicu nie blokują deployu.
 
 Dziś szkicami są `tilefall/` (landing, press kit, polityka gry) i `privacy/` (polityka studia).
+Tilefall jest już na liście gier, ale z `"page": false`: karta prowadzi tylko do gry
+w przeglądarce (`/tilefall/play/`, nie jest szkicem), nie do landingu.
 
 **Publikacja gry** (po uzupełnieniu karty gry):
 
 1. Usuń z każdego HTML-a gry (`index.html`, `pl/`, `press/`, `privacy/`, `privacy/pl/`) dwie linijki:
    komentarz `<!-- SZKIC: ... -->` i `<meta name="robots" content="noindex">`.
-2. W `data/games.json` ustaw `"published": true` (albo usuń pole) i uruchom `node tools/build-games.js`
-   (karta na `/games/`, wpisy w sitemap).
+2. W `data/games.json` usuń `"page": false` (i `"published": false`, jeśli jest) i uruchom
+   `node tools/build-games.js` (tytuł karty prowadzi do landingu, dochodzi press kit, wpisy w sitemap).
 3. `node tools/check-placeholders.js` musi przejść — teraz sprawdza już stronę gry.
 
 **Publikacja `/privacy/`** (najpóźniej razem z grą, bo formularz zapisu i polityka gry do niej linkują):
@@ -211,7 +214,7 @@ w `index.html`, `pl/index.html`, `games/index.html`, `games/pl/index.html`.
 Kontrola, czy nic opublikowanego nie linkuje do szkicu:
 
 ```bash
-grep -L 'content="noindex"' $(find public -name '*.html') | xargs grep -nE 'href="/(tilefall|privacy)/'
+grep -L 'content="noindex"' $(find public -name '*.html') | xargs grep -nE 'href="/(tilefall|privacy)/' | grep -v 'href="/tilefall/play/'
 ```
 
 ## Polityki prywatności
@@ -276,6 +279,8 @@ node tools/build-games.js --check   # exit 1, jeśli pliki są nieaktualne albo 
    | `playUrl` | opcjonalne; dodaje link „Google Play” na karcie |
    | `cover` | opcjonalne; ścieżka okładki, domyślnie `/<slug>/media/og.png` |
    | `published` | opcjonalne; `false` = szkic: walidowany, ale poza listą i sitemap (patrz „Szkice”) |
+   | `webUrl` | opcjonalne; wersja w przeglądarce (`/…/` w `public/` albo `https://…`), dodaje link „Play in your browser” / „Zagraj w przeglądarce” |
+   | `page` | opcjonalne; `false` = gra jest na liście, ale jej strona `/<slug>/` to jeszcze szkic: tytuł karty prowadzi do `webUrl` (bez niego jest bez linku), bez press kitu, strony gry poza sitemap |
 
 3. `node tools/build-games.js`, potem `node tools/build-games.js --check` i
    `node tools/check-placeholders.js` — oba muszą przejść przed mergem na `main`.

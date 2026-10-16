@@ -8,6 +8,8 @@
  * nie buduje, strona zostaje w 100% statyczna.
  *
  * Gra z "published": false to szkic: jest walidowana, ale nie trafia na listę ani do sitemap.
+ * Gra z "page": false jest na liście, ale jej strona (/<slug>/) to jeszcze szkic: karta prowadzi
+ * do webUrl (wersja w przeglądarce) albo nigdzie, bez press kitu, a strony gry nie idą do sitemap.
  *
  * Uruchomienie:
  *   node tools/build-games.js           zapisuje pliki
@@ -28,6 +30,7 @@ const T = {
     upcoming: (d) => (d ? `Coming ${d}` : "Coming soon"),
     released: "Out now",
     press: "Press kit",
+    web: "Play in your browser",
     empty: "The first game is on its way. Check back soon.",
     date: (y, m, d) => `${d} ${MONTHS_EN[m - 1]} ${y}`,
   },
@@ -35,6 +38,7 @@ const T = {
     upcoming: (d) => (d ? `Premiera ${d}` : "Wkrótce"),
     released: "Dostępna",
     press: "Press kit",
+    web: "Zagraj w przeglądarce",
     empty: "Pierwsza gra jest w drodze. Zajrzyj tu wkrótce.",
     date: (y, m, d) => `${String(d).padStart(2, "0")}.${String(m).padStart(2, "0")}.${y}`,
   },
@@ -56,6 +60,10 @@ for (const g of games) {
   seen.add(g.slug);
   if (!g.name) errors.push(`${id}: brak name`);
   if (g.published != null && typeof g.published !== "boolean") errors.push(`${id}: published musi być true albo false`);
+  if (g.page != null && typeof g.page !== "boolean") errors.push(`${id}: page musi być true albo false`);
+  if (g.webUrl != null && !/^(https:\/\/|\/)/.test(g.webUrl)) errors.push(`${id}: webUrl musi zaczynać się od https:// albo /`);
+  if (g.webUrl && g.webUrl.startsWith("/") && !exists(g.webUrl.replace(/\/?$/, "/index.html")))
+    errors.push(`${id}: brak wersji w przeglądarce public${g.webUrl}`);
   if (!["upcoming", "released"].includes(g.status)) errors.push(`${id}: status musi być "upcoming" albo "released"`);
   if (g.releaseDate != null && !isDate(g.releaseDate)) errors.push(`${id}: releaseDate w formacie RRRR-MM-DD`);
   if (!isDate(g.updated)) errors.push(`${id}: updated (lastmod w sitemap) w formacie RRRR-MM-DD`);
@@ -70,6 +78,7 @@ for (const g of games) {
   if (!exists(g.cover)) errors.push(`${id}: brak okładki public${g.cover}`);
   g.hasPl = exists(`${g.slug}/pl/index.html`);
   g.hasPress = exists(`${g.slug}/press/index.html`);
+  g.hasPage = g.page !== false;
 }
 
 if (errors.length) {
@@ -91,14 +100,17 @@ function fmtDate(lang, iso) {
 
 function card(g, lang, i) {
   const t = T[lang];
-  const href = lang === "pl" && g.hasPl ? `/${g.slug}/pl/` : `/${g.slug}/`;
-  const hreflang = lang === "pl" && !g.hasPl ? ' hreflang="en"' : "";
+  // strona gry w szkicu: tytuł prowadzi do wersji w przeglądarce (albo jest bez linku)
+  const href = !g.hasPage ? g.webUrl : lang === "pl" && g.hasPl ? `/${g.slug}/pl/` : `/${g.slug}/`;
+  const hreflang = g.hasPage && lang === "pl" && !g.hasPl ? ' hreflang="en"' : "";
+  const title = href ? `<a href="${esc(href)}"${hreflang}>${esc(g.name)}</a>` : esc(g.name);
   const badge =
     g.status === "released"
       ? `<span class="badge badge-out">${t.released}</span>`
       : `<span class="badge">${esc(t.upcoming(fmtDate(lang, g.releaseDate)))}</span>`;
   const links = [];
-  if (g.hasPress) links.push(`<a href="/${g.slug}/press/">${t.press}</a>`);
+  if (g.webUrl) links.push(`<a href="${esc(g.webUrl)}">${t.web}</a>`);
+  if (g.hasPage && g.hasPress) links.push(`<a href="/${g.slug}/press/">${t.press}</a>`);
   if (g.playUrl) links.push(`<a href="${esc(g.playUrl)}">Google Play</a>`);
   const loading = i >= 2 ? ' loading="lazy"' : "";
 
@@ -107,7 +119,7 @@ function card(g, lang, i) {
     `  <div class="game-cover"><img src="${esc(g.cover)}" width="1200" height="630"${loading} alt="${esc(g[lang].coverAlt)}"></div>`,
     `  <div class="game-body">`,
     `    <p class="game-meta">${esc(g[lang].genre)} · ${esc(g.platforms.join(", "))}</p>`,
-    `    <h2><a href="${href}"${hreflang}>${esc(g.name)}</a></h2>`,
+    `    <h2>${title}</h2>`,
     `    <p class="game-pitch">${esc(g[lang].pitch)}</p>`,
     `    <div class="game-footer">`,
     `      ${badge}`,
@@ -119,6 +131,7 @@ function card(g, lang, i) {
 }
 
 function sitemapEntries(g) {
+  if (!g.hasPage) return [];
   const loc = (p) => `${SITE}${p}`;
   const alt = g.hasPl
     ? [

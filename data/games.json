@@ -3,12 +3,13 @@
   "games": [
     {
       "slug": "tilefall",
-      "published": false,
+      "page": false,
+      "webUrl": "/tilefall/play/",
       "name": "Tilefall",
       "status": "upcoming",
       "releaseDate": "2026-12-12",
       "platforms": ["Android", "Web"],
-      "updated": "2026-10-15",
+      "updated": "2026-10-16",
       "en": {
         "genre": "Roguelike puzzle",
         "pitch": "Every step you take, the floor behind you falls away.",
