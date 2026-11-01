@@ -2,7 +2,7 @@
 /**
  * Generator pikselowych grafik strony studia (public/media/pixel/):
  *   bg.svg        kafel tła (sprite'y rozrzucone po 320×320, przezroczystość ustawia studio.css)
- *   icon-*.svg    ikony: logo w menu i ikony bloków „Czego się spodziewać”
+ *   icon-*.svg    ikony: logo w menu i ikony bloków „Co robię”
  *
  * Sprite = tablica wierszy, '#' = piksel, '.' = pusto. Po zmianie: node tools/build-pixel-art.js
  * i podbij ?v=N przy studio.css (CLAUDE.md, punkt 6), bo przeglądarki mogą trzymać stary obrazek.
@@ -116,6 +116,18 @@ const SPRITES = {
     ".#.#.#.",
     "#######",
   ],
+  // Układ scalony (inżynieria AI).
+  chip: [
+    "..#.#.#..",
+    ".#######.",
+    "##.....##",
+    ".#.###.#.",
+    "##.###.##",
+    ".#.###.#.",
+    "##.....##",
+    ".#######.",
+    "..#.#.#..",
+  ],
 };
 
 const C = {
@@ -145,7 +157,7 @@ function size(rows) {
 const BG_TILE = 320;
 const BG = [
   ["invader", 18, 22, 3, C.blue],
-  ["heart", 150, 12, 3, C.pink],
+  ["chip", 150, 12, 3, C.pink],
   ["prompt", 248, 52, 3, C.green],
   ["coin", 92, 96, 3, C.gold],
   ["tetrisT", 214, 118, 3, C.blue],
@@ -182,10 +194,10 @@ function iconSvg(name, fill) {
 }
 
 const ICONS = {
-  "icon-brand.svg": ["invader", C.blue],
-  "icon-polish.svg": ["star", C.blue],
-  "icon-time.svg": ["hourglass", C.gold],
-  "icon-platforms.svg": ["gamepad", C.green],
+  "icon-brand.svg": ["prompt", C.blue],
+  "icon-code.svg": ["braces", C.blue],
+  "icon-ai.svg": ["chip", C.gold],
+  "icon-products.svg": ["gamepad", C.green],
 };
 
 const outDir = path.join(__dirname, "..", "public", "media", "pixel");

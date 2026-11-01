@@ -148,9 +148,14 @@ p  { margin: 0 0 1em; }
   content: ""; display: block; width: 36px; height: 36px; margin-bottom: 16px;
   background: center / contain no-repeat;
 }
-.pillar-polish::before    { background-image: url("/media/pixel/icon-polish.svg"); }
-.pillar-time::before      { background-image: url("/media/pixel/icon-time.svg"); }
-.pillar-platforms::before { background-image: url("/media/pixel/icon-platforms.svg"); }
+.pillar-code::before     { background-image: url("/media/pixel/icon-code.svg"); }
+.pillar-ai::before       { background-image: url("/media/pixel/icon-ai.svg"); }
+.pillar-products::before { background-image: url("/media/pixel/icon-products.svg"); }
+.pillar ul { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.pillar li {
+  font-family: var(--mono); font-size: .78rem; color: var(--text-muted);
+  border: 1px solid var(--border); border-radius: 4px; padding: 1px 8px;
+}
 
 /* --- Lista gier ----------------------------------------------------------- */
 .page-head { padding: 48px 0 8px; }
