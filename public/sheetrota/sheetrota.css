@@ -7,14 +7,14 @@
 
 :root {
   --bg:          #ffffff;
-  --bg-alt:      #f5f7f6;
+  --bg-alt:      #f6f6fa;
   --surface:     #ffffff;
-  --border:      #dde3e0;
-  --text:        #17201c;
-  --text-muted:  #56625c;
-  --accent:      #0f7a5c;
-  --accent-hover:#0b5f48;
-  --accent-soft: #e6f4ef;
+  --border:      #dfdfea;
+  --text:        #1b1a2e;
+  --text-muted:  #5b5a6e;
+  --accent:      #3b36a3;
+  --accent-hover:#2f2b7a;
+  --accent-soft: #ecebfa;
   --warn:        #9a5b00;
   --radius: 10px;
   --wrap:   1040px;
@@ -83,7 +83,7 @@ code { font-family: var(--mono); font-size: .9em; background: var(--bg-alt); pad
 .btn-secondary { background: var(--bg); color: var(--text); border-color: var(--border); }
 .btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
 /* Zamiast przycisku instalacji, dopóki wizytówka w Marketplace nie jest opublikowana. */
-.btn-soon { background: var(--accent-soft); color: var(--accent); border-color: #b9e0d2; cursor: default; }
+.btn-soon { background: var(--accent-soft); color: var(--accent); border-color: #cfcdf2; cursor: default; }
 .note { font-size: .9rem; color: var(--text-muted); margin-top: 14px; }
 
 /* --- Sekcje --------------------------------------------------------------- */
@@ -97,7 +97,7 @@ code { font-family: var(--mono); font-size: .9em; background: var(--bg-alt); pad
 .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px 28px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .checks li { padding-left: 28px; position: relative; }
 .checks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
-.pro-box { border: 1px solid #b9e0d2; background: var(--accent-soft); border-radius: var(--radius); padding: 24px; }
+.pro-box { border: 1px solid #cfcdf2; background: var(--accent-soft); border-radius: var(--radius); padding: 24px; }
 .pro-box h2 { margin-bottom: .4em; }
 
 /* --- Pomoc (FAQ) i teksty prawne ------------------------------------------ */
