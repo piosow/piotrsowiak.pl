@@ -82,6 +82,8 @@ code { font-family: var(--mono); font-size: .9em; background: var(--bg-alt); pad
 .btn-primary:hover { background: var(--accent-hover); color: #fff; }
 .btn-secondary { background: var(--bg); color: var(--text); border-color: var(--border); }
 .btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
+/* Zamiast przycisku instalacji, dopóki wizytówka w Marketplace nie jest opublikowana. */
+.btn-soon { background: var(--accent-soft); color: var(--accent); border-color: #b9e0d2; cursor: default; }
 .note { font-size: .9rem; color: var(--text-muted); margin-top: 14px; }
 
 /* --- Sekcje --------------------------------------------------------------- */

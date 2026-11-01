@@ -21,7 +21,7 @@
 <link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/privacy/">
 <meta name="theme-color" content="#0f7a5c">
 <link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=2">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -65,16 +65,13 @@
     <p>SheetRota doesn't ask for access to your Google Calendar, Google Drive, Gmail, contacts or email address.</p>
     <p>The add-on runs as a Google Apps Script inside your Google account. The rows are processed there and in your browser, and the .ics file is created and downloaded in your browser. <strong>None of this data is sent to servers run by me or by anyone else</strong>, and the add-on doesn't keep a copy after you close the sidebar. I can't see your spreadsheets.</p>
     <p>When you click “Add to Google Calendar” next to a row, your browser opens Google Calendar with that event's details in the address, and you decide whether to save it. That happens directly between you and Google.</p>
-    <!-- {DO_POTWIERDZENIA_LOGI_BLEDOW}: appsscript.json ma exceptionLogging STACKDRIVER. Sprawdź w Cloud Logging projektu,
-         czy wpisy o błędach nie zawierają treści komórek (komunikaty błędów w kodzie nie wstawiają wartości komórek). -->
     <p>If the add-on fails, Google Cloud records a technical error report (the error message and where in the code it happened) in the add-on's project, without the contents of your spreadsheet. These reports are kept for 30 days and used only to fix bugs.</p>
 
     <h3 id="limited-use">Google API Services User Data Policy</h3>
     <p>SheetRota's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Data from your spreadsheet is used only to provide the add-on's features you see in the sidebar. It isn't transferred to anyone, isn't used for advertising, isn't read by people and isn't used to train AI models.</p>
 
     <h2 id="marketplace">Marketplace statistics</h2>
-    <!-- {DO_POTWIERDZENIA_GA4_MARKETPLACE}: opis zgodny z „Use analytics” w dokumentacji Marketplace; sprawdź po podpięciu GA4 w Marketplace SDK. -->
-    <p>Google Workspace Marketplace shows me aggregated statistics for the SheetRota listing, such as the number of listing views and installs. I've linked the listing to Google Analytics to see the same kind of aggregate numbers. I don't receive the names or email addresses of people who install the add-on.</p>
+    <p>Google Workspace Marketplace shows me aggregated statistics for the SheetRota listing, such as the number of listing views and installs. I don't receive the names or email addresses of people who install the add-on.</p>
 
     <h2 id="website">This website</h2>
     <p>The website is hosted by Cloudflare, which processes technical data such as your IP address and browser type to deliver pages and protect the site from attacks (my legitimate interest, Art. 6(1)(f) GDPR; see the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>). The website itself doesn't set cookies and doesn't use analytics.</p>
