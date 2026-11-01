@@ -242,15 +242,17 @@ i własny pasek z marką SheetRota zamiast studia. EN domyślnie, PL w podkatalo
   więc ramka ma stałą wysokość (`.form-frame` w `sheetrota.css`).
 - Treść polityki, pomocy i strony głównej opisuje zachowanie kodu dodatku (zakresy, formaty dat, limit 2000 wierszy).
   Zmiana w dodatku = zmiana tutaj.
-- Placeholdery: `{SHEETROTA_LISTING_URL}` (adres wizytówki po publikacji), `{TALLY_FORM_ID}`, `{DANE_FIRMY}`
-  oraz komentarze `{DO_POTWIERDZENIA_...}` (logi błędów, GA4 w Marketplace, czas odpowiedzi w pomocy).
+- Placeholdery są uzupełnione: dane JDG, formularze Tally `0VdPrA` (EN) i `Ge606e` (PL). Dopóki wizytówka w Marketplace
+  nie jest opublikowana, strona produktu zamiast przycisku instalacji ma napis `.btn-soon` („Coming soon…”),
+  a docelowy link czeka w komentarzu nad nim. Bez GA4: polityka mówi tylko o statystykach samego Marketplace
+  (podpięcie GA4 = zmiana polityki).
   Data polityki i regulaminu: 1 listopada 2026; zmiana treści = nowa data w czterech plikach.
 - Grafiki do Marketplace SDK i ekranu zgody (PNG z `media/icon.svg`: ikony 32/48/96/128, logo OAuth 120×120,
   baner 220×140) leżą w repo dodatku, `docs/marketplace/`. Nie są publikowane na stronie.
 
 **Publikacja SheetRota** (razem z wizytówką w Marketplace):
 
-1. Uzupełnij placeholdery i usuń komentarze `{DO_POTWIERDZENIA_...}`.
+1. Na `/sheetrota/` i `/sheetrota/pl/` zamień `<span class="btn btn-soon">` na link z komentarza, z adresem wizytówki.
 2. Usuń z każdego HTML-a w `public/sheetrota/` komentarz `<!-- SZKIC: ... -->` i `<meta name="robots" content="noindex">`.
 3. Dopisz `/sheetrota/` i `/sheetrota/pl/` do `sitemap.xml`, a na stronie głównej zamień komentarz
    „Produkty: link do /sheetrota/…” w sekcji „About” / „O mnie” na link do dodatku.
