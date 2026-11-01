@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  SZKIELET polityki prywatności dodatku SheetRota. Ten URL podajesz na ekranie zgody OAuth i w Marketplace SDK.
+  Wersja PL: /sheetrota/privacy/pl/ — zmieniaj obie razem. Treść musi się zgadzać z kodem dodatku
+  (G:\Projekty\ArkuszeKalendarzDodatek: zakresy w src/appsscript.json, brak wywołań zewnętrznych).
+  Placeholdery {...} (także w komentarzach) blokują publikację: node tools/check-placeholders.js.
+  To nie jest porada prawna.
+-->
+<title>Privacy policy | SheetRota</title>
+<meta name="description" content="How the SheetRota add-on for Google Sheets handles your data: it reads only the open spreadsheet and sends nothing to us.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/privacy/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/privacy/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/privacy/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/privacy/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/">Pro</a>
+      <a href="/sheetrota/support/">Help</a>
+      <a href="/sheetrota/privacy/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated: {PRIVACY_DATA_SHEETROTA}</p>
+
+    <p>This policy covers the SheetRota add-on for Google Sheets, its website at piotrsowiak.pl/sheetrota/ and the SheetRota Pro waitlist.</p>
+
+    <div class="summary">
+      <ul>
+        <li>The add-on reads only the spreadsheet you open it in, and only when you use it.</li>
+        <li>Your spreadsheet data is never sent to me or stored anywhere outside your Google account and your browser.</li>
+        <li>The add-on has no analytics, no advertising and no tracking.</li>
+        <li>I don't sell personal data or use it for advertising.</li>
+      </ul>
+    </div>
+
+    <h2 id="controller">Who is responsible for your data</h2>
+    <p>SheetRota is made by Piotr Sowiak, {DANE_FIRMY}, Poland, who is the data controller for the data described below. For anything related to privacy, write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</p>
+
+    <h2 id="addon">The add-on: what Google data it uses and why</h2>
+    <p>SheetRota asks for two Google permissions:</p>
+    <ul>
+      <li><strong>View and manage spreadsheets that this application has been installed in</strong> (<code>spreadsheets.currentonly</code>). SheetRota reads the header row and the rows you choose in the spreadsheet you opened it in, to turn them into calendar events and show you which rows need fixing. When you click “Insert example schedule”, it adds a new sheet with sample rows to that spreadsheet. It can't open any other file.</li>
+      <li><strong>Display and run third-party web content in prompts and sidebars inside Google applications</strong> (<code>script.container.ui</code>), to show the SheetRota sidebar.</li>
+    </ul>
+    <p>SheetRota doesn't ask for access to your Google Calendar, Google Drive, Gmail, contacts or email address.</p>
+    <p>The add-on runs as a Google Apps Script inside your Google account. The rows are processed there and in your browser, and the .ics file is created and downloaded in your browser. <strong>None of this data is sent to servers run by me or by anyone else</strong>, and the add-on doesn't keep a copy after you close the sidebar. I can't see your spreadsheets.</p>
+    <p>When you click “Add to Google Calendar” next to a row, your browser opens Google Calendar with that event's details in the address, and you decide whether to save it. That happens directly between you and Google.</p>
+    <!-- {DO_POTWIERDZENIA_LOGI_BLEDOW}: appsscript.json ma exceptionLogging STACKDRIVER. Sprawdź w Cloud Logging projektu,
+         czy wpisy o błędach nie zawierają treści komórek (komunikaty błędów w kodzie nie wstawiają wartości komórek). -->
+    <p>If the add-on fails, Google Cloud records a technical error report (the error message and where in the code it happened) in the add-on's project, without the contents of your spreadsheet. These reports are kept for 30 days and used only to fix bugs.</p>
+
+    <h3 id="limited-use">Google API Services User Data Policy</h3>
+    <p>SheetRota's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Data from your spreadsheet is used only to provide the add-on's features you see in the sidebar. It isn't transferred to anyone, isn't used for advertising, isn't read by people and isn't used to train AI models.</p>
+
+    <h2 id="marketplace">Marketplace statistics</h2>
+    <!-- {DO_POTWIERDZENIA_GA4_MARKETPLACE}: opis zgodny z „Use analytics” w dokumentacji Marketplace; sprawdź po podpięciu GA4 w Marketplace SDK. -->
+    <p>Google Workspace Marketplace shows me aggregated statistics for the SheetRota listing, such as the number of listing views and installs. I've linked the listing to Google Analytics to see the same kind of aggregate numbers. I don't receive the names or email addresses of people who install the add-on.</p>
+
+    <h2 id="website">This website</h2>
+    <p>The website is hosted by Cloudflare, which processes technical data such as your IP address and browser type to deliver pages and protect the site from attacks (my legitimate interest, Art. 6(1)(f) GDPR; see the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy policy</a>). The website itself doesn't set cookies and doesn't use analytics.</p>
+
+    <h2 id="waitlist">SheetRota Pro waitlist</h2>
+    <p>If you join the waitlist, I collect what you enter in the form: your email address, team size, the tool you use today and an optional comment, together with where you came from (for example “from the add-on”) and the form language.</p>
+    <ul>
+      <li>Purpose: to tell you when SheetRota Pro is available and offer you the launch discount, and to send you one short survey about your needs. No other marketing.</li>
+      <li>Legal basis: your consent (Art. 6(1)(a) GDPR), which you can withdraw at any time by replying to any email or writing to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</li>
+      <li>Retention: until you withdraw consent, and no longer than 12 months after SheetRota Pro launches or is cancelled.</li>
+      <!-- {DO_POTWIERDZENIA_TALLY}: siedziba i lokalizacja danych Tally (Belgia, serwery w UE) oraz DPA — sprawdź na tally.so/help przed publikacją. -->
+      <li>The form is provided by Tally BV (Belgium), which stores the answers on my behalf in the EU. See the <a href="https://tally.so/help/privacy-policy">Tally privacy policy</a>.</li>
+    </ul>
+
+    <h2 id="email">Emailing me</h2>
+    <p>If you write to me for help, I process your email address and your message to reply (my legitimate interest, Art. 6(1)(f) GDPR). Email is hosted by Zoho in its EU data centre. I keep support emails for two years after the last message in a conversation.</p>
+
+    <h2 id="recipients">Who else receives data</h2>
+    <ul>
+      <li>Google — runs the add-on in your account and provides Marketplace statistics.</li>
+      <li>Cloudflare — website hosting and security.</li>
+      <li>Tally — waitlist form.</li>
+      <li>Zoho — email (EU data centre).</li>
+    </ul>
+
+    <h2 id="rights">Your rights</h2>
+    <p>Under the GDPR you have the right to access your data, correct it, have it deleted, restrict its processing, receive it in a portable format and object to processing based on legitimate interest. Where processing is based on consent, you can withdraw it at any time; this doesn't affect processing done before. Write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a> and I'll respond within one month. You can also lodge a complaint with the Polish data protection authority: Prezes Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl/">uodo.gov.pl</a>.</p>
+    <p>To remove the add-on, open Google Sheets → Extensions → Add-ons → Manage add-ons → SheetRota → Uninstall. You can also review its access at <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>.</p>
+    <p>SheetRota isn't directed at children under 16. I don't make decisions about you based solely on automated processing.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>If SheetRota starts using new data or permissions (for example, calendar access in SheetRota Pro), I'll update this policy before the change and ask Google for the new permissions, which you'll have to approve. The date at the top shows the latest version.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota by Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/">Help</a> · <a href="/sheetrota/privacy/" aria-current="page">Privacy</a> · <a href="/sheetrota/terms/">Terms</a></span>
+  </div>
+</footer>
+</body>
+</html>

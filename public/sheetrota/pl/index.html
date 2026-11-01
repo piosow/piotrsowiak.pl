@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Wersja PL strony produktu SheetRota. EN: /sheetrota/ — zmieniaj obie razem. -->
+<title>SheetRota — grafik z arkusza w kalendarzu | piotrsowiak.pl</title>
+<meta name="description" content="Darmowy dodatek do Arkuszy Google: sprawdza wiersze grafiku i eksportuje je do pliku .ics dla Kalendarza Google, Outlooka i Kalendarza Apple albo dodaje wydarzenia pojedynczo.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/pl/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/">
+<meta name="theme-color" content="#0f7a5c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SheetRota">
+<meta property="og:url" content="https://piotrsowiak.pl/sheetrota/pl/">
+<meta property="og:title" content="SheetRota: grafik z arkusza w kalendarzu">
+<meta property="og:description" content="Zamień grafiki zmian i harmonogramy z Arkuszy Google w wydarzenia w kalendarzu. Darmowy dodatek.">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/pl/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="#jak">Jak to działa</a>
+      <a href="/sheetrota/pro/pl/">Pro</a>
+      <a href="/sheetrota/support/pl/">Pomoc</a>
+      <a href="/sheetrota/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Darmowy dodatek do Arkuszy Google™</span>
+        <h1>Grafik masz w arkuszu. Przenieś go do kalendarzy.</h1>
+        <p class="lead">SheetRota zamienia wiersze z datami i godzinami (grafiki zmian, terminy projektów, rezerwacje sal) w wydarzenia w kalendarzu. Sprawdź wiersze, a potem pobierz jeden plik .ics dla Kalendarza Google, Outlooka albo Kalendarza Apple lub dodawaj wydarzenia pojedynczo.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="{SHEETROTA_LISTING_URL}">Zainstaluj z Google Workspace Marketplace</a>
+          <a class="btn btn-secondary" href="#jak">Jak to działa</a>
+        </div>
+        <p class="note">Bez konta i rejestracji. Dodatek czyta tylko arkusz, w którym go otworzysz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="jak">
+    <div class="wrap">
+      <h2>Jak to działa</h2>
+      <div class="grid3">
+        <div class="card"><span class="num">1</span><h3>Otwórz w arkuszu</h3><p>Rozszerzenia → SheetRota → Open. Kolumny takie jak Data, Początek, Koniec i Tytuł dodatek znajdzie sam. Nie masz jeszcze arkusza? Wstaw przykładowy grafik.</p></div>
+        <div class="card"><span class="num">2</span><h3>Sprawdź wiersze</h3><p>Każdy wiersz dostaje ✓ albo zrozumiałą uwagę: nieczytelna data, brak tytułu, nieznana strefa czasowa. Popraw w arkuszu i sprawdź jeszcze raz.</p></div>
+        <div class="card"><span class="num">3</span><h3>Eksportuj</h3><p>Pobierz jeden plik .ics i zaimportuj go do dowolnego kalendarza albo kliknij „Dodaj do Kalendarza Google” przy pojedynczym wierszu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose">
+      <h2>Dba o szczegóły</h2>
+      <ul class="checks">
+        <li>Strefa czasowa dla każdego wiersza, z czasem letnim i zimowym</li>
+        <li>Nocne zmiany: 22:00–06:00 kończy się następnego dnia</li>
+        <li>Wydarzenia całodniowe, gdy nie ma godziny początku</li>
+        <li>Komórki z datą, 2026-11-03 albo 03.11.2026</li>
+        <li>Nagłówki kolumn po polsku i po angielsku</li>
+        <li>Do 2000 wierszy w jednym eksporcie</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>Dane zostają w Twoim arkuszu</h2>
+      <p>SheetRota prosi o dwa uprawnienia: odczyt arkusza, w którym go otworzysz, i wyświetlenie paska bocznego. Nie widzi innych plików ani Twojego kalendarza. Plik .ics powstaje i pobiera się w Twojej przeglądarce. Nic nie trafia do mnie ani nikogo innego, a dodatek niczego nie śledzi. Szczegóły w <a href="/sheetrota/privacy/pl/">polityce prywatności</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="pro-box prose">
+        <h2>Wkrótce: SheetRota Pro</h2>
+        <p>Automatyczna synchronizacja dla zespołów: zmieniasz arkusz, a kalendarze wszystkich aktualizują się same, łącznie ze zmianami, odwołaniami i poprawkami zrobionymi w kalendarzu. Jeden plan dla całej domeny Google Workspace.</p>
+        <p><a class="btn btn-primary" href="/sheetrota/pro/pl/">Zapisz się na listę oczekujących</a></p>
+        <p class="note">Wersja Pro jeszcze nie jest dostępna. Zapis jest darmowy i do niczego nie zobowiązuje.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota · Piotr Sowiak · <a href="/pl/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/pl/">Pomoc</a> · <a href="/sheetrota/privacy/pl/">Prywatność</a> · <a href="/sheetrota/terms/pl/">Regulamin</a></span>
+    <span class="tm">Arkusze Google i Kalendarz Google są znakami towarowymi Google LLC. SheetRota nie jest powiązany z Google ani przez nie popierany.</span>
+  </div>
+</footer>
+</body>
+</html>

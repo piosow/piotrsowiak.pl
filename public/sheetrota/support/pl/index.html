@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Wersja PL pomocy SheetRota. EN: /sheetrota/support/ — zmieniaj obie razem (uwagi w pliku EN). -->
+<title>Pomoc | SheetRota</title>
+<meta name="description" content="Jak korzystać z SheetRota: kolumny, formaty dat i godzin, strefy czasowe, import pliku .ics i kontakt.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/support/pl/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/support/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/support/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/support/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/pl/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/pl/">Pro</a>
+      <a href="/sheetrota/support/pl/" aria-current="page">Pomoc</a>
+      <a href="/sheetrota/support/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Pomoc</h1>
+
+    <div class="contact-box">
+      <p><strong>Coś nie działa?</strong> Napisz na <a href="mailto:kontakt@piotrsowiak.pl?subject=SheetRota">kontakt@piotrsowiak.pl</a>. SheetRota piszę sam i zwykle odpowiadam w ciągu jednego dnia roboczego.</p>
+      <p>Pomoże opis, co klikasz i czego się spodziewasz, oraz zrzut paska bocznego. Nie wysyłaj prawdziwych danych osobowych z grafiku, wystarczy przykładowy wiersz.</p>
+    </div>
+
+    <h2 id="start">Pierwsze kroki</h2>
+    <ol>
+      <li>Zainstaluj SheetRota z Google Workspace Marketplace.</li>
+      <li>Otwórz arkusz i wybierz <strong>Rozszerzenia → SheetRota → Open</strong>.</li>
+      <li>Zaznacz wiersze albo zostaw „Wszystkie wiersze” i kliknij <strong>Sprawdź wiersze</strong>.</li>
+      <li>Kliknij <strong>Pobierz .ics</strong> i zaimportuj plik do kalendarza albo użyj <strong>Dodaj do Kalendarza Google</strong> przy wierszu.</li>
+    </ol>
+    <p>Nie masz jeszcze grafiku? Kliknij <strong>Wstaw przykładowy grafik</strong>: SheetRota doda kartę z przykładowymi wierszami do edycji.</p>
+
+    <h2 id="columns">Jakich kolumn potrzebuje?</h2>
+    <p>Nagłówki wpisz w 1. wierszu. <strong>Data</strong> i <strong>Tytuł</strong> są wymagane; Początek, Koniec, Opis, Miejsce i Strefa czasowa są opcjonalne. SheetRota rozpoznaje popularne nazwy polskie i angielskie, np. <code>Data</code>/<code>Date</code>, <code>Początek</code>/<code>Start</code>, <code>Koniec</code>/<code>End</code>, <code>Tytuł</code>/<code>Zmiana</code>/<code>Title</code>, <code>Miejsce</code>/<code>Location</code>. Jeśli Twoje nagłówki są inne, otwórz w pasku <strong>2. Kolumny i opcje</strong> i wybierz kolumny ręcznie.</p>
+
+    <h2 id="formats">Formaty dat i godzin</h2>
+    <ul>
+      <li><strong>Daty:</strong> komórki z datą (najlepiej), <code>2026-11-03</code>, <code>03.11.2026</code> albo <code>03/11/2026</code>. W arkuszach z ustawieniami regionalnymi USA <code>11/03/2026</code> oznacza 3 listopada.</li>
+      <li><strong>Godziny:</strong> komórki z czasem, <code>09:00</code>, <code>9.30</code>, <code>9</code> albo <code>9:30 pm</code>. Komórka z datą i godziną działa jako początek, gdy nie ma kolumny Początek.</li>
+      <li><strong>Brak godziny początku</strong> → wydarzenie całodniowe.</li>
+      <li><strong>Brak godziny końca</strong> → domyślna długość z opcji (60 minut, jeśli jej nie zmienisz).</li>
+      <li><strong>Koniec wcześniejszy niż początek</strong> (np. 22:00–06:00) → wydarzenie kończy się następnego dnia. Przydaje się przy nocnych zmianach.</li>
+    </ul>
+
+    <h2 id="timezones">Strefy czasowe</h2>
+    <p>Domyślnie SheetRota używa strefy arkusza (Plik → Ustawienia); możesz ją zmienić w opcjach. Żeby mieszać strefy, dodaj kolumnę Strefa czasowa z nazwami takimi jak <code>Europe/Warsaw</code>, <code>Europe/London</code> albo <code>America/New_York</code> (<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">pełna lista</a>). Czas letni i zimowy jest uwzględniany automatycznie.</p>
+
+    <h2 id="import">Import pliku .ics</h2>
+    <ul>
+      <li><strong>Kalendarz Google:</strong> Ustawienia → Importuj i eksportuj → Importuj, wybierz plik i kalendarz. Wskazówka: najpierw utwórz osobny kalendarz (np. „Grafik”) i importuj do niego.</li>
+      <li><strong>Outlook:</strong> Kalendarz → Dodaj kalendarz → Przekaż z pliku.</li>
+      <li><strong>Kalendarz Apple:</strong> Plik → Importuj.</li>
+    </ul>
+
+    <h2 id="changes">Grafik się zmienił. Jak zaktualizować kalendarz?</h2>
+    <p>Zaimportowany plik to jednorazowa kopia. Kalendarze nie aktualizują pewnie wydarzeń przy drugim imporcie, więc mogą powstać duplikaty. Najczyściej: importuj do osobnego kalendarza, a po zmianie grafiku usuń go, utwórz ponownie i zaimportuj nowy plik. Do automatycznych aktualizacji służy <a href="/sheetrota/pro/pl/">SheetRota Pro</a>.</p>
+
+    <h2 id="download">Pobieranie nie rusza</h2>
+    <p>Niektóre przeglądarki blokują pobieranie z pasków bocznych dodatków. Kliknij <strong>Otwórz link do pliku</strong> pod przyciskiem pobierania albo zezwól na pobieranie z docs.google.com w ustawieniach przeglądarki.</p>
+
+    <h2 id="permissions">O jakie uprawnienia prosi?</h2>
+    <p>Tylko o dwa: dostęp do arkusza, w którym go otworzysz, i wyświetlanie paska bocznego. Nie widzi innych plików, kalendarza ani poczty, a nic z arkusza nie trafia do mnie. Zob. <a href="/sheetrota/privacy/pl/">politykę prywatności</a>.</p>
+
+    <h2 id="limits">Limity</h2>
+    <p>Jeden eksport sprawdza do 2000 wierszy. Dłuższy grafik zaznaczaj częściami i eksportuj do kilku plików.</p>
+
+    <h2 id="uninstall">Odinstalowanie</h2>
+    <p>Arkusze Google → Rozszerzenia → Dodatki → Zarządzaj dodatkami → SheetRota → Odinstaluj. Zaimportowane już wydarzenia zostają w kalendarzu.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota · Piotr Sowiak · <a href="/pl/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/pl/" aria-current="page">Pomoc</a> · <a href="/sheetrota/privacy/pl/">Prywatność</a> · <a href="/sheetrota/terms/pl/">Regulamin</a></span>
+  </div>
+</footer>
+</body>
+</html>

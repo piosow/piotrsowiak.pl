@@ -11,6 +11,7 @@ public/                    jedyny publikowany katalog
   media/pixel/             pikselowe tło i ikony strony studia (generowane, patrz tools/)
   _headers                 nagłówki bezpieczeństwa i cache
   favicon.svg, robots.txt, sitemap.xml
+  sheetrota/               dodatek SheetRota do Arkuszy Google (patrz „SheetRota”)
   tilefall/                strona pierwszej gry, Tilefall (patrz „Strona gry”)
     index.html, pl/        landing EN (domyślny) i PL
     press/                 press kit w układzie presskit() + ZIP z materiałami
@@ -197,7 +198,8 @@ Jest na serwerze pod swoim URL-em, ale nie trafia do wyszukiwarek, nie ma go w `
 i **żadna opublikowana strona nie może do niego linkować**. `check-placeholders.js` pomija szkice
 (razem z podkatalogami) i wypisuje je na końcu, więc placeholdery w szkicu nie blokują deployu.
 
-Dziś szkicami są `tilefall/` (landing, press kit, polityka gry) i `privacy/` (polityka studia).
+Dziś szkicami są `tilefall/` (landing, press kit, polityka gry), `privacy/` (polityka studia)
+i `sheetrota/` (cały katalog, patrz „SheetRota”).
 Tilefall jest już na liście gier, ale z `"page": false`: karta prowadzi tylko do gry
 w przeglądarce (`/tilefall/play/`, nie jest szkicem), nie do landingu.
 
@@ -219,6 +221,30 @@ Kontrola, czy nic opublikowanego nie linkuje do szkicu:
 ```bash
 grep -L 'content="noindex"' $(find public -name '*.html') | xargs grep -nE 'href="/(tilefall|privacy)/' | grep -v 'href="/tilefall/play/'
 ```
+
+## SheetRota (dodatek do Arkuszy Google)
+
+`public/sheetrota/` to strony darmowego dodatku SheetRota (kod dodatku: `G:\Projekty\ArkuszeKalendarzDodatek`,
+plan i decyzje: `docs/PLAN.md` tamże). To produkt dla firm, nie gra, więc ma własny jasny `sheetrota.css`
+i własny pasek z marką SheetRota zamiast studia. EN domyślnie, PL w podkatalogach `pl/`, osobne pliki jak na stronie studia.
+
+| Ścieżka | Do czego |
+|---|---|
+| `/sheetrota/` | „App home page” na ekranie zgody OAuth i strona produktu z linkiem do Marketplace |
+| `/sheetrota/privacy/` | polityka prywatności (URL na ekranie zgody i w Marketplace SDK) |
+| `/sheetrota/terms/` | regulamin (Marketplace SDK, „Terms of service”) |
+| `/sheetrota/support/` | pomoc i FAQ (Marketplace SDK, „Support”) |
+| `/sheetrota/pro/` | lista oczekujących na Pro: formularz Tally w `<iframe>`; dodatek linkuje tu z `utm_source=addon` |
+
+- Strona `/sheetrota/pro/*` ma w `_headers` własną CSP (`frame-src https://tally.so`). Skryptu Tally nie ładujemy,
+  więc ramka ma stałą wysokość (`.form-frame` w `sheetrota.css`).
+- Treść polityki, pomocy i strony głównej opisuje zachowanie kodu dodatku (zakresy, formaty dat, limit 2000 wierszy).
+  Zmiana w dodatku = zmiana tutaj.
+- Placeholdery: `{SHEETROTA_LISTING_URL}` (adres wizytówki po publikacji), `{TALLY_FORM_ID}`, `{DANE_FIRMY}`,
+  `{PRIVACY_DATA_SHEETROTA}` oraz komentarze `{DO_POTWIERDZENIA_...}`.
+- Weryfikacja marki Google wymaga, żeby strona główna i polityka były publicznie dostępne. Szkic `noindex` to spełnia,
+  więc publikację (usunięcie `noindex`, wpis w sitemap) robimy dopiero razem z wizytówką w Marketplace.
+  Do tego czasu żadna strona studia ani gry nie linkuje do `/sheetrota/`.
 
 ## Polityki prywatności
 

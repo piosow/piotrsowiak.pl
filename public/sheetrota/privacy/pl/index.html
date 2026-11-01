@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Wersja PL polityki prywatności SheetRota. EN: /sheetrota/privacy/ — zmieniaj obie razem (uwagi w pliku EN). -->
+<title>Polityka prywatności | SheetRota</title>
+<meta name="description" content="Jak dodatek SheetRota do Arkuszy Google obchodzi się z danymi: czyta tylko otwarty arkusz i nic do nas nie wysyła.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/privacy/pl/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/privacy/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/privacy/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/privacy/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/pl/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/pl/">Pro</a>
+      <a href="/sheetrota/support/pl/">Pomoc</a>
+      <a href="/sheetrota/privacy/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Polityka prywatności</h1>
+    <p class="updated">Ostatnia zmiana: {PRIVACY_DATA_SHEETROTA}</p>
+
+    <p>Ta polityka dotyczy dodatku SheetRota do Arkuszy Google, jego strony piotrsowiak.pl/sheetrota/ oraz listy oczekujących na SheetRota Pro.</p>
+
+    <div class="summary">
+      <ul>
+        <li>Dodatek czyta tylko arkusz, w którym go otworzysz, i tylko wtedy, gdy z niego korzystasz.</li>
+        <li>Dane z arkusza nigdy nie trafiają do mnie ani nie są przechowywane poza Twoim kontem Google i Twoją przeglądarką.</li>
+        <li>Dodatek nie ma analityki, reklam ani śledzenia.</li>
+        <li>Nie sprzedaję danych osobowych i nie używam ich do reklam.</li>
+      </ul>
+    </div>
+
+    <h2 id="controller">Kto odpowiada za Twoje dane</h2>
+    <p>SheetRota tworzy Piotr Sowiak, {DANE_FIRMY}, Polska. To administrator danych opisanych niżej. W sprawach prywatności napisz na <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</p>
+
+    <h2 id="addon">Dodatek: z jakich danych Google korzysta i po co</h2>
+    <p>SheetRota prosi o dwa uprawnienia Google:</p>
+    <ul>
+      <li><strong>Wyświetlanie arkuszy kalkulacyjnych, w których zainstalowano tę aplikację, i zarządzanie nimi</strong> (<code>spreadsheets.currentonly</code>). SheetRota czyta wiersz nagłówków i wybrane przez Ciebie wiersze arkusza, w którym go otworzysz, żeby zamienić je w wydarzenia i pokazać, które wiersze trzeba poprawić. Po kliknięciu „Wstaw przykładowy grafik” dodaje do tego arkusza nową kartę z przykładowymi wierszami. Nie może otworzyć żadnego innego pliku.</li>
+      <li><strong>Wyświetlanie i uruchamianie treści internetowych innych firm w oknach i paskach bocznych aplikacji Google</strong> (<code>script.container.ui</code>), żeby pokazać pasek boczny SheetRota.</li>
+    </ul>
+    <p>SheetRota nie prosi o dostęp do Kalendarza Google, Dysku, Gmaila, kontaktów ani adresu e-mail.</p>
+    <p>Dodatek działa jako skrypt Google Apps Script na Twoim koncie Google. Wiersze są przetwarzane tam i w Twojej przeglądarce, a plik .ics powstaje i pobiera się w przeglądarce. <strong>Żadne z tych danych nie trafiają na serwery prowadzone przeze mnie ani przez nikogo innego</strong>, a dodatek nie zachowuje ich kopii po zamknięciu paska bocznego. Nie widzę Twoich arkuszy.</p>
+    <p>Gdy klikniesz „Dodaj do Kalendarza Google” przy wierszu, przeglądarka otworzy Kalendarz Google z danymi wydarzenia w adresie, a Ty zdecydujesz, czy je zapisać. Dzieje się to bezpośrednio między Tobą a Google.</p>
+    <p>Jeśli w dodatku wystąpi błąd, Google Cloud zapisze w projekcie dodatku raport techniczny (komunikat błędu i miejsce w kodzie) bez zawartości arkusza. Raporty są przechowywane 30 dni i służą tylko do naprawiania błędów.</p>
+
+    <h3 id="limited-use">Zasady Google dotyczące danych użytkowników</h3>
+    <p>Wykorzystanie i przekazywanie przez SheetRota informacji otrzymanych z interfejsów API Google jest zgodne z <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, w tym z wymaganiami „Limited Use”. Dane z arkusza służą wyłącznie do działania funkcji dodatku widocznych w pasku bocznym. Nie są nikomu przekazywane, nie służą do reklam, nie czytają ich ludzie i nie są używane do trenowania modeli AI.</p>
+
+    <h2 id="marketplace">Statystyki Marketplace</h2>
+    <p>Google Workspace Marketplace pokazuje mi zbiorcze statystyki wizytówki SheetRota, np. liczbę wyświetleń i instalacji. Wizytówkę połączyłem z Google Analytics, żeby widzieć te same, zbiorcze liczby. Nie dostaję imion, nazwisk ani adresów e-mail osób, które instalują dodatek.</p>
+
+    <h2 id="website">Ta strona</h2>
+    <p>Stronę hostuje Cloudflare, który przetwarza dane techniczne, np. adres IP i typ przeglądarki, żeby dostarczać strony i chronić je przed atakami (mój prawnie uzasadniony interes, art. 6 ust. 1 lit. f RODO; zob. <a href="https://www.cloudflare.com/privacypolicy/">politykę prywatności Cloudflare</a>). Sama strona nie ustawia ciasteczek i nie korzysta z analityki.</p>
+
+    <h2 id="waitlist">Lista oczekujących na SheetRota Pro</h2>
+    <p>Jeśli zapiszesz się na listę, zbieram to, co wpiszesz w formularzu: adres e-mail, wielkość zespołu, narzędzie, którego używasz dziś, i opcjonalny komentarz, a także to, skąd trafiasz na formularz (np. „z dodatku”), i język formularza.</p>
+    <ul>
+      <li>Cel: poinformowanie Cię o dostępności SheetRota Pro, rabat na start i jedna krótka ankieta o Twoich potrzebach. Żadnego innego marketingu.</li>
+      <li>Podstawa: Twoja zgoda (art. 6 ust. 1 lit. a RODO). Możesz ją wycofać w każdej chwili, odpowiadając na dowolnego maila albo pisząc na <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>.</li>
+      <li>Okres przechowywania: do wycofania zgody, nie dłużej niż 12 miesięcy od uruchomienia albo porzucenia SheetRota Pro.</li>
+      <li>Formularz dostarcza Tally BV (Belgia), która przechowuje odpowiedzi w moim imieniu w UE. Zob. <a href="https://tally.so/help/privacy-policy">politykę prywatności Tally</a>.</li>
+    </ul>
+
+    <h2 id="email">Korespondencja</h2>
+    <p>Jeśli napiszesz do mnie po pomoc, przetwarzam Twój adres e-mail i treść wiadomości, żeby odpowiedzieć (mój prawnie uzasadniony interes, art. 6 ust. 1 lit. f RODO). Pocztę hostuje Zoho w centrum danych w UE. Maile z pomocy przechowuję przez dwa lata od ostatniej wiadomości w wątku.</p>
+
+    <h2 id="recipients">Kto jeszcze otrzymuje dane</h2>
+    <ul>
+      <li>Google — uruchamia dodatek na Twoim koncie i dostarcza statystyki Marketplace.</li>
+      <li>Cloudflare — hosting i bezpieczeństwo strony.</li>
+      <li>Tally — formularz listy oczekujących.</li>
+      <li>Zoho — poczta (centrum danych w UE).</li>
+    </ul>
+
+    <h2 id="rights">Twoje prawa</h2>
+    <p>Zgodnie z RODO masz prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przeniesienia oraz sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie. Zgodę możesz wycofać w każdej chwili; nie wpływa to na przetwarzanie sprzed wycofania. Napisz na <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>, odpowiem w ciągu miesiąca. Możesz też złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl/">uodo.gov.pl</a>.</p>
+    <p>Aby usunąć dodatek, otwórz Arkusze Google → Rozszerzenia → Dodatki → Zarządzaj dodatkami → SheetRota → Odinstaluj. Dostęp dodatku sprawdzisz też na <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>.</p>
+    <p>SheetRota nie jest skierowany do dzieci poniżej 16 lat. Nie podejmuję wobec Ciebie decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu.</p>
+
+    <h2 id="changes">Zmiany</h2>
+    <p>Jeśli SheetRota zacznie korzystać z nowych danych albo uprawnień (np. dostępu do kalendarza w SheetRota Pro), zaktualizuję tę politykę przed zmianą i poproszę Google o nowe uprawnienia, które trzeba będzie zatwierdzić. Data na górze wskazuje najnowszą wersję.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota · Piotr Sowiak · <a href="/pl/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/pl/">Pomoc</a> · <a href="/sheetrota/privacy/pl/" aria-current="page">Prywatność</a> · <a href="/sheetrota/terms/pl/">Regulamin</a></span>
+  </div>
+</footer>
+</body>
+</html>

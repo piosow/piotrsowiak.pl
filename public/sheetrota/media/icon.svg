@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SheetRota">
+  <!-- Robocza ikona: arkusz z siatką, w rogu kartka kalendarza. Do zastąpienia docelowym logo. -->
+  <rect x="6" y="6" width="44" height="52" rx="6" fill="#0f7a5c"/>
+  <path d="M14 20h28M14 30h28M14 40h28M26 14v38" stroke="#e6f4ef" stroke-width="3" stroke-linecap="round"/>
+  <rect x="32" y="30" width="28" height="28" rx="5" fill="#ffffff" stroke="#0f7a5c" stroke-width="3"/>
+  <rect x="32" y="30" width="28" height="8" rx="4" fill="#0f7a5c"/>
+  <circle cx="46" cy="48" r="4" fill="#0f7a5c"/>
+</svg>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  Pomoc SheetRota (URL „Support” w Marketplace SDK). Wersja PL: /sheetrota/support/pl/ — zmieniaj obie razem.
+  FAQ opisuje zachowanie kodu z G:\Projekty\ArkuszeKalendarzDodatek (src/Ics.js, src/Rows.js) — zmiana tam = zmiana tu.
+-->
+<title>Help &amp; support | SheetRota</title>
+<meta name="description" content="How to use SheetRota: columns, date and time formats, time zones, importing the .ics file, and how to get help.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/support/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/support/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/support/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/support/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/">Pro</a>
+      <a href="/sheetrota/support/" aria-current="page">Help</a>
+      <a href="/sheetrota/support/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Help &amp; support</h1>
+
+    <div class="contact-box">
+      <!-- {DO_POTWIERDZENIA_CZAS_ODPOWIEDZI}: obietnica „1 dzień roboczy” to wyróżnik z recenzji konkurencji (research 013); zostaw tylko, jeśli jest realna. -->
+      <p><strong>Something not working?</strong> Email <a href="mailto:kontakt@piotrsowiak.pl?subject=SheetRota">kontakt@piotrsowiak.pl</a>. I build SheetRota myself and usually reply within one working day.</p>
+      <p>It helps to include what you clicked, what you expected and a screenshot of the sidebar. Please don't send real personal data from your schedule; an example row is enough.</p>
+    </div>
+
+    <h2 id="start">Getting started</h2>
+    <ol>
+      <li>Install SheetRota from Google Workspace Marketplace.</li>
+      <li>Open a spreadsheet and choose <strong>Extensions → SheetRota → Open</strong>.</li>
+      <li>Select the rows you want, or leave “All rows” on, and click <strong>Check rows</strong>.</li>
+      <li>Click <strong>Download .ics</strong> and import the file into your calendar, or use <strong>Add to Google Calendar</strong> next to a row.</li>
+    </ol>
+    <p>No schedule yet? Click <strong>Insert example schedule</strong>: SheetRota adds a sheet with sample rows that you can edit.</p>
+
+    <h2 id="columns">Which columns does it need?</h2>
+    <p>Put headers in row 1. <strong>Date</strong> and <strong>Title</strong> are required; Start, End, Description, Location and Time zone are optional. SheetRota recognises common English and Polish names, for example <code>Date</code>/<code>Data</code>, <code>Start</code>/<code>Początek</code>, <code>End</code>/<code>Koniec</code>, <code>Title</code>/<code>Shift</code>/<code>Tytuł</code>, <code>Location</code>/<code>Miejsce</code>. If your headers are different, open <strong>2. Columns and options</strong> in the sidebar and pick the columns yourself.</p>
+
+    <h2 id="formats">Date and time formats</h2>
+    <ul>
+      <li><strong>Dates:</strong> date cells (best), <code>2026-11-03</code>, <code>03.11.2026</code> or <code>03/11/2026</code>. In spreadsheets set to a US locale, <code>11/03/2026</code> means 3 November.</li>
+      <li><strong>Times:</strong> time cells, <code>09:00</code>, <code>9.30</code>, <code>9</code> or <code>9:30 pm</code>. A date cell that also contains a time works as the start when there's no Start column.</li>
+      <li><strong>No start time</strong> → an all-day event.</li>
+      <li><strong>No end time</strong> → the default length from the options (60 minutes unless you change it).</li>
+      <li><strong>End earlier than start</strong> (e.g. 22:00–06:00) → the event ends the next day. Good for night shifts.</li>
+    </ul>
+
+    <h2 id="timezones">Time zones</h2>
+    <p>By default SheetRota uses the spreadsheet's time zone (File → Settings) and you can change it in the options. To mix time zones, add a Time zone column with names such as <code>Europe/London</code>, <code>Europe/Warsaw</code> or <code>America/New_York</code> (<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">full list</a>). Summer and winter time are handled automatically.</p>
+
+    <h2 id="import">Importing the .ics file</h2>
+    <ul>
+      <li><strong>Google Calendar:</strong> Settings → Import &amp; export → Import, choose the file and the calendar. Tip: first create a separate calendar (e.g. “Rota”) and import into it.</li>
+      <li><strong>Outlook:</strong> Calendar → Add calendar → Upload from file.</li>
+      <li><strong>Apple Calendar:</strong> File → Import.</li>
+    </ul>
+
+    <h2 id="changes">The schedule changed. How do I update the calendar?</h2>
+    <p>An imported file is a one-time copy. Calendars don't reliably update events from a second import, so you may get duplicates. The cleanest way: import into a separate calendar, and when the schedule changes, delete that calendar, create it again and import the new file. Automatic updates are what <a href="/sheetrota/pro/">SheetRota Pro</a> is for.</p>
+
+    <h2 id="download">The download doesn't start</h2>
+    <p>Some browsers block downloads from add-on sidebars. Click <strong>Open the file link</strong> under the download button, or allow downloads for docs.google.com in your browser settings.</p>
+
+    <h2 id="permissions">What permissions does it ask for?</h2>
+    <p>Only two: access to the spreadsheet you open it in, and permission to show its sidebar. It can't see your other files, your calendar or your email, and nothing from your spreadsheet is sent to me. See the <a href="/sheetrota/privacy/">privacy policy</a>.</p>
+
+    <h2 id="limits">Limits</h2>
+    <p>One export checks up to 2,000 rows. For longer schedules, select part of the rows and export in several files.</p>
+
+    <h2 id="uninstall">Uninstalling</h2>
+    <p>Google Sheets → Extensions → Add-ons → Manage add-ons → SheetRota → Uninstall. Events you've already imported stay in your calendar.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota by Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/" aria-current="page">Help</a> · <a href="/sheetrota/privacy/">Privacy</a> · <a href="/sheetrota/terms/">Terms</a></span>
+  </div>
+</footer>
+</body>
+</html>

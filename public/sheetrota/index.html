@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  Strona produktu SheetRota (dodatek do Arkuszy Google, walidacja niszy: G:\Projekty\ArkuszeKalendarzDodatek\docs\PLAN.md).
+  To też „App home page” na ekranie zgody OAuth i w Marketplace. Wersja PL: /sheetrota/pl/ — zmieniaj obie razem.
+  Placeholdery {...} blokują publikację: node tools/check-placeholders.js.
+-->
+<title>SheetRota — turn spreadsheet schedules into calendar events | piotrsowiak.pl</title>
+<meta name="description" content="Free Google Sheets add-on: check schedule rows and export them to an .ics file for Google Calendar, Outlook or Apple Calendar, or add events one by one.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/">
+<meta name="theme-color" content="#0f7a5c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SheetRota">
+<meta property="og:url" content="https://piotrsowiak.pl/sheetrota/">
+<meta property="og:title" content="SheetRota: Sheet to Calendar &amp; .ics Export">
+<meta property="og:description" content="Turn shift rotas and schedules in Google Sheets into calendar events. Free add-on.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pl_PL">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SheetRota",
+  "alternateName": "SheetRota: Sheet to Calendar & .ics Export",
+  "url": "https://piotrsowiak.pl/sheetrota/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web (Google Sheets add-on)",
+  "inLanguage": ["en", "pl"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Piotr Sowiak", "url": "https://piotrsowiak.pl/" }
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="#how">How it works</a>
+      <a href="/sheetrota/pro/">Pro</a>
+      <a href="/sheetrota/support/">Help</a>
+      <a href="/sheetrota/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Free add-on for Google Sheets™</span>
+        <h1>Your schedule is in a spreadsheet. Get it into calendars.</h1>
+        <p class="lead">SheetRota turns rows with dates and times (shift rotas, project deadlines, room bookings) into calendar events. Check the rows, then download one .ics file for Google Calendar, Outlook or Apple Calendar, or add events one by one.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="{SHEETROTA_LISTING_URL}">Install from Google Workspace Marketplace</a>
+          <a class="btn btn-secondary" href="#how">How it works</a>
+        </div>
+        <p class="note">No account, no sign-up. The add-on only reads the spreadsheet you open it in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="grid3">
+        <div class="card"><span class="num">1</span><h3>Open it in your sheet</h3><p>Extensions → SheetRota → Open. Columns like Date, Start, End and Title are found automatically. No sheet yet? Insert the example schedule.</p></div>
+        <div class="card"><span class="num">2</span><h3>Check the rows</h3><p>Every row gets a ✓ or a plain-language note: an unreadable date, a missing title, an unknown time zone. Fix it in the sheet and check again.</p></div>
+        <div class="card"><span class="num">3</span><h3>Export</h3><p>Download one .ics file and import it into any calendar, or click “Add to Google Calendar” next to a single row.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose">
+      <h2>Gets the details right</h2>
+      <ul class="checks">
+        <li>Time zones per row, with summer and winter time</li>
+        <li>Night shifts: 22:00–06:00 ends the next morning</li>
+        <li>All-day events when there's no start time</li>
+        <li>Date cells, 2026-11-03 or 03.11.2026</li>
+        <li>English and Polish column headers</li>
+        <li>Up to 2,000 rows per export</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2>Your data stays in your spreadsheet</h2>
+      <p>SheetRota asks for two permissions: to read the spreadsheet it's opened in and to show its sidebar. It can't see your other files or your calendar. The .ics file is built and downloaded in your browser. Nothing is sent to me or anyone else, and the add-on has no tracking. Details in the <a href="/sheetrota/privacy/">privacy policy</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="pro-box prose">
+        <h2>Coming next: SheetRota Pro</h2>
+        <p>Automatic sync for teams: edit the sheet and everyone's calendar updates by itself, including changes, cancellations and edits made in the calendar. One plan for your whole Google Workspace domain.</p>
+        <p><a class="btn btn-primary" href="/sheetrota/pro/">Join the waitlist</a></p>
+        <p class="note">Pro isn't available yet. Joining the waitlist is free and doesn't commit you to anything.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota by Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/">Help</a> · <a href="/sheetrota/privacy/">Privacy</a> · <a href="/sheetrota/terms/">Terms</a></span>
+    <span class="tm">Google Sheets and Google Calendar are trademarks of Google LLC. SheetRota is not affiliated with or endorsed by Google.</span>
+  </div>
+</footer>
+</body>
+</html>

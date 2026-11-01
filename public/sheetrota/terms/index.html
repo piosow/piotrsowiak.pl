@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  SZKIELET regulaminu darmowego dodatku SheetRota (URL „Terms of service” w Marketplace SDK).
+  Wersja PL: /sheetrota/terms/pl/ — zmieniaj obie razem. Płatna wersja Pro będzie wymagała osobnych warunków sprzedaży
+  (Paddle jako sprzedawca), więc ten tekst celowo obejmuje tylko wersję darmową i listę oczekujących.
+  Placeholdery {...} blokują publikację: node tools/check-placeholders.js. To nie jest porada prawna.
+-->
+<title>Terms of service | SheetRota</title>
+<meta name="description" content="Terms of service for the free SheetRota add-on for Google Sheets.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/terms/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/terms/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/terms/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/terms/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/">Pro</a>
+      <a href="/sheetrota/support/">Help</a>
+      <a href="/sheetrota/terms/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <h1>Terms of service</h1>
+    <p class="updated">Last updated: {PRIVACY_DATA_SHEETROTA}</p>
+
+    <h2 id="who">1. Who provides SheetRota</h2>
+    <p>SheetRota is provided by Piotr Sowiak, {DANE_FIRMY}, Poland (“I”, “me”). Contact: <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>. By installing or using the SheetRota add-on for Google Sheets you agree to these terms. If you install it for your organisation, you confirm you may accept them on its behalf.</p>
+
+    <h2 id="service">2. What SheetRota is</h2>
+    <p>SheetRota is a free add-on that reads rows from the spreadsheet you open it in and turns them into calendar events: a downloadable .ics file and “Add to Google Calendar” links. It doesn't write to your calendars. How it handles data is described in the <a href="/sheetrota/privacy/">privacy policy</a>.</p>
+    <p>SheetRota Pro (automatic sync) isn't available yet. Joining its waitlist is free, isn't a purchase or pre-order and doesn't oblige you or me to anything. If Pro launches, it will have its own terms of sale.</p>
+
+    <h2 id="google">3. Google</h2>
+    <p>SheetRota runs inside Google Sheets, so you also need a Google account and must follow Google's terms. Google isn't responsible for SheetRota. Google may change or limit its services, which can affect how SheetRota works.</p>
+
+    <h2 id="use">4. Fair use</h2>
+    <p>Don't use SheetRota to break the law, to send events to people who didn't ask for them, or to try to disrupt, copy or reverse-engineer the add-on beyond what the law allows.</p>
+
+    <h2 id="check">5. Check your events</h2>
+    <p>SheetRota converts dates, times and time zones carefully, but the result depends on what's in your spreadsheet. Please check the preview and a few imported events before relying on them, especially for shifts, deadlines and anything with legal or financial consequences.</p>
+
+    <h2 id="warranty">6. No warranty</h2>
+    <p>SheetRota is free and provided “as is” and “as available”. To the extent permitted by law, I don't guarantee that it will be error-free, always available or suitable for a particular purpose. I may change features, limits or the add-on itself, or stop offering it, and I'll try to announce major changes on this website.</p>
+
+    <h2 id="liability">7. Liability</h2>
+    <p>To the extent permitted by law, I'm not liable for indirect or consequential losses, such as lost profit, missed appointments or lost data, arising from the use of a free add-on. This doesn't limit liability for damage caused intentionally or through gross negligence, or any liability that can't be limited by law. If you're a consumer, your mandatory statutory rights are not affected.</p>
+
+    <h2 id="ending">8. Ending</h2>
+    <p>You can stop using SheetRota at any time by uninstalling it (Google Sheets → Extensions → Add-ons → Manage add-ons). I may block use that breaks these terms.</p>
+
+    <h2 id="law">9. Law and changes</h2>
+    <p>These terms are governed by Polish law. If you're a consumer, you also keep the protection of the mandatory laws of the country you live in. I may update these terms; the date at the top shows the current version, and important changes will be announced on this website before they apply.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota by Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/">Help</a> · <a href="/sheetrota/privacy/">Privacy</a> · <a href="/sheetrota/terms/" aria-current="page">Terms</a></span>
+  </div>
+</footer>
+</body>
+</html>

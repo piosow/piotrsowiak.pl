@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Wersja PL listy oczekujących SheetRota Pro. EN: /sheetrota/pro/ — zmieniaj obie razem (uwagi w pliku EN). -->
+<title>SheetRota Pro — lista oczekujących: automatyczna synchronizacja arkusza z kalendarzami</title>
+<meta name="description" content="SheetRota Pro będzie utrzymywać kalendarze zespołu w zgodzie z grafikiem w arkuszu. Zapisz się na darmową listę oczekujących: wcześniejszy dostęp i rabat na start.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/pro/pl/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/pro/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/pro/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/pro/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Przejdź do treści</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/pl/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/pl/" aria-current="page">Pro</a>
+      <a href="/sheetrota/support/pl/">Pomoc</a>
+      <a href="/sheetrota/pro/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <span class="eyebrow">Wkrótce</span>
+    <h1>SheetRota Pro: grafik zawsze aktualny</h1>
+    <p class="lead">Darmowy dodatek eksportuje stan na daną chwilę. Pro będzie trzymać kalendarze w zgodzie z arkuszem, żeby nikt nie pracował według zeszłotygodniowego grafiku.</p>
+    <ul class="checks">
+      <li>Automatyczna synchronizacja z Kalendarzem Google każdej osoby</li>
+      <li>Zmiany i odwołania aktualizują istniejące wydarzenia</li>
+      <li>Poprawki zrobione w kalendarzu wracają do arkusza</li>
+      <li>Jeden plan dla domeny Google Workspace</li>
+    </ul>
+    <p class="note">Wersja Pro nie jest jeszcze dostępna. Zapis jest darmowy i nie jest zamówieniem; dostaniesz wcześniejszy dostęp i rabat na start. Napiszę, gdy będzie gotowa, i raz z krótką ankietą, nic poza tym. Zob. <a href="/sheetrota/privacy/pl/#waitlist">politykę prywatności</a>.</p>
+
+    <iframe id="waitlist" class="form-frame" title="Formularz listy oczekujących SheetRota Pro" loading="lazy"></iframe>
+    <noscript><p><a href="https://tally.so/r/{TALLY_FORM_ID}">Otwórz formularz zapisu</a></p></noscript>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota · Piotr Sowiak · <a href="/pl/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/pl/">Pomoc</a> · <a href="/sheetrota/privacy/pl/">Prywatność</a> · <a href="/sheetrota/terms/pl/">Regulamin</a></span>
+  </div>
+</footer>
+
+<script>
+  // Ukryte pola w Tally: utm_source, utm_medium, utm_campaign, lang. Wejścia bezpośrednie liczą się jako "website".
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var p = new URLSearchParams({ alignLeft: '1', hideTitle: '1', transparentBackground: '1' });
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { if (q.get(k)) p.set(k, q.get(k).slice(0, 60)); });
+    if (!p.get('utm_source')) p.set('utm_source', 'website');
+    p.set('lang', document.documentElement.lang);
+    document.getElementById('waitlist').src = 'https://tally.so/embed/{TALLY_FORM_ID}?' + p.toString();
+  })();
+</script>
+</body>
+</html>

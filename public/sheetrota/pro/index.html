@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  Lista oczekujących na SheetRota Pro. Wersja PL: /sheetrota/pro/pl/ — zmieniaj obie razem.
+  Formularz Tally w <iframe> bez skryptu Tally (CSP dla /sheetrota/pro/* w public/_headers pozwala tylko na frame-src tally.so).
+  Dodatek linkuje tu z ?utm_source=addon&utm_medium=sidebar&utm_campaign=pro_waitlist. Skrypt niżej przekazuje
+  utm_* do ukrytych pól Tally o tych samych nazwach (plus lang). Konfiguracja formularza:
+  G:\Projekty\ArkuszeKalendarzDodatek\docs\PLAN.md, etap 3.
+-->
+<title>SheetRota Pro waitlist — automatic sync from Google Sheets to calendars</title>
+<meta name="description" content="SheetRota Pro will keep your team's calendars in sync with your spreadsheet schedule. Join the free waitlist for early access and a launch discount.">
+<meta name="author" content="Piotr Sowiak">
+<!-- SZKIC: noindex + brak linków z opublikowanych stron. Publikacja: docs/DEPLOY.md, „Szkice”. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://piotrsowiak.pl/sheetrota/pro/">
+<link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/sheetrota/pro/">
+<link rel="alternate" hreflang="pl" href="https://piotrsowiak.pl/sheetrota/pro/pl/">
+<link rel="alternate" hreflang="x-default" href="https://piotrsowiak.pl/sheetrota/pro/">
+<meta name="theme-color" content="#0f7a5c">
+<link rel="icon" href="/sheetrota/media/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/sheetrota/sheetrota.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/sheetrota/">SheetRota</a>
+    <nav class="topnav" aria-label="SheetRota">
+      <a href="/sheetrota/pro/" aria-current="page">Pro</a>
+      <a href="/sheetrota/support/">Help</a>
+      <a href="/sheetrota/pro/pl/" hreflang="pl" lang="pl">PL</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap">
+    <span class="eyebrow">Coming soon</span>
+    <h1>SheetRota Pro: your schedule, synced</h1>
+    <p class="lead">The free add-on exports a snapshot. Pro will keep calendars in step with the sheet, so nobody works from last week's rota.</p>
+    <ul class="checks">
+      <li>Automatic sync to each person's Google Calendar</li>
+      <li>Changes and cancellations update existing events</li>
+      <li>Edits made in the calendar flow back to the sheet</li>
+      <li>One plan for your Google Workspace domain</li>
+    </ul>
+    <p class="note">Pro isn't available yet. Joining is free, isn't a pre-order, and you'll get early access and a launch discount. I'll email you when it's ready and once with a short survey; nothing else. See the <a href="/sheetrota/privacy/#waitlist">privacy policy</a>.</p>
+
+    <iframe id="waitlist" class="form-frame" title="SheetRota Pro waitlist form" loading="lazy"></iframe>
+    <noscript><p><a href="https://tally.so/r/{TALLY_FORM_ID}">Open the waitlist form</a></p></noscript>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>SheetRota by Piotr Sowiak · <a href="/">piotrsowiak.pl</a></span>
+    <span><a href="/sheetrota/support/">Help</a> · <a href="/sheetrota/privacy/">Privacy</a> · <a href="/sheetrota/terms/">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+  // Hidden fields in Tally: utm_source, utm_medium, utm_campaign, lang. Direct visits count as "website".
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var p = new URLSearchParams({ alignLeft: '1', hideTitle: '1', transparentBackground: '1' });
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { if (q.get(k)) p.set(k, q.get(k).slice(0, 60)); });
+    if (!p.get('utm_source')) p.set('utm_source', 'website');
+    p.set('lang', document.documentElement.lang);
+    document.getElementById('waitlist').src = 'https://tally.so/embed/{TALLY_FORM_ID}?' + p.toString();
+  })();
+</script>
+</body>
+</html>
