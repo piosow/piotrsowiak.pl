@@ -1,7 +1,7 @@
 # piotrsowiak.pl — instrukcje dla Claude Code
 
-Statyczna strona studia gier (HTML/CSS, bez build stepu) — Cloudflare Worker ze statycznymi plikami (`piotrsowiak-pl`), nie Pages.
-`/` strona studia → menu → `/games/` lista gier na Androida → `/<slug>/` strona gry. Dawna wizytówka programisty leży nieopublikowana w `site/`.
+Statyczna strona Piotra Sowiaka (HTML/CSS, bez build stepu) — Cloudflare Worker ze statycznymi plikami (`piotrsowiak-pl`), nie Pages.
+`/` strona główna (oprogramowanie i inżynieria AI) → menu → `/games/` lista gier na Androida → `/<slug>/` strona gry; `/sheetrota/` dodatek do Arkuszy Google (szkic). Dawna wizytówka programisty leży nieopublikowana w `site/`.
 Szczegóły: `docs/DEPLOY.md`.
 
 ## Publikacja

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>piotrsowiak.pl — small, polished games</title>
-<meta name="description" content="piotrsowiak.pl is an indie game studio from Łódź, Poland, making small, polished games for Android and the browser, built for short sessions.">
+<title>Piotr Sowiak — software engineering and AI engineering</title>
+<meta name="description" content="Piotr Sowiak, software engineer from Łódź, Poland: business systems in .NET since 2015, AI features and automation built for production, and products of my own.">
 <meta name="author" content="Piotr Sowiak">
 <link rel="canonical" href="https://piotrsowiak.pl/">
 <link rel="alternate" hreflang="en" href="https://piotrsowiak.pl/">
@@ -15,24 +15,26 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="piotrsowiak.pl">
 <meta property="og:url" content="https://piotrsowiak.pl/">
-<meta property="og:title" content="piotrsowiak.pl — small, polished games">
-<meta property="og:description" content="Indie game studio from Łódź, Poland: short-session games for Android and the browser.">
+<meta property="og:title" content="Piotr Sowiak — software engineering and AI engineering">
+<meta property="og:description" content="Business systems in .NET, AI features built for production, and products of my own. Łódź, Poland.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="pl_PL">
 <meta name="twitter:card" content="summary">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/studio.css?v=5">
+<link rel="stylesheet" href="/studio.css?v=6">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "piotrsowiak.pl",
+  "@type": "Person",
+  "name": "Piotr Sowiak",
+  "jobTitle": "Software engineer",
   "url": "https://piotrsowiak.pl/",
   "email": "kontakt@piotrsowiak.pl",
   "address": { "@type": "PostalAddress", "addressLocality": "Łódź", "addressCountry": "PL" },
-  "founder": { "@type": "Person", "name": "Piotr Sowiak", "url": "https://piotrsowiak.pl/" }
+  "sameAs": ["https://www.linkedin.com/in/piotr-sowiak-6a2955b6"],
+  "knowsAbout": [".NET", "ASP.NET Core", "Blazor", "Microsoft SQL Server", "Domain-Driven Design", "CQRS", "TypeScript", "Large language models", "AI agents", "Google Apps Script"]
 }
 </script>
 </head>
@@ -43,8 +45,9 @@
   <div class="wrap">
     <a class="brand" href="/" aria-current="page">piotrsowiak.pl</a>
     <nav class="topnav" aria-label="Main menu">
+      <a href="#work">What I do</a>
       <a href="/games/">Android games</a>
-      <a href="#about">Studio</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="/pl/" hreflang="pl" lang="pl">PL</a>
     </nav>
@@ -55,31 +58,40 @@
 
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Indie game studio · Łódź, Poland</span>
-      <h1>Small, polished&nbsp;games.</h1>
-      <p class="lead">piotrsowiak.pl is an indie studio from Łódź, Poland, making short-session games for Android and the browser: easy to pick up for a few minutes, worth coming back to.</p>
+      <span class="eyebrow">Software &amp; AI engineering · Łódź, Poland</span>
+      <h1>Software that holds up. AI that does real&nbsp;work.</h1>
+      <p class="lead">I'm Piotr Sowiak. Since 2015 I've designed, built and run business systems where the rules are complicated and mistakes cost money. Today I also build AI into products and processes, so that it saves hours instead of making demos.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="/games/">Browse Android games</a>
-        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        <a class="btn btn-primary" href="#contact">Tell me about your project</a>
+        <a class="btn btn-secondary" href="#work">What I do</a>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" aria-labelledby="pillars-title">
+  <section class="section section-alt" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <h2 id="pillars-title">What you can expect</h2>
+      <h2 id="work-title">What I do</h2>
       <div class="pillars">
-        <article class="pillar pillar-polish">
-          <h3>Polished, not padded</h3>
-          <p>Small in scope and finished with care: tight controls, clear rules, no filler.</p>
+        <article class="pillar pillar-code">
+          <h3>Software engineering</h3>
+          <p>Business systems end to end: domain model, architecture, implementation, deployment and maintenance. Payroll rules, document workflows, bank and KSeF integrations.</p>
+          <ul aria-label="Technologies">
+            <li>.NET</li><li>ASP.NET Core</li><li>Blazor</li><li>SQL Server</li><li>DDD</li><li>CQRS</li>
+          </ul>
         </article>
-        <article class="pillar pillar-time">
-          <h3>Short sessions</h3>
-          <p>Built for a few minutes at a time and "just one more try".</p>
+        <article class="pillar pillar-ai">
+          <h3>AI engineering</h3>
+          <p>Language models wired into real systems: document processing, assistants that work on your data, and automations with checks, so you know when the output can be trusted.</p>
+          <ul aria-label="Areas">
+            <li>LLM integration</li><li>Agents</li><li>Automation</li><li>Evaluation</li>
+          </ul>
         </article>
-        <article class="pillar pillar-platforms">
-          <h3>Browser and Android</h3>
-          <p>One codebase: play in your browser or install from Google Play.</p>
+        <article class="pillar pillar-products">
+          <h3>Products of my own</h3>
+          <p>Small tools and games that I design, build and ship myself: games for Android and the browser, and a Google Sheets add-on.</p>
+          <ul aria-label="Technologies">
+            <li>TypeScript</li><li>Capacitor</li><li>Apps Script</li>
+          </ul>
         </article>
       </div>
     </div>
@@ -87,17 +99,19 @@
 
   <section class="section" id="about" aria-labelledby="about-title">
     <div class="wrap prose">
-      <h2 id="about-title">About the studio</h2>
-      <p>piotrsowiak.pl was founded by Piotr Sowiak, a .NET and JavaScript developer from Łódź, Poland. Fewer titles, each one finished properly.</p>
-      <p class="muted">The games are built in TypeScript on HTML5 Canvas and shipped to Android with Capacitor, so the browser and Android versions share one codebase.</p>
+      <h2 id="about-title">About</h2>
+      <p>I start from the process, not from a list of screens. I've built systems for settling working time and pay components, cost document workflows with OCR, approval paths for KSeF invoices and bank transfer orders over the bank's API. In areas like these, validation, audit trails and edge cases are the core of the job.</p>
+      <p>I've led small development teams, and I still write code every day. I use AI tools the same way I use any other: where they pay off, with tests and review around them.</p>
+      <!-- Produkty: link do /sheetrota/ dopiero po publikacji szkicu (docs/DEPLOY.md, „SheetRota”). -->
+      <p class="muted">My games are listed on the <a href="/games/">games page</a>.</p>
     </div>
   </section>
 
   <section class="section section-alt" id="contact" aria-labelledby="contact-title">
     <div class="wrap prose">
       <h2 id="contact-title">Contact</h2>
-      <p>Questions, feedback, press: <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a></p>
-      <p class="muted">Each game has its own press kit with facts, screenshots and logos. You'll find it on the <a href="/games/">games page</a>.</p>
+      <p>Have a project in .NET, or a process you'd like AI to take off your hands? Write to <a href="mailto:kontakt@piotrsowiak.pl">kontakt@piotrsowiak.pl</a>. I'm most interested in work with a clearly defined scope, and I usually reply within 1–2 working days.</p>
+      <p class="muted">Also on <a href="https://www.linkedin.com/in/piotr-sowiak-6a2955b6">LinkedIn</a>.</p>
     </div>
   </section>
 

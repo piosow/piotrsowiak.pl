@@ -4,7 +4,7 @@
 
 ```
 public/                    jedyny publikowany katalog
-  index.html, pl/          strona główna studia: EN (domyślna) i PL
+  index.html, pl/          strona główna (oprogramowanie i inżynieria AI): EN (domyślna) i PL
   games/, games/pl/        lista gier na Androida EN i PL (karty generowane, patrz „Lista gier”)
   privacy/, privacy/pl/    polityka prywatności studia (strona, newsletter, email)
   studio.css               style strony studia, listy gier i polityk prywatności
@@ -37,10 +37,12 @@ Wszystko poza `public/` (pełna strona w `site/`, dokumentacja, narzędzia) nie 
 
 ## Strona studia
 
-`/` to strona główna studia (EN, PL pod `/pl/`): krótko o studiu, o autorze i kontakt.
+`/` to strona główna (EN, PL pod `/pl/`): wytwarzanie oprogramowania, inżynieria AI i własne produkty,
+o autorze i kontakt. Fakty o doświadczeniu pochodzą z dawnej wizytówki w `site/`.
 Menu prowadzi do listy gier na Androida (`/games/`, PL `/games/pl/`), a dopiero stamtąd
 do stron poszczególnych gier (`/<slug>/`). Strona główna celowo nie linkuje do konkretnych gier,
-więc dodanie tytułu nie wymaga jej edycji.
+więc dodanie tytułu nie wymaga jej edycji. Ikony bloków „What I do” / „Co robię” (`pillar-code`,
+`pillar-ai`, `pillar-products`) generuje `tools/build-pixel-art.js`.
 
 Strony studia są bez JS, zawsze w ciemnym motywie. Wersje EN i PL to osobne pliki HTML
 (bez słownika i18n), więc tekst zmieniasz w obu plikach. Po zmianie `studio.css` podbij `?v=N`
@@ -240,8 +242,19 @@ i własny pasek z marką SheetRota zamiast studia. EN domyślnie, PL w podkatalo
   więc ramka ma stałą wysokość (`.form-frame` w `sheetrota.css`).
 - Treść polityki, pomocy i strony głównej opisuje zachowanie kodu dodatku (zakresy, formaty dat, limit 2000 wierszy).
   Zmiana w dodatku = zmiana tutaj.
-- Placeholdery: `{SHEETROTA_LISTING_URL}` (adres wizytówki po publikacji), `{TALLY_FORM_ID}`, `{DANE_FIRMY}`,
-  `{PRIVACY_DATA_SHEETROTA}` oraz komentarze `{DO_POTWIERDZENIA_...}`.
+- Placeholdery: `{SHEETROTA_LISTING_URL}` (adres wizytówki po publikacji), `{TALLY_FORM_ID}`, `{DANE_FIRMY}`
+  oraz komentarze `{DO_POTWIERDZENIA_...}` (logi błędów, GA4 w Marketplace, czas odpowiedzi w pomocy).
+  Data polityki i regulaminu: 1 listopada 2026; zmiana treści = nowa data w czterech plikach.
+- Grafiki do Marketplace SDK i ekranu zgody (PNG z `media/icon.svg`: ikony 32/48/96/128, logo OAuth 120×120,
+  baner 220×140) leżą w repo dodatku, `docs/marketplace/`. Nie są publikowane na stronie.
+
+**Publikacja SheetRota** (razem z wizytówką w Marketplace):
+
+1. Uzupełnij placeholdery i usuń komentarze `{DO_POTWIERDZENIA_...}`.
+2. Usuń z każdego HTML-a w `public/sheetrota/` komentarz `<!-- SZKIC: ... -->` i `<meta name="robots" content="noindex">`.
+3. Dopisz `/sheetrota/` i `/sheetrota/pl/` do `sitemap.xml`, a na stronie głównej zamień komentarz
+   „Produkty: link do /sheetrota/…” w sekcji „About” / „O mnie” na link do dodatku.
+4. `node tools/check-placeholders.js` musi przejść.
 - Weryfikacja marki Google wymaga, żeby strona główna i polityka były publicznie dostępne. Szkic `noindex` to spełnia,
   więc publikację (usunięcie `noindex`, wpis w sitemap) robimy dopiero razem z wizytówką w Marketplace.
   Do tego czasu żadna strona studia ani gry nie linkuje do `/sheetrota/`.
